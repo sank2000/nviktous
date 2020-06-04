@@ -77,7 +77,7 @@ export default function Home() {
           {/* End hero unit */}
           <Grid container spacing={4}>
             {cards.map((card) => (
-              <ItemCard props={card} />
+              <ItemCard key={card} />
             ))}
           </Grid>
         </Container>

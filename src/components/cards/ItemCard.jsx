@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -7,6 +8,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
+import AddShoppingCartTwoToneIcon from '@material-ui/icons/AddShoppingCartTwoTone';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -19,19 +22,24 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '120%',
   },
   cardContent: {
     flexGrow: 1,
+  },
+  cardActions: {
+    padding: theme.spacing(1)
+  },
+  priceTag: {
+    fontSize: theme.spacing(2)
   }
 }));
 
 
 function ItemCard(props) {
-
   const classes = useStyles();
   return (
-    <Grid item key={props} xs={12} sm={6} md={4}>
+    <Grid item xs={12} sm={6} md={4}>
       <Card className={classes.card}>
         <CardMedia
           className={classes.cardMedia}
@@ -39,20 +47,40 @@ function ItemCard(props) {
           title="Image title"
         />
         <CardContent className={classes.cardContent}>
-          <Typography gutterBottom variant="h5" component="h2">
-            Heading
-                    </Typography>
+          <Grid container justify="space-between">
+            <Grid item>
+              <Typography gutterBottom variant="h5" component="h2">
+                Item name
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography gutterBottom variant="h5" component="h2">
+                <sup className={classes.priceTag}>$</sup> 3.99
+              </Typography>
+            </Grid>
+          </Grid>
           <Typography>
-            This is a media card. You can use this section to describe the content.
-                    </Typography>
+            About the product
+          </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="small" color="primary">
-            View
-                    </Button>
-          <Button size="small" color="primary">
-            Edit
-                    </Button>
+        <CardActions >
+          <Grid container justify="space-between">
+            <Grid item>
+              <Button className={classes.cardActions} size="small" color="primary">
+                View
+              </Button>
+            </Grid>
+            <Grid item>
+              <Grid container id="quick actions">
+                <IconButton className={classes.cardActions} size="small" color="primary">
+                  <AddShoppingCartTwoToneIcon />
+                </IconButton>
+                <IconButton className={classes.cardActions} size="small" color="primary">
+                  <FavoriteTwoToneIcon />
+                </IconButton>
+              </Grid>
+            </Grid>
+          </Grid>
         </CardActions>
       </Card>
     </Grid>
