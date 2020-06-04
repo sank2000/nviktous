@@ -10,6 +10,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import HomeWorkTwoToneIcon from '@material-ui/icons/HomeWorkTwoTone';
 import { Link } from 'react-router-dom';
 
 export default function TemporaryDrawer() {
@@ -18,7 +19,7 @@ export default function TemporaryDrawer() {
   const useStyles = makeStyles({
     list: {
       [theme.breakpoints.up('xs')]: {
-        width: '100vw',
+        width: '75vw',
       },
       [theme.breakpoints.up('sm')]: {
         width: '35vw',
@@ -53,7 +54,7 @@ export default function TemporaryDrawer() {
       <List>
         <Link className="styled-link" to='/'>
           <ListItem button>
-            <ListItemIcon><InboxIcon /></ListItemIcon>
+            <ListItemIcon><HomeWorkTwoToneIcon /></ListItemIcon>
             <ListItemText primary={'Home'} />
           </ListItem>
         </Link>

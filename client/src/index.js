@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
-import cyan from '@material-ui/core/colors/cyan';
+import lightBlue from '@material-ui/core/colors/lightBlue';
 import teal from '@material-ui/core/colors/teal';
 
 import Router from './Router';
@@ -11,7 +11,7 @@ import * as serviceWorker from './serviceWorker';
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: cyan.A700, },
+    primary: { main: lightBlue[800], },
     secondary: { main: teal.A700 },
   }
 });
