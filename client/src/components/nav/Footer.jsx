@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import Copyright from '../messages/CopyrightNote';
+import Copyright from '../auxillary/CopyrightNote';
 
 const useStyles = makeStyles((theme) => ({
   root: {
