@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-// import ProtectedRoute from './routers/ProtectedRoute';
+import ProtectedRoute from './routers/ProtectedRoute';
 // import RegistrationRoute from './routers/RegistrationRoute';
 
 import NavBar from './components/nav/NavBar';
@@ -13,7 +13,7 @@ function AppRouter() {
     <Router>
       <NavBar />
       <Switch>
-        <Route path='/' exact component={Home} />
+        <ProtectedRoute path='/' exact component={Home} />
 
         <Route path='/auth/signin' exact component={SignIn} />
         <Route path='/auth/signup' exact component={SignIn} />

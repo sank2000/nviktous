@@ -1,4 +1,4 @@
-var auth = false;
+let auth = true;
 
 function getAuth() {
   return auth;
