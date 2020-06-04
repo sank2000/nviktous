@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -22,16 +21,16 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   cardMedia: {
-    paddingTop: '120%',
+    paddingTop: '100%',
   },
   cardContent: {
     flexGrow: 1,
   },
   cardActions: {
-    padding: theme.spacing(1)
+    padding: theme.spacing(1),
   },
   priceTag: {
-    fontSize: theme.spacing(2)
+    paddingLeft: theme.spacing(1)
   }
 }));
 
@@ -39,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 function ItemCard(props) {
   const classes = useStyles();
   return (
-    <Grid item xs={12} sm={6} md={4}>
+    <Grid item xs={6} sm={6} md={4}>
       <Card className={classes.card}>
         <CardMedia
           className={classes.cardMedia}
@@ -47,18 +46,9 @@ function ItemCard(props) {
           title="Image title"
         />
         <CardContent className={classes.cardContent}>
-          <Grid container justify="space-between">
-            <Grid item>
-              <Typography gutterBottom variant="h5" component="h2">
-                Item name
+          <Typography gutterBottom variant="h6" component="h2">
+            Item name
               </Typography>
-            </Grid>
-            <Grid item>
-              <Typography gutterBottom variant="h5" component="h2">
-                <sup className={classes.priceTag}>$</sup> 3.99
-              </Typography>
-            </Grid>
-          </Grid>
           <Typography>
             About the product
           </Typography>
@@ -66,9 +56,9 @@ function ItemCard(props) {
         <CardActions >
           <Grid container justify="space-between">
             <Grid item>
-              <Button className={classes.cardActions} size="small" color="primary">
-                View
-              </Button>
+              <Typography className={classes.priceTag} variant="h6" component="h2">
+                $3.99
+              </Typography>
             </Grid>
             <Grid item>
               <Grid container id="quick actions">
