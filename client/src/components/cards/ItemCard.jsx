@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -9,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import AddShoppingCartTwoToneIcon from '@material-ui/icons/AddShoppingCartTwoTone';
+import CardActionArea from '@material-ui/core/CardActionArea';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -19,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    "&:hover": {
+      boxShadow: theme.shadows[5]
+    }
   },
   cardMedia: {
     paddingTop: '100%',
@@ -39,20 +44,24 @@ function ItemCard(props) {
   const classes = useStyles();
   return (
     <Grid item xs={6} sm={6} md={4}>
-      <Card className={classes.card}>
-        <CardMedia
-          className={classes.cardMedia}
-          image="https://source.unsplash.com/random"
-          title="Image title"
-        />
-        <CardContent className={classes.cardContent}>
-          <Typography gutterBottom variant="h6" component="h2">
-            Item name
+      <Card elevation={2} className={classes.card}>
+        <Link className="styled-link" to='/product'>
+          <CardActionArea>
+            <CardMedia
+              className={classes.cardMedia}
+              image="https://source.unsplash.com/random"
+              title="Image title"
+            />
+            <CardContent className={classes.cardContent}>
+              <Typography gutterBottom variant="h5" component="h2">
+                Item name
               </Typography>
-          <Typography>
-            About the product
+              <Typography>
+                About the product
           </Typography>
-        </CardContent>
+            </CardContent>
+          </CardActionArea>
+        </Link>
         <CardActions >
           <Grid container justify="space-between">
             <Grid item>

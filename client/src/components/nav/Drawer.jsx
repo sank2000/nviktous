@@ -51,13 +51,13 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        <Link to='/'>
+        <Link className="styled-link" to='/'>
           <ListItem button>
             <ListItemIcon><InboxIcon /></ListItemIcon>
             <ListItemText primary={'Home'} />
           </ListItem>
         </Link>
-        <Link to='/auth/signin'>
+        <Link className="styled-link" to='/auth/signin'>
           <ListItem button>
             <ListItemIcon><InboxIcon /></ListItemIcon>
             <ListItemText primary={'Sign In'} />
