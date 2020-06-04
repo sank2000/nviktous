@@ -9,11 +9,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { fade, makeStyles } from '@material-ui/core/styles';
-
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import BookmarksOutlinedIcon from '@material-ui/icons/BookmarksOutlined';
+import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
+import AccountCircle from '@material-ui/icons/AccountCircleTwoTone';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import AddShoppingCartTwoToneIcon from '@material-ui/icons/AddShoppingCartTwoTone';
 import SearchIcon from '@material-ui/icons/Search';
 
 import Drawer from './Drawer';
@@ -119,7 +118,7 @@ export default function NavBar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
     </Menu>
   );
 
@@ -135,25 +134,25 @@ export default function NavBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="My wishlist" color="inherit">
-          <BookmarksOutlinedIcon />
+        <IconButton aria-label="My wishlist" color="secondary">
+          <FavoriteTwoToneIcon />
         </IconButton>
         <p>Wishlist</p>
       </MenuItem>
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
+        <IconButton aria-label="1 item in your cart" color="secondary">
+          <Badge badgeContent={1} color="secondary">
+            <AddShoppingCartTwoToneIcon />
           </Badge>
         </IconButton>
-        <p>Notifications</p>
+        <p>My Cart</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
-          color="inherit"
+          color="secondary"
         >
           <AccountCircle />
         </IconButton>
@@ -164,7 +163,7 @@ export default function NavBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar elevation={3} position="fixed">
         <Toolbar>
           <Drawer />
           <Typography className={classes.title} variant="h6" noWrap>
@@ -186,11 +185,11 @@ export default function NavBar() {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="My wishlist" color="inherit">
-              <BookmarksOutlinedIcon />
+              <FavoriteTwoToneIcon />
             </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
+            <IconButton aria-label="1 item in your cart" color="inherit">
+              <Badge badgeContent={1} color="secondary">
+                <AddShoppingCartTwoToneIcon />
               </Badge>
             </IconButton>
             <IconButton
@@ -219,6 +218,7 @@ export default function NavBar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+      <Toolbar />
     </div>
   );
 }
