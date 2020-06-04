@@ -1,6 +1,8 @@
-/* Carousel */
-
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
+@media (max-width: 1515px) {
+  header section {
+    max-width: 100%;
+  }
+}
 
 .wrapper {
   max-width: 1335px;
@@ -29,11 +31,22 @@
   background-size: cover !important;
 }
 
+.slide::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.9)));
+  background: linear-gradient(transparent, rgba(129, 90, 90, 0.5));
+  bottom: 0;
+  left: 0;
+}
+
 .previousButton,
 .nextButton {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 40%;
   z-index: 10;
   width: 32px;
   height: 32px;
@@ -41,13 +54,17 @@
 }
 
 .previousButton {
-  left: 0;
-  -webkit-transform: rotate(180deg);
-  transform: rotate(180deg);
+  left: 10px;
+  -webkit-transform: rotate(360deg) translateY(calc(50% + 0px));
+  transform: rotate(360deg) translateY(calc(50% + 0px));
+
+  top: 40%;
 }
 
 .nextButton {
   right: 0;
+  -webkit-transform: rotate(360deg) translateY(calc(50% + 0px));
+  transform: rotate(360deg) translateY(calc(50% + 0px));
 }
 
 .slider-content {
@@ -149,6 +166,9 @@
   }
 }
 
+
+/* Animation */
+
 .slide h1 {
   transition: all 0.3s ease;
   -webkit-transform: translateY(-20px);
@@ -156,15 +176,11 @@
   opacity: 0;
 }
 
-.slide button {
-  transition: all 0.3s ease;
-  -webkit-transform: translateY(20px);
-  transform: translateY(20px);
-  opacity: 0;
-}
-
-.slide p {
-  transition: all 0.3s ease;
+.slide button,
+h2,
+h3,
+h4 {
+  transition: all 0.9s ease;
   -webkit-transform: translateY(20px);
   transform: translateY(20px);
   opacity: 0;
