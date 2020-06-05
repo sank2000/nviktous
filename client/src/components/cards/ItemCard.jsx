@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import AddShoppingCartTwoToneIcon from '@material-ui/icons/AddShoppingCartTwoTone';
+import CardActionArea from '@material-ui/core/CardActionArea';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -20,18 +21,21 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    "&:hover": {
+      boxShadow: theme.shadows[5]
+    }
   },
   cardMedia: {
-    paddingTop: '120%',
+    paddingTop: '100%',
   },
   cardContent: {
     flexGrow: 1,
   },
   cardActions: {
-    padding: theme.spacing(1)
+    padding: theme.spacing(1),
   },
   priceTag: {
-    fontSize: theme.spacing(2)
+    paddingLeft: theme.spacing(1)
   }
 }));
 
@@ -39,36 +43,31 @@ const useStyles = makeStyles((theme) => ({
 function ItemCard(props) {
   const classes = useStyles();
   return (
-    <Grid item xs={12} sm={6} md={4}>
-      <Card className={classes.card}>
-        <CardMedia
-          className={classes.cardMedia}
-          image="https://source.unsplash.com/random"
-          title="Image title"
-        />
-        <CardContent className={classes.cardContent}>
-          <Grid container justify="space-between">
-            <Grid item>
+    <Grid item xs={6} sm={6} md={4}>
+      <Card elevation={2} className={classes.card}>
+        <Link className="styled-link" to='/product'>
+          <CardActionArea>
+            <CardMedia
+              className={classes.cardMedia}
+              image="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+              title="Image title"
+            />
+            <CardContent className={classes.cardContent}>
               <Typography gutterBottom variant="h5" component="h2">
                 Item name
               </Typography>
-            </Grid>
-            <Grid item>
-              <Typography gutterBottom variant="h5" component="h2">
-                <sup className={classes.priceTag}>$</sup> 3.99
-              </Typography>
-            </Grid>
-          </Grid>
-          <Typography>
-            About the product
+              <Typography>
+                About the product
           </Typography>
-        </CardContent>
+            </CardContent>
+          </CardActionArea>
+        </Link>
         <CardActions >
           <Grid container justify="space-between">
             <Grid item>
-              <Button className={classes.cardActions} size="small" color="primary">
-                View
-              </Button>
+              <Typography className={classes.priceTag} variant="h6" component="h2">
+                $3.99
+              </Typography>
             </Grid>
             <Grid item>
               <Grid container id="quick actions">
