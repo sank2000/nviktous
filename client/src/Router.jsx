@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import ProtectedRoute from './routers/ProtectedRoute';
-// import RegistrationRoute from './routers/RegistrationRoute';
 
 import NavBar from './components/nav/NavBar';
 import Home from './components/app/Home';
