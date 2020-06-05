@@ -40,12 +40,12 @@ function Product(props) {
           <Grid item xs={12} sm={12} md={3} lg={3}>
             <div className={classes.heroButtons}>
               <Grid container direction={theme.breakpoints.up('sm') ? 'row' : 'column'} spacing={2} justify="center">
-                <Grid item>
+                <Grid item md={12} xs={6}>
                   <Button variant="outlined" color="primary" size="large" fullWidth startIcon={<AddShoppingCartTwoToneIcon />}>
                     Add to my cart
                   </Button>
                 </Grid>
-                <Grid item>
+                <Grid item md={12} xs={6}>
                   <Button variant="outlined" color="secondary" size="large" fullWidth startIcon={<FavoriteTwoToneIcon />}>
                     Add to Favorites
                   </Button>
