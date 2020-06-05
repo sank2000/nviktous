@@ -15,8 +15,13 @@ app.use('/auth', auth);
 
 
 
-mongoose.connect("mongodb://localhost:27017/NVIKTOUS", { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.set('useCreateIndex', true);
+const dbConnection = mongoose.connect(process.env.DB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+});
+
 
 
 

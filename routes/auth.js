@@ -79,7 +79,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
   clientID: process.env.FCLIENT_ID,
   clientSecret: process.env.FCLIENT_SECRET,
-  callbackURL: "http://localhost:4000/auth/facebook/auth",
+  callbackURL: "http://localhost:3000/auth/facebook/auth",
   profileFields: ['id', 'emails', 'name']
 },
   function (accessToken, refreshToken, profile, cb) {
@@ -249,7 +249,9 @@ router.post("/login", function (req, res, next) {
 
 router.get("/logout", function (req, res) {
   req.logOut();
-  res.redirect("/");
+  res.json({
+    auth: false
+  });
 });
 
 
