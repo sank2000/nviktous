@@ -69,7 +69,7 @@ function ProductViewer(props) {
               return (
                 <ReactImageMagnify isHintEnabled={true} shouldHideHintAfterFirstActivation={true} shouldUsePositiveSpaceLens={true} enlargedImagePosition={'over'} key={index} {...{
                   smallImage: {
-                    alt: index,
+                    alt: index.toString(),
                     width: 240,
                     height: 360,
                     src: image.small,
