@@ -6,7 +6,10 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import AddShoppingCartTwoToneIcon from '@material-ui/icons/AddShoppingCartTwoTone';
+import ShareTwoToneIcon from '@material-ui/icons/ShareTwoTone';
+
 import ProductViewer from '../view/ProductViewer';
+import Footer from '../nav/Footer';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -45,26 +48,45 @@ function Product(props) {
         <Container maxWidth="lg">
           <Grid container>
             <Grid item xs={12} sm={12} md={9} lg={9}>
-              <Typography component="h1" variant="h2" color="textPrimary" gutterBottom>
+              <Typography component="h1" variant="h2" color="textPrimary">
                 Item Name
-            </Typography>
+              </Typography>
+              <Grid container justify="space-between">
+                <Grid item xs={6}>
+                  <Typography variant="h6">$ 5.99</Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography variant="h6">In stock</Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography variant="h6">Material</Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography variant="h6">Available sizes</Typography>
+                </Grid>
+              </Grid>
               <Typography variant="h5" color="textSecondary" paragraph>
                 Something short and leading about the collection below—its contents, the creator, etc.
                 Make it short and sweet, but not too short so folks don&apos;t simply skip over it
                 entirely.
-            </Typography>
+              </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={3} lg={3}>
               <div className={classes.heroButtons}>
                 <Grid container direction={theme.breakpoints.up('sm') ? 'row' : 'column'} spacing={2} justify="center">
-                  <Grid item md={12} xs={6}>
+                  <Grid item md={12} sm={4} xs={6}>
                     <Button variant="outlined" color="primary" size="large" fullWidth startIcon={<AddShoppingCartTwoToneIcon />}>
                       Add to my cart
                   </Button>
                   </Grid>
-                  <Grid item md={12} xs={6}>
+                  <Grid item md={12} sm={4} xs={6}>
                     <Button variant="outlined" color="secondary" size="large" fullWidth startIcon={<FavoriteTwoToneIcon />}>
                       Add to Favorites
+                  </Button>
+                  </Grid>
+                  <Grid item md={12} sm={4} xs={6}>
+                    <Button variant="outlined" color="secondary" size="large" fullWidth startIcon={<ShareTwoToneIcon />}>
+                      Share To a Friend
                   </Button>
                   </Grid>
                 </Grid>
@@ -76,6 +98,7 @@ function Product(props) {
       <Container>
         <ProductViewer images={productImages} />
       </Container>
+      <Footer />
     </>
   );
 }

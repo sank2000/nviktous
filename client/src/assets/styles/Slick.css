@@ -3,6 +3,11 @@
   min-width: 0;
 }
 
+.slick-arrow {
+  background-color: rgb(187, 184, 184);
+}
+
+
 .react-slick .slick-prev,
 .react-slick .slick-next {
   background-color: rgb(187, 184, 184);

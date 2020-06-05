@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactImageMagnify from 'react-image-magnify';
 import ReactSlick from 'react-slick';
 import { Container } from '@material-ui/core';
@@ -13,6 +13,12 @@ function ProductViewer(props) {
     root: {
       padding: theme.spacing(2),
     },
+    arrowButton: {
+      padding: theme.spacing(1),
+      borderRadius: '100%',
+      backgroundColor: theme.palette.primary.main,
+      color: '#fff'
+    }
   }));
 
   const classes = useStyles();
@@ -36,7 +42,7 @@ function ProductViewer(props) {
         }
       },
       {
-        breakpoint: 600,
+        breakpoint: 680,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -44,7 +50,7 @@ function ProductViewer(props) {
         }
       },
       {
-        breakpoint: 480,
+        breakpoint: 520,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1
@@ -53,31 +59,33 @@ function ProductViewer(props) {
     ]
   };
   return (
-    <Container className={classes.root} maxWidth="lg">
-      <ReactSlick
-        {...settings}
-      >
-        {
-          images.map((image, index) => {
-            return (
-              <ReactImageMagnify isHintEnabled={true} shouldHideHintAfterFirstActivation={true} shouldUsePositiveSpaceLens={true} enlargedImagePosition={'over'} key={index} {...{
-                smallImage: {
-                  alt: index,
-                  width: 240,
-                  height: 360,
-                  src: image.small,
-                },
-                largeImage: {
-                  src: image.large,
-                  width: 1200,
-                  height: 1800
-                }
-              }} />
-            );
-          })
-        }
-      </ReactSlick>
-    </Container>
+    <Fragment>
+      <Container className={classes.root} maxWidth="lg">
+        <ReactSlick
+          {...settings}
+        >
+          {
+            images.map((image, index) => {
+              return (
+                <ReactImageMagnify isHintEnabled={true} shouldHideHintAfterFirstActivation={true} shouldUsePositiveSpaceLens={true} enlargedImagePosition={'over'} key={index} {...{
+                  smallImage: {
+                    alt: index,
+                    width: 240,
+                    height: 360,
+                    src: image.small,
+                  },
+                  largeImage: {
+                    src: image.large,
+                    width: 1200,
+                    height: 1800
+                  }
+                }} />
+              );
+            })
+          }
+        </ReactSlick>
+      </Container>
+    </Fragment>
   )
 }
 
