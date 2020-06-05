@@ -14,7 +14,7 @@ function AppRouter() {
       <NavBar />
       <Switch>
         <Route path='/' exact component={Home} />
-        <ProtectedRoute path='/product' exact component={Product} />
+        <ProtectedRoute path='/product/:itemId' exact component={Product} />
 
         <Route path='/auth/signin' exact component={SignIn} />
         <Route path='/auth/signup' exact component={SignIn} />

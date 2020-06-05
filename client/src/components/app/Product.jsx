@@ -10,6 +10,7 @@ import ShareTwoToneIcon from '@material-ui/icons/ShareTwoTone';
 
 import ProductViewer from '../view/ProductViewer';
 import Footer from '../nav/Footer';
+import items from '../../constants/sampleItems';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -39,8 +40,9 @@ const productImages = [
   }
 ]
 
-function Product(props) {
+function Product({ match }) {
   const theme = useTheme();
+  const product = items.filter(item => item.itemId === Number(match.params.itemId))[0];
   const classes = useStyles();
   return (
     <>
@@ -49,11 +51,11 @@ function Product(props) {
           <Grid container>
             <Grid item xs={12} sm={12} md={9} lg={9}>
               <Typography component="h1" variant="h2" color="textPrimary">
-                Item Name
+                {product.name}
               </Typography>
               <Grid container justify="space-between">
                 <Grid item xs={6}>
-                  <Typography variant="h6">$ 5.99</Typography>
+                  <Typography variant="h6">{product.price}</Typography>
                 </Grid>
                 <Grid item xs={6}>
                   <Typography variant="h6">In stock</Typography>
@@ -66,9 +68,7 @@ function Product(props) {
                 </Grid>
               </Grid>
               <Typography variant="h5" color="textSecondary" paragraph>
-                Something short and leading about the collection below—its contents, the creator, etc.
-                Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-                entirely.
+                {product.info}
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={3} lg={3}>
@@ -95,7 +95,7 @@ function Product(props) {
           </Grid>
         </Container>
       </div>
-      <Container>
+      <Container maxWidth="lg">
         <ProductViewer images={productImages} />
       </Container>
       <Footer />
