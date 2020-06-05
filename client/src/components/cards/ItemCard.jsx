@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 function ItemCard(props) {
   const classes = useStyles();
   return (
-    <Grid item xs={6} sm={6} md={4}>
+    <Grid item xs={6} sm={4} md={3} lg={3}>
       <Card elevation={2} className={classes.card}>
         <Link className="styled-link" to='/product'>
           <CardActionArea>
