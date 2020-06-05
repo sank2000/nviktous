@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
+const cors = require("cors");
 const auth = require('./routes/auth');
 
 const app = express();
@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/auth', auth);
 
-
+app.use(cors);
 
 const dbConnection = mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,

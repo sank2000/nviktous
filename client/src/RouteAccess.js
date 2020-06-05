@@ -23,7 +23,7 @@ const signout = async () => {
 }
 
 const facebook = async () => {
-  const result = await axios.get("/auth/facebook");
+  const result = await axios.get("/auth/facebook", { headers: { "Access-Control-Allow-Origin": "*" } });
   return result;
 }
 

@@ -235,26 +235,34 @@ export default function () {
     }
     setOpen(true);
   };
-  const withFacebook = async () => {
-    setBtnF(true);
-    const res = await facebook();
-    console.log(res.data);
-    setBtnF(false);
-    if (res.data.auth) {
-      setMsg({
-        content: res.data.message,
-        type: "success"
-      })
-    }
-    else {
-      setMsg({
-        content: res.data.message,
-        type: "error"
-      })
-    }
-    setOpen(true);
-  };
+  // const withFacebook = async () => {
+  //   setBtnF(true);
+  //   const res = await facebook();
+  //   console.log(res.data);
+  //   setBtnF(false);
+  //   if (res.data.auth) {
+  //     setMsg({
+  //       content: res.data.message,
+  //       type: "success"
+  //     })
+  //   }
+  //   else {
+  //     setMsg({
+  //       content: res.data.message,
+  //       type: "error"
+  //     })
+  //   }
+  //   setOpen(true);
+  // };
 
+  const withFacebook = async () => {
+    // setBtnF(true);
+    // const res = await fetch("/auth/facebook");
+    // console.log(res);
+    // setBtnF(false);
+    // setOpen(true);
+    window.location = "/auth/facebook"
+  };
 
   return (
     <>
