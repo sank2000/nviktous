@@ -164,6 +164,7 @@ router.post("/register", function (req, res, next) {
   bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
     const ud = new User({
       unique_id: uuidv5(req.body.email, uuidv5.DNS),
+      // unique_id: 10,
       email: req.body.email,
       name: req.body.name,
       password: hash

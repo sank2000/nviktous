@@ -1,23 +1,8 @@
-@media (max-width: 1515px) {
-  header section {
-    max-width: 100%;
-  }
-}
-
 .wrapper {
   max-width: 1335px;
   box-sizing: border-box;
   padding: 0 20px;
   margin: auto;
-}
-
-.wrapper a {
-  display: inline-block;
-  margin: 5px;
-}
-
-.wrapper a:first-child {
-  margin-left: 0;
 }
 
 .slider-wrapper {
@@ -87,17 +72,7 @@
   transition-delay: 0s;
 }
 
-.slider-content .inner h1 {
-  font-weight: 900;
-  margin: 0 auto;
-  max-width: 840px;
-  color: #FFFFFF;
-  font-size: 64px;
-  line-height: 1;
-}
-
 .slider-content .inner p {
-  color: #FFFFFF;
   font-size: 14px;
   line-height: 1.5;
   margin: 20px auto 30px;
@@ -108,10 +83,6 @@
   position: absolute;
   bottom: 20px;
   left: 20px;
-}
-
-.slider-content section span {
-  color: #FFFFFF;
 }
 
 .slider-content section span {
@@ -133,7 +104,6 @@
 }
 
 .slider-content section span strong {
-  color: #FFFFFF;
   font-size: 14px;
   display: block;
 }
@@ -177,9 +147,9 @@
 }
 
 .slide button,
-h2,
-h3,
-h4 {
+.slide h2,
+.slide h3,
+.slide h4 {
   transition: all 0.9s ease;
   -webkit-transform: translateY(20px);
   transform: translateY(20px);
