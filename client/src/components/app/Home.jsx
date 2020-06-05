@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import ShowCase from './Carousel';
+import ShowCase from '../view/Carousel';
 import Footer from '../nav/Footer';
 import ItemCard from '../cards/ItemCard';
 
