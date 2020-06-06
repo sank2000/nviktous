@@ -8,7 +8,6 @@ const Product = require('../model/product');
 router.get("/", function (req, res) {
   Product.find({}, (err, result) => {
     if (err) { console.log(err); return; }
-    console.log(result);
     res.send(result);
   })
 })
@@ -17,7 +16,6 @@ router.get("/", function (req, res) {
 router.post("/findone", function (req, res) {
   Product.findById(req.body.id, (err, result) => {
     if (err) { console.log(err); return; }
-    console.log(result);
     res.send(result);
   })
 })

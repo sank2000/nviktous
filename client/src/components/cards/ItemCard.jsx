@@ -8,9 +8,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import AddShoppingCartTwoToneIcon from '@material-ui/icons/AddShoppingCartTwoTone';
 import CardActionArea from '@material-ui/core/CardActionArea';
+
+import AddtoFav from "./AddtoFav";
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -74,9 +75,7 @@ function ItemCard(props) {
                 <IconButton className={classes.cardActions} size="small" color="primary">
                   <AddShoppingCartTwoToneIcon />
                 </IconButton>
-                <IconButton className={classes.cardActions} size="small" color="primary">
-                  <FavoriteTwoToneIcon />
-                </IconButton>
+                <AddtoFav id={props.item._id} className={classes.cardActions} size="small" color="primary" />
               </Grid>
             </Grid>
           </Grid>

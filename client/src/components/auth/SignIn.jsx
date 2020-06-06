@@ -87,7 +87,7 @@ const intialValues = {
   password: "",
   cpassword: ""
 };
-export default function () {
+export default function (props) {
   const [inOpen, setinOpen] = useState(true);
   const [upOpen, setupOpen] = useState(false);
   const [btnUp, setBtnUp] = useState(false);
@@ -166,6 +166,7 @@ export default function () {
 
   const SigninClose = () => {
     setinOpen(false);
+    props.setState("");
   };
 
   const SigninOpen = () => {
@@ -174,6 +175,7 @@ export default function () {
 
   const SignupClose = () => {
     setupOpen(false);
+    props.setState("");
   };
 
   const SignupOpen = () => {
@@ -187,18 +189,15 @@ export default function () {
     console.log(res.data);
     setBtnIn(false);
     if (res.data.auth) {
-      setMsg({
-        content: res.data.message,
-        type: "success"
-      })
+      window.open("/", "_self");
     }
     else {
       setMsg({
         content: res.data.message,
         type: "error"
       })
+      setOpen(true);
     }
-    setOpen(true);
   };
 
 
@@ -208,18 +207,15 @@ export default function () {
     console.log(res.data);
     setBtnUp(false);
     if (res.data.auth) {
-      setMsg({
-        content: res.data.message,
-        type: "success"
-      })
+      window.open("/", "_self");
     }
     else {
       setMsg({
         content: res.data.message,
         type: "error"
-      })
+      });
+      setOpen(true);
     }
-    setOpen(true);
   };
 
   const withGoogle = async () => {
@@ -328,7 +324,7 @@ export default function () {
                     marginLeft: "25px"
                   }}
                   onClick={() => {
-                    SigninClose();
+                    setinOpen(false);
                     SignupOpen();
                   }}
                 >
@@ -460,7 +456,7 @@ export default function () {
                     marginLeft: "25px"
                   }}
                   onClick={() => {
-                    SignupClose();
+                    setupOpen(false);
                     SigninOpen();
                   }}
                 >

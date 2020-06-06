@@ -8,7 +8,8 @@ const userSchema = new mongoose.Schema(
     name: String,
     email: String,
     password: String,
-    address: String
+    address: { type: String, default: "" },
+    favItem: { type: Array, default: [] }
   }
 )
 
