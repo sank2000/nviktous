@@ -69,7 +69,7 @@ passport.use(new GoogleStrategy({
   callbackURL: "http://localhost:3000/auth/google/callback"
 },
   function (accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ unique_id: profile.id }, { name: profile._json.name, email: profile._json.email }, function (err, user) {
+    User.findOrCreate({ unique_id: profile.id }, { name: profile._json.name, email: profile._json.email, account_Type: 'google' }, function (err, user) {
       console.log(user);
       return cb(err, user);
     });
@@ -84,7 +84,7 @@ passport.use(new FacebookStrategy({
   profileFields: ['id', 'emails', 'name']
 },
   function (accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ unique_id: profile.id }, { name: profile._json.first_name, email: profile._json.email }, function (err, user) {
+    User.findOrCreate({ unique_id: profile.id }, { name: profile._json.first_name, email: profile._json.email, account_Type: "facebook" }, function (err, user) {
       console.log(user);
       return cb(err, user);
     });
@@ -171,7 +171,8 @@ router.post("/register", function (req, res, next) {
       // unique_id: 10,
       email: req.body.email,
       name: req.body.name,
-      password: hash
+      password: hash,
+      account_Type: "manual"
     });
     ud.save(function (err, doc) {
       if (err) {

@@ -4,9 +4,11 @@ const findOrCreate = require('mongoose-findorcreate');
 const userSchema = new mongoose.Schema(
   {
     unique_id: String,
+    account_Type: String,
     name: String,
     email: String,
     password: String,
+    address: String
   }
 )
 

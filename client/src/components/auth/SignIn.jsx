@@ -24,7 +24,9 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 
-import { signin, signup, hasSigned } from "../../RouteAccess"
+import Slide from "@material-ui/core/Slide";
+
+import { signin, signup } from "../../RouteAccess"
 
 const styles = theme => ({
   root: {
@@ -42,6 +44,10 @@ const styles = theme => ({
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="down" ref={ref} {...props} />;
+});
 
 const DialogTitle = withStyles(styles)(props => {
   const { children, classes, onClose, ...other } = props;
@@ -82,7 +88,7 @@ const intialValues = {
   cpassword: ""
 };
 export default function () {
-  const [inOpen, setinOpen] = useState(false);
+  const [inOpen, setinOpen] = useState(true);
   const [upOpen, setupOpen] = useState(false);
   const [btnUp, setBtnUp] = useState(false);
   const [btnIn, setBtnIn] = useState(false);
@@ -228,40 +234,18 @@ export default function () {
   };
 
 
-  const getAuth = async () => {
-    setBtnUp(true);
-    const res = await hasSigned();
-    console.log(res.data);
-    setBtnUp(false);
-    if (res.data.auth) {
-      setMsg({
-        content: res.data.message,
-        type: "success"
-      })
-    }
-    else {
-      setMsg({
-        content: res.data.message,
-        type: "error"
-      })
-    }
-    setOpen(true);
-  };
-
 
   return (
     <>
-      <Button variant="contained" color="primary" onClick={SigninOpen}>
+      {/* <Button variant="contained" color="primary" onClick={SigninOpen}>
         Open
-      </Button>
-      <Button variant="contained" color="primary" onClick={getAuth}>
-        check
-      </Button>
+      </Button> */}
       <Dialog
         onClose={SigninClose}
         scroll="body"
         aria-labelledby="customized-dialog-title"
         open={inOpen}
+        TransitionComponent={Transition}
       >
         <DialogTitle disableTypography onClose={SigninClose}>
           <Typography component="span" variant="h5">
@@ -275,7 +259,7 @@ export default function () {
               container
               spacing={1}
               direction="row"
-              justify="space-between"
+              justify="center"
               alignItems="center"
             >
               <Grid item xs={12}>
@@ -335,7 +319,7 @@ export default function () {
                   <BounceLoader size={15} color={"black"} loading={btnIn} />
                 </Button>
               </Grid>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={8} sm={4}>
                 Became a new member ?{" "}
                 <p
                   style={{
@@ -400,7 +384,7 @@ export default function () {
               container
               spacing={1}
               direction="row"
-              justify="space-between"
+              justify="center"
               alignItems="center"
             >
               <Grid item xs={12}>
@@ -467,7 +451,7 @@ export default function () {
                   Sign Up <BounceLoader size={15} color={"black"} loading={btnUp} />
                 </Button>
               </Grid>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={8} sm={4}>
                 Already has a account ?{" "}
                 <p
                   style={{
