@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import axios from "axios";
 
-import items from '../../constants/sampleItems';
 import ShowCase from '../view/Carousel';
 import Footer from '../nav/Footer';
 import ItemCard from '../cards/ItemCard';
@@ -28,6 +28,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home() {
   const classes = useStyles();
+  const [post, setPost] = useState([]);
+
+  useEffect(() => {
+    axios.get("/posts")
+      .then(function (response) {
+        console.log(response.data);
+        setPost([...response.data]);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
+
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -35,8 +50,8 @@ export default function Home() {
         <ShowCase />
         <Container className={classes.cardGrid} maxWidth="lg">
           <Grid container spacing={4}>
-            {items.map((item) => (
-              <ItemCard key={item.itemId} item={item} />
+            {post.map((item) => (
+              <ItemCard key={item._id} item={item} />
             ))}
           </Grid>
         </Container>
