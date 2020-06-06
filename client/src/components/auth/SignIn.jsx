@@ -24,7 +24,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 
-import { signin, signup, facebook, google } from "../../RouteAccess"
+import { signin, signup, hasSigned } from "../../RouteAccess"
 
 const styles = theme => ({
   root: {
@@ -218,9 +218,21 @@ export default function () {
 
   const withGoogle = async () => {
     setBtnG(true);
-    const res = await google();
+    window.location = "/auth/google"
+
+  };
+
+  const withFacebook = async () => {
+    setBtnF(true);
+    window.location = "/auth/facebook"
+  };
+
+
+  const getAuth = async () => {
+    setBtnUp(true);
+    const res = await hasSigned();
     console.log(res.data);
-    setBtnG(false);
+    setBtnUp(false);
     if (res.data.auth) {
       setMsg({
         content: res.data.message,
@@ -235,39 +247,15 @@ export default function () {
     }
     setOpen(true);
   };
-  // const withFacebook = async () => {
-  //   setBtnF(true);
-  //   const res = await facebook();
-  //   console.log(res.data);
-  //   setBtnF(false);
-  //   if (res.data.auth) {
-  //     setMsg({
-  //       content: res.data.message,
-  //       type: "success"
-  //     })
-  //   }
-  //   else {
-  //     setMsg({
-  //       content: res.data.message,
-  //       type: "error"
-  //     })
-  //   }
-  //   setOpen(true);
-  // };
 
-  const withFacebook = async () => {
-    // setBtnF(true);
-    // const res = await fetch("/auth/facebook");
-    // console.log(res);
-    // setBtnF(false);
-    // setOpen(true);
-    window.location = "/auth/facebook"
-  };
 
   return (
     <>
       <Button variant="contained" color="primary" onClick={SigninOpen}>
         Open
+      </Button>
+      <Button variant="contained" color="primary" onClick={getAuth}>
+        check
       </Button>
       <Dialog
         onClose={SigninClose}

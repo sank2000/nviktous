@@ -22,17 +22,8 @@ const signout = async () => {
   return result;
 }
 
-const facebook = async () => {
-  const result = await axios.get("/auth/facebook", { headers: { "Access-Control-Allow-Origin": "*" } });
-  return result;
-}
-
-const google = async () => {
-  const result = await axios.get("/auth/google");
-  return result;
-}
 
 
 export {
-  signin, signup, hasSigned, signout, facebook, google
+  signin, signup, hasSigned, signout
 }

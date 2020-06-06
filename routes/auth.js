@@ -66,10 +66,11 @@ passport.deserializeUser(function (id, done) {
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: "http://localhost:4000/auth/google/auth"
+  callbackURL: "http://localhost:3000/auth/google/callback"
 },
   function (accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ unique_id: profile.id }, { username: profile._json.name, email: profile._json.email }, function (err, user) {
+    User.findOrCreate({ unique_id: profile.id }, { name: profile._json.name, email: profile._json.email }, function (err, user) {
+      console.log(user);
       return cb(err, user);
     });
   }
@@ -79,12 +80,12 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
   clientID: process.env.FCLIENT_ID,
   clientSecret: process.env.FCLIENT_SECRET,
-  callbackURL: "http://localhost:3000/auth/facebook/auth",
+  callbackURL: "http://localhost:3000/auth/facebook/callback",
   profileFields: ['id', 'emails', 'name']
 },
   function (accessToken, refreshToken, profile, cb) {
-    console.log(profile._json);
-    User.findOrCreate({ unique_id: profile.id }, { username: profile._json.first_name, email: profile._json.email }, function (err, user) {
+    User.findOrCreate({ unique_id: profile.id }, { name: profile._json.first_name, email: profile._json.email }, function (err, user) {
+      console.log(user);
       return cb(err, user);
     });
   }
@@ -99,61 +100,64 @@ router.get('/google',
   }))
 
 
-router.get('/google/auth', function (req, res, next) {
+
+// router.get('/google/callback',
+//   passport.authenticate('google', { failureRedirect: '/sign' }),
+//   function (req, res) {
+//     // Successful authentication, redirect home.
+//     res.redirect('/');
+//   });
+
+
+router.get('/google/callback', function (req, res, next) {
   passport.authenticate('google', function (err, user) {
     if (err) {
       console.log(err.code);
-      return res.json({
-        message: err.code,
-        auth: false,
-      });
+      if (err.code === 11000) {
+        return res.send("This email is already linked to another account");
+      }
+      return res.redirect('/');
     }
     if (!user) {
-      return res.json({
-        message: "Cannot access user",
-        auth: false,
-      });
+      return res.redirect('/');
     }
     req.logIn(user, function (err) {
       if (err) { return next(err); }
       console.log(user);
-      return res.json({
-        message: 'You are  logged in!',
-        auth: true,
-        data: user
-      });
+      return res.redirect('/');
     });
   })(req, res, next);
 });
+
 
 router.get('/facebook',
   passport.authenticate('facebook', { scope: ['email'] }));
 
 
+// router.get('/facebook/callback',
+//   passport.authenticate('facebook', { failureRedirect: '/sign' }),
+//   function (req, res) {
+//     // Successful authentication, redirect home.
+//     res.redirect('/');
+//   });
 
-router.get('/facebook/auth', function (req, res, next) {
+
+router.get('/facebook/callback', function (req, res, next) {
   passport.authenticate('facebook', function (err, user) {
     if (err) {
       console.log(err.code);
-      return res.json({
-        message: err.code,
-        auth: false,
-      });
+      if (err.code === 11000) {
+        return res.send("This email is already linked to another account");
+      }
+      return res.redirect('/');
     }
     if (!user) {
-      return res.json({
-        message: "Cannot access user",
-        auth: false,
-      });
+      return res.redirect('/');
     }
     req.logIn(user, function (err) {
       if (err) { return next(err); }
       console.log(user);
-      return res.json({
-        message: 'You are  logged in!',
-        auth: true,
-        data: user
-      });
+      return res.redirect('/');
     });
   })(req, res, next);
 });
@@ -267,6 +271,7 @@ router.get("/", function (req, res) {
     res.json({
       message: 'You are  logged in!',
       auth: true,
+      user: req.user
     });
   }
   else {

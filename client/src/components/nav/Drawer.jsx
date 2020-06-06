@@ -58,7 +58,7 @@ export default function TemporaryDrawer() {
             <ListItemText primary={'Home'} />
           </ListItem>
         </Link>
-        <Link className="styled-link" to='/auth/signin'>
+        <Link className="styled-link" to='/sign'>
           <ListItem button>
             <ListItemIcon><InboxIcon /></ListItemIcon>
             <ListItemText primary={'Sign In'} />
