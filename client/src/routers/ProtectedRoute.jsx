@@ -1,20 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-import Auth from '../components/auth/Auth';
+import AuthApi from '../components/auth/AuthApi';
 
 function ProtectedRoute({ component: Component, ...rest }) {
+
+  const AthApi = React.useContext(AuthApi);
   return (
     <Route
       {...rest}
-      render={props =>
-        Auth.getAuth() ? (
-          <Component {...props} />
-        ) : (
-            <Redirect
-              to="/auth/signin"
-            />
-          )
+      render={(props) =>
+        AthApi.data.auth ? <Component {...props} /> : <Redirect to="/sign" />
       }
     />
   );

@@ -18,6 +18,8 @@ import axios from "axios";
 import Drawer from './Drawer';
 import Authapi from "../auth/AuthApi";
 
+import { Link } from 'react-router-dom';
+
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -148,12 +150,14 @@ export default function NavBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton aria-label="My wishlist" color="secondary">
-          <FavoriteTwoToneIcon />
-        </IconButton>
-        <p>Wishlist</p>
-      </MenuItem>
+      <Link className="styled-link" to='/favourite'>
+        <MenuItem>
+          <IconButton aria-label="My wishlist" color="secondary">
+            <FavoriteTwoToneIcon />
+          </IconButton>
+          <p>Wishlist</p>
+        </MenuItem>
+      </Link>
       <MenuItem>
         <IconButton aria-label="1 item in your cart" color="secondary">
           <Badge badgeContent={1} color="secondary">
@@ -199,9 +203,11 @@ export default function NavBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="My wishlist" color="inherit">
-              <FavoriteTwoToneIcon />
-            </IconButton>
+            <Link className="styled-link" to='/favourite'>
+              <IconButton aria-label="My wishlist" color="inherit">
+                <FavoriteTwoToneIcon />
+              </IconButton>
+            </Link>
             <IconButton aria-label="1 item in your cart" color="inherit">
               <Badge badgeContent={1} color="secondary">
                 <AddShoppingCartTwoToneIcon />
