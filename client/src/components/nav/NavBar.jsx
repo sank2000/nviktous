@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import AppBar from '@material-ui/core/AppBar';
 import Badge from '@material-ui/core/Badge';
@@ -14,8 +14,9 @@ import AccountCircle from '@material-ui/icons/AccountCircleTwoTone';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import AddShoppingCartTwoToneIcon from '@material-ui/icons/AddShoppingCartTwoTone';
 import SearchIcon from '@material-ui/icons/Search';
-
+import axios from "axios";
 import Drawer from './Drawer';
+import Authapi from "../auth/AuthApi";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -82,6 +83,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function NavBar() {
+  const { data, setData } = useContext(Authapi);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -106,6 +108,19 @@ export default function NavBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+
+  const handleLogout = async () => {
+    axios.get("/auth/logout")
+      .then(function (response) {
+        setData(response.data);
+        window.open("/", "_self");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -118,7 +133,7 @@ export default function NavBar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      {data.auth && <MenuItem onClick={handleLogout}>Logout</MenuItem>}
     </Menu>
   );
 

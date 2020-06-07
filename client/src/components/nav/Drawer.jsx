@@ -58,22 +58,20 @@ export default function TemporaryDrawer() {
             <ListItemText primary={'Home'} />
           </ListItem>
         </Link>
-        <Link className="styled-link" to='/sign'>
-          <ListItem button>
-            <ListItemIcon><InboxIcon /></ListItemIcon>
-            <ListItemText primary={'Sign In'} />
-          </ListItem>
-        </Link>
+        <ListItem button>
+          <ListItemIcon><InboxIcon /></ListItemIcon>
+          <ListItemText primary={'Something 1'} />
+        </ListItem>
       </List>
       <Divider />
       <List>
         <ListItem button>
           <ListItemIcon><InboxIcon /></ListItemIcon>
-          <ListItemText primary={'Home'} />
+          <ListItemText primary={'Something 2'} />
         </ListItem>
         <ListItem button>
           <ListItemIcon><InboxIcon /></ListItemIcon>
-          <ListItemText primary={'Sign In'} />
+          <ListItemText primary={'Something 3'} />
         </ListItem>
       </List>
     </div>
