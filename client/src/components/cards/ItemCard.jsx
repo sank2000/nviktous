@@ -46,7 +46,7 @@ function ItemCard(props) {
   return (
     <Grid item xs={6} sm={4} md={3} lg={3}>
       <Card elevation={2} className={classes.card}>
-        <Link className="styled-link" to={`/product/${props.item._id}`}>
+        <Link className="styled-link" style={{ flexGrow: '1' }} to={`/product/${props.item._id}`}>
           <CardActionArea>
             <CardMedia
               className={classes.cardMedia}
