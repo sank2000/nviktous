@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const session = require('express-session');
+const passport = require("passport");
 const cors = require("cors");
 
 
@@ -10,16 +12,29 @@ const cors = require("cors");
 
 const auth = require('./routes/auth');
 const posts = require('./routes/posts');
+const user = require('./routes/user');
 
 
 const app = express();
 
+
+app.use(session(
+  {
+    secret: "nviktous secret",
+    resave: false,
+    saveUninitialized: false
+  }
+));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/auth', auth);
 app.use('/posts', posts);
+app.use('/user', user);
 
 app.use(cors);
 
