@@ -125,17 +125,17 @@ function Product({ match }) {
                     <Grid item md={12} sm={4} xs={6}>
                       <Button variant="outlined" color="primary" size="large" fullWidth startIcon={<AddShoppingCartTwoToneIcon />}>
                         Add to my cart
-                  </Button>
+                      </Button>
                     </Grid>
                     <Grid item md={12} sm={4} xs={6}>
                       <Button variant="outlined" color="secondary" size="large" fullWidth startIcon={<FavoriteTwoToneIcon />}>
                         Add to Favorites
-                  </Button>
+                      </Button>
                     </Grid>
                     <Grid item md={12} sm={4} xs={6}>
                       <Button variant="outlined" color="secondary" size="large" fullWidth startIcon={<ShareTwoToneIcon />}>
                         Share To a Friend
-                  </Button>
+                      </Button>
                     </Grid>
                   </Grid>
                 </div>

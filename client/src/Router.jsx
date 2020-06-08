@@ -7,6 +7,7 @@ import NavBar from './components/nav/NavBar';
 import Home from './components/app/Home';
 import SignIn from './components/auth/SignIn';
 import Product from './components/app/Product';
+import Cart from './components/app/Cart';
 
 import AuthApi from "./components/auth/AuthApi";
 
@@ -31,6 +32,7 @@ function AppRouter() {
           <NavBar />
           <Switch>
             <Route path='/' exact component={Home} />
+            <Route path='/cart' exact component={Cart} />
             <ProtectedRoute path='/product/:itemId' exact component={Product} />
 
             <Route path='/sign' exact component={SignIn} />
