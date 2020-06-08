@@ -156,20 +156,22 @@ export default function NavBar() {
     >
       <Link className="styled-link" to='/favourite'>
         <MenuItem>
-          <IconButton aria-label="My wishlist" color="secondary">
+          <IconButton aria-label="Favorites" color="secondary">
             <FavoriteTwoToneIcon />
           </IconButton>
-          <p>Wishlist</p>
+          <p>Favorites</p>
         </MenuItem>
       </Link>
-      <MenuItem>
-        <IconButton aria-label="1 item in your cart" color="secondary">
-          <Badge badgeContent={1} color="secondary">
-            <AddShoppingCartTwoToneIcon />
-          </Badge>
-        </IconButton>
-        <p>My Cart</p>
-      </MenuItem>
+      <Link className="styled-link" to='/cart'>
+        <MenuItem>
+          <IconButton aria-label="1 item in your cart" color="secondary">
+            <Badge badgeContent={1} color="secondary">
+              <AddShoppingCartTwoToneIcon />
+            </Badge>
+          </IconButton>
+          <p>My Cart</p>
+        </MenuItem>
+      </Link>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
@@ -212,11 +214,13 @@ export default function NavBar() {
                 <FavoriteTwoToneIcon />
               </IconButton>
             </Link>
-            <IconButton aria-label="1 item in your cart" color="inherit">
-              <Badge badgeContent={1} color="secondary">
-                <AddShoppingCartTwoToneIcon />
-              </Badge>
-            </IconButton>
+            <Link className="styled-link" to='/cart'>
+              <IconButton aria-label="1 item in your cart" color="inherit">
+                <Badge badgeContent={1} color="secondary">
+                  <AddShoppingCartTwoToneIcon />
+                </Badge>
+              </IconButton>
+            </Link>
             <IconButton
               edge="end"
               aria-label="account of current user"
@@ -245,6 +249,6 @@ export default function NavBar() {
       {renderMenu}
       <Toolbar />
       {enable && <Sign setState={setEnable} />}
-    </div>
+    </div >
   );
 }

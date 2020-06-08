@@ -7,7 +7,7 @@ export default function MediaCard() {
   const theme = useTheme();
   const useStyles = makeStyles({
     root: {
-      transition: 'box-shadow .4s ease-in-out',
+      transition: 'box-shadow .3s ease-in-out',
       '&:hover': {
         boxShadow: theme.shadows[8],
       }
