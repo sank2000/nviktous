@@ -11,7 +11,7 @@ import axios from "axios";
 import Skeleton from "@material-ui/lab/Skeleton";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from '@material-ui/core/IconButton';
-
+import Box from '@material-ui/core/Box';
 import ProductViewer from '../view/ProductViewer';
 import Footer from '../nav/Footer';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
@@ -62,29 +62,15 @@ function Size(props) {
   return <Avatar className={classes.ava}>{props.size}</Avatar>
 }
 
-function Product({ match }) {
-  const theme = useTheme();
-  const [product, setProduct] = useState({});
-  const [loading, setloading] = useState(true);
-  const classes = useStyles();
-
-
-  useEffect(() => {
-    let prms = new URLSearchParams({ id: match.params.itemId });
-    axios.post("/posts/findone", prms)
-      .then(function (response) {
-        console.log(response.data);
-        setProduct(response.data);
-        setloading(false);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, [match.params.itemId])
-
+function Loading() {
   return (
     <>
-      {loading ? <Grid container>
+      <Box display="flex" justifyContent="center">
+        <Box>
+          <Skeleton variant="rect" width={350} height={250} />
+        </Box>
+      </Box>
+      <Grid container>
         <Grid item xs={12} sm={12} md={9} lg={9}>
           <Typography component="h1" variant="h2" color="textPrimary">
             <Skeleton />
@@ -116,58 +102,91 @@ function Product({ match }) {
           </Typography>
         </Grid>
       </Grid>
-        : <div className={classes.heroContent}>
+      <Box display="flex" justifyContent="center">
+        <Box>
+          <Skeleton variant="rect" width={100} height={50} />
+        </Box>
+      </Box>
+    </>
+  )
+}
+
+function Product({ match }) {
+  const theme = useTheme();
+  const [product, setProduct] = useState({});
+  const [loading, setloading] = useState(true);
+  const classes = useStyles();
+
+
+  useEffect(() => {
+    let prms = new URLSearchParams({ id: match.params.itemId });
+    axios.post("/posts/findone", prms)
+      .then(function (response) {
+        console.log(response.data);
+        setProduct(response.data);
+        setloading(false);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, [match.params.itemId])
+
+  return (
+    <>
+      {loading ? <Loading /> : <>
+        <Container maxWidth="lg">
+          <ProductViewer images={productImages} />
+        </Container>
+        <div className={classes.heroContent}>
           <Container maxWidth="lg">
             <Grid container>
-              <Grid item xs={12} sm={12} md={9} lg={9}>
-                <Typography component="h1" variant="h2" color="textPrimary">
-                  {product.name}
-                </Typography>
-                <Grid container justify="space-between">
-                  <Grid item xs={4}>
-                    <Typography variant="h6">Material</Typography>
-                  </Grid>
-                  <Grid item xs={8}>
-                    <Typography variant="h6">In stock</Typography>
-                  </Grid>
-                  <Grid item xs={4}>
-                    <Typography variant="h3">₹{product.price}</Typography>
-                  </Grid>
-                  <Grid item xs={8}>
-                    <Typography variant="h6">Available sizes</Typography>
-                    <div className={classes.avaRoot}>
-                      {product.size.map((value) => <Size size={value} />)}
-                    </div>
-                  </Grid>
+              <Grid container>
+                <Grid item xs={10}>
+                  <Typography component="h1" variant="h2" color="textPrimary" style={{ marginBottom: "30px" }}>
+                    {product.name}
+                  </Typography>
                 </Grid>
-                <Typography variant="h5" color="textSecondary" paragraph>
-                  {product.description}
-                </Typography>
+                <Grid item xs={2}>
+                  <ButtonGroup color="secondary">
+                    <AddtoFav id={match.params.itemId} size="small" color="secondary" />
+                    <IconButton><ShareTwoToneIcon /></IconButton>
+                  </ButtonGroup>
+                </Grid>
               </Grid>
-              <Grid item xs={12} sm={12} md={3} lg={3}>
-                <div className={classes.heroButtons}>
-                  <Grid container direction={theme.breakpoints.up('sm') ? 'row' : 'column'} spacing={2} justify="center">
-                    <Grid item md={12} sm={4} xs={6}>
-                      <Button variant="outlined" color="primary" size="large" fullWidth startIcon={<AddShoppingCartTwoToneIcon />}>
-                        Add to my cart
-                  </Button>
-                    </Grid>
-                    <Grid item md={12} sm={4} xs={6}>
-                      <ButtonGroup color="secondary">
-                        <AddtoFav id={match.params.itemId} size="small" color="secondary" />
-                        <IconButton><ShareTwoToneIcon /></IconButton>
-                      </ButtonGroup>
-                    </Grid>
-                  </Grid>
-                </div>
+              <Grid container justify="space-between" spacing={3}>
+                <Grid item xs={4}>
+                  <Typography variant="h6">Material</Typography>
+                </Grid>
+                <Grid item xs={8}>
+                  <Typography variant="h6">In stock</Typography>
+                </Grid>
+                <Grid item xs={4}>
+                  <Typography variant="h3">₹{product.price}</Typography>
+                </Grid>
+                <Grid item xs={8}>
+                  <Typography variant="h6">Available sizes</Typography>
+                  <div className={classes.avaRoot}>
+                    {product.size.map((value) => <Size size={value} />)}
+                  </div>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="h5" color="textSecondary" paragraph>
+                    {product.description}
+                  </Typography>
+                </Grid>
               </Grid>
             </Grid>
+            <Box display="flex" flexDirection="row-reverse">
+              <Box>
+                <Button justifyContent="flex-end" variant="outlined" color="primary" size="large" startIcon={<AddShoppingCartTwoToneIcon />}>
+                  Add to my cart
+                    </Button>
+              </Box>
+            </Box>
           </Container>
-        </div>}
-      <Container maxWidth="lg">
-        <ProductViewer images={productImages} />
-      </Container>
-      <Footer />
+        </div>
+        <Footer />
+      </ >}
     </>
   );
 }
