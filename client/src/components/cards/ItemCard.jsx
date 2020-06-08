@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import IconButton from '@material-ui/core/IconButton';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -8,10 +7,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import AddShoppingCartTwoToneIcon from '@material-ui/icons/AddShoppingCartTwoTone';
 import CardActionArea from '@material-ui/core/CardActionArea';
 
 import AddtoFav from "./AddtoFav";
+import AddtoCard from "../app/AddtoCard"
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -51,7 +50,6 @@ const useStyles = makeStyles((theme) => ({
 
 function ItemCard(props) {
   const classes = useStyles();
-  console.log(props.item)
   return (
     <Grid item xs={6} sm={4} md={3} lg={3}>
       <Card elevation={2} className={classes.card}>
@@ -92,9 +90,7 @@ function ItemCard(props) {
             </Grid>
             <Grid item>
               <Grid container id="quick actions">
-                <IconButton color="primary">
-                  <AddShoppingCartTwoToneIcon />
-                </IconButton>
+                <AddtoCard ico data={props.item} />
                 <AddtoFav id={props.item._id} color="primary" />
               </Grid>
             </Grid>

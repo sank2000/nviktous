@@ -3,7 +3,7 @@ import { Grid, Typography, Paper, Button } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import RemoveShoppingCartTwoToneIcon from '@material-ui/icons/RemoveShoppingCartTwoTone';
 
-export default function MediaCard() {
+export default function MediaCard(props) {
   const theme = useTheme();
   const useStyles = makeStyles({
     root: {
@@ -47,7 +47,7 @@ export default function MediaCard() {
         <Grid item className={classes.itemDesc}>
           <Grid container className={classes.paddingContent} direction="column">
             <Grid item>
-              <Typography variant="h4">Item name</Typography>
+              <Typography variant="h4">{props.name}</Typography>
             </Grid>
             <Grid item>
               <Grid container direction="row">
@@ -55,16 +55,16 @@ export default function MediaCard() {
                   <Typography variant="h6">Variant</Typography>
                 </Grid>
                 <Grid item xs={4}>
-                  <Typography variant="h6">Variant</Typography>
+                  <Typography variant="h6">Size : {props.size}</Typography>
                 </Grid>
                 <Grid item xs={4}>
-                  <Typography variant="h6">Variant</Typography>
+                  <Typography variant="h6">Count : {props.count}</Typography>
                 </Grid>
               </Grid>
             </Grid>
             <Grid item xs={12}>
               <Typography variant="body1">
-                Fine jersey Knit,100% bio washnteed
+                {props.description}
               </Typography>
             </Grid>
           </Grid>
@@ -74,7 +74,7 @@ export default function MediaCard() {
             justify="space-between"
             alignItems="flex-end">
             <Grid item>
-              <Typography variant="h5">$400</Typography>
+              <Typography variant="h5">${props.price}</Typography>
             </Grid>
             <Grid item>
               <Button variant="outlined" color="primary" size="medium" startIcon={<RemoveShoppingCartTwoToneIcon />}>

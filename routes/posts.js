@@ -44,6 +44,30 @@ router.get("/fav", function (req, res) {
 })
 
 
+router.get("/cart", function (req, res) {
+  if (req.isAuthenticated()) {
+    User.findById(req.user._id, function (err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        let cart = result._doc.card;
+        var ids = cart.map(function (x) { return x._id });
+        Product.find({
+          '_id': {
+            $in: ids
+          }
+        }, function (err, docs) {
+          res.send(docs);
+        });
+      }
+    }
+    );
+  }
+  else {
+    res.send("unauthorized");
+  }
+})
+
 
 
 
