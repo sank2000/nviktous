@@ -15,6 +15,7 @@ import Box from '@material-ui/core/Box';
 import ProductViewer from '../view/ProductViewer';
 import Footer from '../nav/Footer';
 import AddtoFav from "../cards/AddtoFav";
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -64,7 +65,7 @@ function Size(props) {
 function Loading() {
   return (
     <>
-      <Box display="flex" justifyContent="center">
+      <Box display="flex" justifyContent="center" style={{ marginTop: "25px" }}>
         <Box>
           <Skeleton variant="rect" width={350} height={250} />
         </Box>
