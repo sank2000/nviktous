@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { deepPurple } from "@material-ui/core/colors";
 import AddShoppingCartTwoToneIcon from '@material-ui/icons/AddShoppingCartTwoTone';
@@ -112,7 +112,6 @@ function Loading() {
 }
 
 function Product({ match }) {
-  const theme = useTheme();
   const [product, setProduct] = useState({});
   const [loading, setloading] = useState(true);
   const classes = useStyles();

@@ -81,6 +81,11 @@ export default function MediaCard() {
                 Remove
               </Button>
             </Grid>
+            <Grid item>
+              <Button variant="outlined" color="primary" size="medium" startIcon={<RemoveShoppingCartTwoToneIcon />}>
+                Buy Now
+              </Button>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

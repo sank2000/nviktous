@@ -51,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
 
 function ItemCard(props) {
   const classes = useStyles();
+  console.log(props.item)
   return (
     <Grid item xs={6} sm={4} md={3} lg={3}>
       <Card elevation={2} className={classes.card}>
@@ -61,7 +62,11 @@ function ItemCard(props) {
               image="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
               title="Image title"
             >
-              <Typography className={classes.offText} component="span" variant="h6">0% OFF</Typography></CardMedia>
+              {
+                props.item.discount.per > 0 &&
+                <Typography className={classes.offText} component="span" variant="h6">{props.item.discount.per}% OFF</Typography>
+              }
+            </CardMedia>
             <CardContent className={classes.cardContent}>
               <Typography gutterBottom variant="h5" component="h2">
                 {props.item.name}
@@ -75,11 +80,14 @@ function ItemCard(props) {
         <CardActions >
           <Grid container justify="space-between">
             <Grid item>
-              <Typography className={classes.originalPrice} variant="caption" component="p">
-                ₹{props.item.price}
-              </Typography>
+              {
+                props.item.discount.per > 0 &&
+                <Typography className={classes.originalPrice} variant="caption" component="p">
+                  ₹{props.item.price}
+                </Typography>
+              }
               <Typography className={classes.priceTag} variant="h6" component="h2">
-                ₹{props.item.price}
+                ₹{props.item.price - (props.item.price * (props.item.discount.per / 100))}
               </Typography>
             </Grid>
             <Grid item>
