@@ -40,6 +40,11 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
     marginTop: -theme.spacing(1),
     textDecoration: 'line-through'
+  },
+  offText: {
+    position: 'absolute',
+    top: '0px',
+    padding: theme.spacing(1)
   }
 }));
 
@@ -56,7 +61,7 @@ function ItemCard(props) {
               image="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
               title="Image title"
             >
-              <Typography component="div" variant="h4">30% OFF</Typography></CardMedia>
+              <Typography className={classes.offText} component="span" variant="h6">0% OFF</Typography></CardMedia>
             <CardContent className={classes.cardContent}>
               <Typography gutterBottom variant="h5" component="h2">
                 {props.item.name}
@@ -70,7 +75,7 @@ function ItemCard(props) {
         <CardActions >
           <Grid container justify="space-between">
             <Grid item>
-              <Typography className={classes.originalPrice} variant="p" component="p">
+              <Typography className={classes.originalPrice} variant="caption" component="p">
                 ₹{props.item.price}
               </Typography>
               <Typography className={classes.priceTag} variant="h6" component="h2">
@@ -79,10 +84,10 @@ function ItemCard(props) {
             </Grid>
             <Grid item>
               <Grid container id="quick actions">
-                <IconButton size="large" color="primary">
+                <IconButton color="primary">
                   <AddShoppingCartTwoToneIcon />
                 </IconButton>
-                <AddtoFav id={props.item._id} size="large" color="primary" />
+                <AddtoFav id={props.item._id} color="primary" />
               </Grid>
             </Grid>
           </Grid>
