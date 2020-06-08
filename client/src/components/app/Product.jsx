@@ -4,14 +4,18 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
+import { deepPurple } from "@material-ui/core/colors";
 import AddShoppingCartTwoToneIcon from '@material-ui/icons/AddShoppingCartTwoTone';
 import ShareTwoToneIcon from '@material-ui/icons/ShareTwoTone';
 import axios from "axios";
 import Skeleton from "@material-ui/lab/Skeleton";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from '@material-ui/core/IconButton';
 
 import ProductViewer from '../view/ProductViewer';
 import Footer from '../nav/Footer';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import AddtoFav from "../cards/AddtoFav";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -23,6 +27,18 @@ const useStyles = makeStyles((theme) => ({
   },
   heroButtons: {
     margin: theme.spacing(4),
+  },
+  avaRoot:
+  {
+    display: "flex",
+    "& > *": {
+      margin: theme.spacing(1)
+    }
+  },
+  ava: {
+    color: theme.palette.getContrastText(deepPurple[500]),
+    backgroundColor: deepPurple[500],
+    fontSize: "14px"
   }
 }));
 
@@ -41,6 +57,11 @@ const productImages = [
   }
 ]
 
+function Size(props) {
+  const classes = useStyles();
+  return <Avatar className={classes.ava}>{props.size}</Avatar>
+}
+
 function Product({ match }) {
   const theme = useTheme();
   const [product, setProduct] = useState({});
@@ -52,6 +73,7 @@ function Product({ match }) {
     let prms = new URLSearchParams({ id: match.params.itemId });
     axios.post("/posts/findone", prms)
       .then(function (response) {
+        console.log(response.data);
         setProduct(response.data);
         setloading(false);
       })
@@ -102,17 +124,20 @@ function Product({ match }) {
                   {product.name}
                 </Typography>
                 <Grid container justify="space-between">
-                  <Grid item xs={6}>
-                    <Typography variant="h6">{product.price}</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Typography variant="h6">In stock</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={4}>
                     <Typography variant="h6">Material</Typography>
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={8}>
+                    <Typography variant="h6">In stock</Typography>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Typography variant="h3">₹{product.price}</Typography>
+                  </Grid>
+                  <Grid item xs={8}>
                     <Typography variant="h6">Available sizes</Typography>
+                    <div className={classes.avaRoot}>
+                      {product.size.map((value) => <Size size={value} />)}
+                    </div>
                   </Grid>
                 </Grid>
                 <Typography variant="h5" color="textSecondary" paragraph>
@@ -128,14 +153,10 @@ function Product({ match }) {
                   </Button>
                     </Grid>
                     <Grid item md={12} sm={4} xs={6}>
-                      <Button variant="outlined" color="secondary" size="large" fullWidth startIcon={<FavoriteTwoToneIcon />}>
-                        Add to Favorites
-                  </Button>
-                    </Grid>
-                    <Grid item md={12} sm={4} xs={6}>
-                      <Button variant="outlined" color="secondary" size="large" fullWidth startIcon={<ShareTwoToneIcon />}>
-                        Share To a Friend
-                  </Button>
+                      <ButtonGroup color="secondary">
+                        <AddtoFav id={match.params.itemId} size="small" color="secondary" />
+                        <IconButton><ShareTwoToneIcon /></IconButton>
+                      </ButtonGroup>
                     </Grid>
                   </Grid>
                 </div>

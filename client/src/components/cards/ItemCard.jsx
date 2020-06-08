@@ -67,7 +67,7 @@ function ItemCard(props) {
           <Grid container justify="space-between">
             <Grid item>
               <Typography className={classes.priceTag} variant="h6" component="h2">
-                {props.item.price}
+                ₹{props.item.price}
               </Typography>
             </Grid>
             <Grid item>
