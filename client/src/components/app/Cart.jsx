@@ -16,7 +16,7 @@ function Cart(props) {
   const classes = useStyles();
   return (
     <Fragment>
-      <Container className={classes.root} maxWidth="lg">
+      <Container className={classes.root} maxWidth="md">
         <CartItem />
       </Container>
       <CartFoot />

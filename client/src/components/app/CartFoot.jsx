@@ -17,16 +17,18 @@ function CartFoot(props) {
   });
   const classes = useStyles();
   return (
-    <Container maxWidth="md" className={classes.root}>
-      <Grid container>
-        <Grid item xs={8}>
-          <Typography variant="h4">Grand Total</Typography>
+    <div className={classes.root}>
+      <Container maxWidth="md">
+        <Grid container>
+          <Grid item xs={8}>
+            <Typography variant="h4">Grand Total</Typography>
+          </Grid>
+          <Grid item xs={4}>
+            <Typography variant="h4">$500</Typography>
+          </Grid>
         </Grid>
-        <Grid item xs={4}>
-          <Typography variant="h4">$500</Typography>
-        </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </div>
   );
 }
 
