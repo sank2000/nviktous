@@ -53,7 +53,8 @@ function ItemCard(props) {
               className={classes.cardMedia}
               image="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
               title="Image title"
-            />
+            >
+              <Typography component="div" variant="h4">30% OFF</Typography></CardMedia>
             <CardContent className={classes.cardContent}>
               <Typography gutterBottom variant="h5" component="h2">
                 {props.item.name}
