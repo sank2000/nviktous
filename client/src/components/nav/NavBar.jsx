@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import AppBar from '@material-ui/core/AppBar';
 import Badge from '@material-ui/core/Badge';
@@ -17,7 +17,11 @@ import SearchIcon from '@material-ui/icons/Search';
 import axios from "axios";
 import Drawer from './Drawer';
 import Authapi from "../auth/AuthApi";
-
+import Sign from "../auth/SignIn";
+import PermIdentityTwoToneIcon from '@material-ui/icons/PermIdentityTwoTone';
+import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
+import LockOpenTwoToneIcon from '@material-ui/icons/LockOpenTwoTone';
+import LocalMallTwoToneIcon from '@material-ui/icons/LocalMallTwoTone';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -89,7 +93,7 @@ export default function NavBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
+  const [enable, setEnable] = useState(false);
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -134,8 +138,8 @@ export default function NavBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      {data.auth && <MenuItem onClick={handleLogout}>Logout</MenuItem>}
+      {data.auth ? <MenuItem onClick={handleMenuClose}><PermIdentityTwoToneIcon />&nbsp;{data.user.name}</MenuItem> : <MenuItem onClick={handleMenuClose}><LocalMallTwoToneIcon />&nbsp;Welcome</MenuItem>}
+      {data.auth ? <MenuItem onClick={handleLogout}><ExitToAppTwoToneIcon />&nbsp;Logout</MenuItem> : <MenuItem onClick={() => setEnable(true)}><LockOpenTwoToneIcon />&nbsp;Sign In / Up</MenuItem>}
     </Menu>
   );
 
@@ -240,6 +244,7 @@ export default function NavBar() {
       {renderMobileMenu}
       {renderMenu}
       <Toolbar />
+      {enable && <Sign setState={setEnable} />}
     </div>
   );
 }
