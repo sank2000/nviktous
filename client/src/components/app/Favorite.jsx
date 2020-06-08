@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from "axios";
 
-import ShowCase from '../view/Carousel';
 import Footer from '../nav/Footer';
 import ItemCard from '../cards/ItemCard';
 
@@ -31,8 +30,10 @@ export default function Home() {
   const [post, setPost] = useState([]);
 
   useEffect(() => {
-    axios.get("/posts")
+    console.log("inside useEffect");
+    axios.get("/posts/fav")
       .then(function (response) {
+        console.log(response.data);
         setPost([...response.data]);
       })
       .catch(function (error) {
@@ -46,7 +47,6 @@ export default function Home() {
     <React.Fragment>
       <CssBaseline />
       <main>
-        <ShowCase />
         <Container className={classes.cardGrid} maxWidth="lg">
           <Grid container spacing={4}>
             {post.map((item) => (

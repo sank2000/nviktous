@@ -48,7 +48,7 @@ export default function (props) {
     if (data.user !== undefined) {
       setFav(data.user.favItem.includes(props.id));
     }
-  }, [data])
+  }, [data, props.id])
 
   return (
     <>

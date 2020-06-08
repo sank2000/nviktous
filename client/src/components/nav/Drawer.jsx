@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -7,14 +7,36 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeWorkTwoToneIcon from '@material-ui/icons/HomeWorkTwoTone';
+import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
+import AddShoppingCartTwoToneIcon from '@material-ui/icons/AddShoppingCartTwoTone';
+import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
+import LockOpenTwoToneIcon from '@material-ui/icons/LockOpenTwoTone';
 import { Link } from 'react-router-dom';
+
+import Sign from "../auth/SignIn";
+import Authapi from "../auth/AuthApi";
+import axios from "axios";
+
+
 
 export default function TemporaryDrawer() {
   const theme = useTheme();
+  const [enable, setEnable] = useState(false);
+  const { data, setData } = useContext(Authapi);
+
+  const handleLogout = async () => {
+    axios.get("/auth/logout")
+      .then(function (response) {
+        setData(response.data);
+        window.open("/", "_self");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   const useStyles = makeStyles({
     list: {
@@ -58,21 +80,29 @@ export default function TemporaryDrawer() {
             <ListItemText primary={'Home'} />
           </ListItem>
         </Link>
+      </List>
+      <Divider />
+      <List>
+        <Link className="styled-link" to='/favourite'>
+          <ListItem button>
+            <ListItemIcon><FavoriteTwoToneIcon /></ListItemIcon>
+            <ListItemText primary={'My Favourite'} />
+          </ListItem>
+        </Link>
         <ListItem button>
-          <ListItemIcon><InboxIcon /></ListItemIcon>
-          <ListItemText primary={'Something 1'} />
+          <ListItemIcon><AddShoppingCartTwoToneIcon /></ListItemIcon>
+          <ListItemText primary={'My Card'} />
         </ListItem>
       </List>
       <Divider />
       <List>
-        <ListItem button>
-          <ListItemIcon><InboxIcon /></ListItemIcon>
-          <ListItemText primary={'Something 2'} />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon><InboxIcon /></ListItemIcon>
-          <ListItemText primary={'Something 3'} />
-        </ListItem>
+        {!data.auth ? <ListItem button onClick={() => setEnable(true)}>
+          <ListItemIcon><LockOpenTwoToneIcon /></ListItemIcon>
+          <ListItemText primary={'Sign In / Up'} />
+        </ListItem> : <ListItem button onClick={handleLogout}>
+            <ListItemIcon><ExitToAppTwoToneIcon /></ListItemIcon>
+            <ListItemText primary={'Log out'} />
+          </ListItem>}
       </List>
     </div>
   );
@@ -80,6 +110,7 @@ export default function TemporaryDrawer() {
   return (
     <div>
       <React.Fragment>
+        {enable && <Sign setState={setEnable} />}
         <IconButton
           edge="start"
           className={classes.menuButton}

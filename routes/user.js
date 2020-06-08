@@ -8,8 +8,6 @@ const User = require('../model/user');
 
 router.post("/addfav", function (req, res) {
   if (req.isAuthenticated()) {
-    console.log(req.user._id);
-    console.log(req.body.id);
     User.findByIdAndUpdate(req.user._id, { $push: { favItem: req.body.id } }, { new: true },
       function (err, result) {
         if (err) {
@@ -29,8 +27,6 @@ router.post("/addfav", function (req, res) {
 
 router.post("/remfav", function (req, res) {
   if (req.isAuthenticated()) {
-    console.log(req.user._id);
-    console.log(req.body.id);
     User.findByIdAndUpdate(req.user._id, { $pull: { favItem: req.body.id } }, { new: true },
       function (err, result) {
         if (err) {
