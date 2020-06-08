@@ -33,11 +33,13 @@ const useStyles = makeStyles((theme) => ({
   cardContent: {
     flexGrow: 1,
   },
-  cardActions: {
-    padding: theme.spacing(1),
-  },
   priceTag: {
     paddingLeft: theme.spacing(1)
+  },
+  originalPrice: {
+    margin: 0,
+    marginTop: -theme.spacing(1),
+    textDecoration: 'line-through'
   }
 }));
 
@@ -68,16 +70,19 @@ function ItemCard(props) {
         <CardActions >
           <Grid container justify="space-between">
             <Grid item>
+              <Typography className={classes.originalPrice} variant="p" component="p">
+                ₹{props.item.price}
+              </Typography>
               <Typography className={classes.priceTag} variant="h6" component="h2">
                 ₹{props.item.price}
               </Typography>
             </Grid>
             <Grid item>
               <Grid container id="quick actions">
-                <IconButton className={classes.cardActions} size="small" color="primary">
+                <IconButton size="large" color="primary">
                   <AddShoppingCartTwoToneIcon />
                 </IconButton>
-                <AddtoFav id={props.item._id} className={classes.cardActions} size="small" color="primary" />
+                <AddtoFav id={props.item._id} size="large" color="primary" />
               </Grid>
             </Grid>
           </Grid>
