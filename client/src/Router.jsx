@@ -6,6 +6,7 @@ import NavBar from './components/nav/NavBar';
 import Home from './components/app/Home';
 import Sign from './components/auth/SignRoute';
 import Product from './components/app/Product';
+import Cart from './components/app/Cart';
 import Favourite from "./components/app/Favorite";
 
 import AuthApi from "./components/auth/AuthApi";
@@ -28,7 +29,6 @@ function Loading() {
   );
 }
 
-
 function AppRouter() {
   const [data, setData] = useState(false);
   const [load1, setLoad1] = useState(true);
@@ -42,6 +42,7 @@ function AppRouter() {
             <NavBar />
             <Switch>
               <Route path='/' exact component={Home} />
+              <Route path='/cart' exact component={Cart} />
               <ProtectedRoute path='/favourite' exact component={Favourite} />
               <Route path='/product/:itemId' exact component={Product} />
               <Route path='/sign' exact component={Sign} />
@@ -74,6 +75,5 @@ function AppRouter() {
     </>
   );
 }
-
 
 export default AppRouter;

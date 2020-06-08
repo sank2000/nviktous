@@ -14,7 +14,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Box from '@material-ui/core/Box';
 import ProductViewer from '../view/ProductViewer';
 import Footer from '../nav/Footer';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 import AddtoFav from "../cards/AddtoFav";
 
 const useStyles = makeStyles((theme) => ({

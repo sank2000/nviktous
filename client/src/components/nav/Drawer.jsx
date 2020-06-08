@@ -20,8 +20,6 @@ import Sign from "../auth/SignIn";
 import Authapi from "../auth/AuthApi";
 import axios from "axios";
 
-
-
 export default function TemporaryDrawer() {
   const theme = useTheme();
   const [enable, setEnable] = useState(false);
@@ -89,10 +87,12 @@ export default function TemporaryDrawer() {
             <ListItemText primary={'My Favourite'} />
           </ListItem>
         </Link>
-        <ListItem button>
-          <ListItemIcon><AddShoppingCartTwoToneIcon /></ListItemIcon>
-          <ListItemText primary={'My Card'} />
-        </ListItem>
+        <Link className="styled-link" to='/cart'>
+          <ListItem button>
+            <ListItemIcon><AddShoppingCartTwoToneIcon /></ListItemIcon>
+            <ListItemText primary={'My Cart'} />
+          </ListItem>
+        </Link>
       </List>
       <Divider />
       <List>
