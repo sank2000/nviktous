@@ -14,7 +14,6 @@ import IconButton from '@material-ui/core/IconButton';
 
 import ProductViewer from '../view/ProductViewer';
 import Footer from '../nav/Footer';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 import AddtoFav from "../cards/AddtoFav";
 
 const useStyles = makeStyles((theme) => ({
@@ -153,10 +152,8 @@ function Product({ match }) {
                       </Button>
                     </Grid>
                     <Grid item md={12} sm={4} xs={6}>
-                      <ButtonGroup color="secondary">
-                        <AddtoFav id={match.params.itemId} size="small" color="secondary" />
-                        <IconButton><ShareTwoToneIcon /></IconButton>
-                      </ButtonGroup>
+                      <AddtoFav id={match.params.itemId} color="secondary" />
+                      <IconButton color="secondary"><ShareTwoToneIcon /></IconButton>
                     </Grid>
                   </Grid>
                 </div>
