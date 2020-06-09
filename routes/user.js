@@ -20,7 +20,7 @@ router.post("/addfav", function (req, res) {
     );
   }
   else {
-    res.send("unauhtorized");
+    res.send("unauthorized");
   }
 });
 
@@ -39,10 +39,48 @@ router.post("/remfav", function (req, res) {
     );
   }
   else {
-    res.send("unauhtorized");
+    res.send("unauthorized");
   }
 })
 
+
+
+router.post("/addCart", function (req, res) {
+  if (req.isAuthenticated()) {
+    User.findByIdAndUpdate(req.user._id, { $push: { card: req.body } }, { new: true },
+      function (err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(result);
+          res.send(result);
+        }
+      }
+    );
+  }
+  else {
+    res.send("unauthorized");
+  }
+});
+
+router.post("/remCart", function (req, res) {
+  console.log(req.body.id);
+  if (req.isAuthenticated()) {
+    User.findByIdAndUpdate(req.user._id, { $pull: { card: { _id: req.body.id } } }, { new: true },
+      function (err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(result);
+          res.send(result);
+        }
+      }
+    );
+  }
+  else {
+    res.send("unauthorized");
+  }
+})
 
 
 

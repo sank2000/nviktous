@@ -9,7 +9,8 @@ const userSchema = new mongoose.Schema(
     email: String,
     password: String,
     address: { type: String, default: "" },
-    favItem: { type: Array, default: [] }
+    favItem: { type: Array, default: [] },
+    card: { type: Array, default: [] }
   }
 )
 

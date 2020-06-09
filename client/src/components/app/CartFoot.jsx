@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Grid, Container, Typography } from '@material-ui/core';
 
 function CartFoot(props) {
   const theme = useTheme();
+
+  const [detail, setDetail] = useState(props.detail);
+
+
   const useStyles = makeStyles({
     root: {
       position: 'fixed',
@@ -24,7 +28,7 @@ function CartFoot(props) {
             <Typography variant="h4">Grand Total</Typography>
           </Grid>
           <Grid item xs={4}>
-            <Typography variant="h4">$500</Typography>
+            <Typography variant="h4">{detail.price}</Typography>
           </Grid>
         </Grid>
       </Container>

@@ -165,9 +165,9 @@ export default function NavBar() {
       <Link className="styled-link" to='/cart'>
         <MenuItem>
           <IconButton aria-label="1 item in your cart" color="secondary">
-            <Badge badgeContent={1} color="secondary">
+            {data.auth ? <Badge badgeContent={data.user.card.length} color="secondary">
               <AddShoppingCartTwoToneIcon />
-            </Badge>
+            </Badge> : <AddShoppingCartTwoToneIcon />}
           </IconButton>
           <p>My Cart</p>
         </MenuItem>
@@ -216,9 +216,9 @@ export default function NavBar() {
             </Link>
             <Link className="styled-link" to='/cart'>
               <IconButton aria-label="1 item in your cart" color="inherit">
-                <Badge badgeContent={1} color="secondary">
+                {data.auth ? <Badge badgeContent={data.user.card.length} color="secondary">
                   <AddShoppingCartTwoToneIcon />
-                </Badge>
+                </Badge> : <AddShoppingCartTwoToneIcon />}
               </IconButton>
             </Link>
             <IconButton

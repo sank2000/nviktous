@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { deepPurple } from "@material-ui/core/colors";
-import AddShoppingCartTwoToneIcon from '@material-ui/icons/AddShoppingCartTwoTone';
 import ShareTwoToneIcon from '@material-ui/icons/ShareTwoTone';
 import axios from "axios";
 import Skeleton from "@material-ui/lab/Skeleton";
@@ -16,6 +14,7 @@ import ProductViewer from '../view/ProductViewer';
 import Footer from '../nav/Footer';
 import AddtoFav from "../cards/AddtoFav";
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import AddtoCard from "./AddtoCard";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -177,9 +176,7 @@ function Product({ match }) {
             </Grid>
             <Box display="flex" flexDirection="row-reverse">
               <Box>
-                <Button justifyContent="flex-end" variant="outlined" color="primary" size="large" startIcon={<AddShoppingCartTwoToneIcon />}>
-                  Add to my cart
-                    </Button>
+                <AddtoCard data={product} />
               </Box>
             </Box>
           </Container>

@@ -42,7 +42,7 @@ function AppRouter() {
             <NavBar />
             <Switch>
               <Route path='/' exact component={Home} />
-              <Route path='/cart' exact component={Cart} />
+              <ProtectedRoute path='/cart' exact component={Cart} />
               <ProtectedRoute path='/favourite' exact component={Favourite} />
               <Route path='/product/:itemId' exact component={Product} />
               <Route path='/sign' exact component={Sign} />
