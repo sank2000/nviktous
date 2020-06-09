@@ -17,7 +17,7 @@ export default function MediaCard(props) {
         boxShadow: theme.shadows[8],
       }
     },
-    itemDesc: {
+    grow: {
       flexGrow: 1
     },
     imageWrapper: {
@@ -59,9 +59,9 @@ export default function MediaCard(props) {
             className={classes.image}
           />
         </Grid>
-        <Grid item className={classes.itemDesc}>
+        <Grid item className={classes.grow}>
           <Grid container>
-            <Grid item className={classes.itemDesc} >
+            <Grid item className={classes.grow} >
               <Grid container direction="column">
                 <Grid item>
                   <Typography variant="h4">{props.name}</Typography>
@@ -87,12 +87,16 @@ export default function MediaCard(props) {
               </Grid>
             </Grid>
             <Grid item>
-              <Typography variant="h5">${props.price}</Typography>
-            </Grid>
-            <Grid item>
-              <IconButton onClick={hanldeRemove}>
-                <RemoveShoppingCartTwoToneIcon style={{ color: "red" }} />
-              </IconButton>
+              <Grid container direction="column" justify="space-between" className={classes.grow} style={{ height: '100%' }}>
+                <Grid item>
+                  <Typography variant="h5">₹{props.price}</Typography>
+                </Grid>
+                <Grid item>
+                  <IconButton onClick={hanldeRemove}>
+                    <RemoveShoppingCartTwoToneIcon style={{ color: "red" }} />
+                  </IconButton>
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
