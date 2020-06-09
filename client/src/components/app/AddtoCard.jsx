@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -71,6 +71,7 @@ export default function (props) {
   const [count, setCount] = useState(1);
   const [enable, setEnable] = useState(false);
   const [load, setLoad] = useState(false);
+  const [cart, setCart] = useState(false);
   const { data, setData } = useContext(Authapi);
 
   const handleChange = event => {
@@ -103,19 +104,42 @@ export default function (props) {
 
   function handleClick() {
     if (data.auth) {
-      setShow(true);
+      setCart(old => {
+        if (old) {
+          let prms = new URLSearchParams({ id: props.data._id });
+          axios.post("/user/remCart", prms)
+            .then(function (response) {
+              console.log({ ...data, user: response.data });
+              setData({ ...data, user: response.data });
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
+        else {
+          setShow(true);
+        }
+      });
     }
     else {
       setEnable(true);
     }
   }
 
+  useEffect(() => {
+    if (data.user !== undefined) {
+      var ids = data.user.card.map(function (x) { return x._id });
+      console.log(ids.includes(props.data._id));
+      setCart(ids.includes(props.data._id));
+    }
+  }, [data])
+
   return (<>
-    {props.ico ? <IconButton color="primary" onClick={handleClick}>
-      <AddShoppingCartTwoToneIcon />
+    {props.ico ? <IconButton onClick={handleClick}>
+      <AddShoppingCartTwoToneIcon color={cart ? "primary" : "action"} />
     </IconButton> : <Button onClick={handleClick} variant="outlined" color="primary" size="large" startIcon={<AddShoppingCartTwoToneIcon />}>
-        Add to my cart
-                </Button>}
+        {cart ? "Added" : "Add to my cart"}
+      </Button>}
     {enable && <Sign setState={setEnable} />}
     <Dialog
       onClose={handleClose}
