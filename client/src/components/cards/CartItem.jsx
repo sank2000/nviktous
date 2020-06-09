@@ -12,12 +12,10 @@ export default function MediaCard(props) {
   const useStyles = makeStyles({
     root: {
       transition: 'box-shadow .3s ease-in-out',
+      padding: theme.spacing(2),
       '&:hover': {
         boxShadow: theme.shadows[8],
       }
-    },
-    paddingContent: {
-      padding: theme.spacing(1)
     },
     itemDesc: {
       flexGrow: 1
@@ -53,43 +51,41 @@ export default function MediaCard(props) {
 
   return (
     <Paper elevation={3} className={classes.root}>
-      <Grid container justify="space-between">
+      <Grid container justify="space-between" spacing={2}>
         <Grid className={classes.imageWrapper} item>
           <img
             src="https://thumbor.forbes.com/thumbor/2441x2240/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1176382466%2F0x0.jpg%3FcropX1%3D2439%26cropX2%3D4880%26cropY1%3D307%26cropY2%3D2547"
-            alt="fuck"
+            alt="image"
             className={classes.image}
           />
         </Grid>
         <Grid item className={classes.itemDesc}>
-          <Grid container className={classes.paddingContent} direction="column">
-            <Grid item>
-              <Typography variant="h4">{props.name}</Typography>
-            </Grid>
-            <Grid item>
-              <Grid container direction="row">
-                <Grid item xs={4}>
-                  <Typography variant="h6">Variant</Typography>
+          <Grid container>
+            <Grid item className={classes.itemDesc} >
+              <Grid container direction="column">
+                <Grid item>
+                  <Typography variant="h4">{props.name}</Typography>
                 </Grid>
-                <Grid item xs={4}>
-                  <Typography variant="h6">Size : {props.size}</Typography>
+                <Grid item>
+                  <Grid container direction="row">
+                    <Grid item xs={4}>
+                      <Typography variant="h6">Variant</Typography>
+                    </Grid>
+                    <Grid item xs={4}>
+                      <Typography variant="h6">Size : {props.size}</Typography>
+                    </Grid>
+                    <Grid item xs={4}>
+                      <Typography variant="h6">Count : {props.count}</Typography>
+                    </Grid>
+                  </Grid>
                 </Grid>
-                <Grid item xs={4}>
-                  <Typography variant="h6">Count : {props.count}</Typography>
+                <Grid item>
+                  <Typography variant="body1">
+                    {props.description}
+                  </Typography>
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={12}>
-              <Typography variant="body1">
-                {props.description}
-              </Typography>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid className={classes.paddingContent} item>
-          <Grid container direction="column"
-            justify="space-between"
-            alignItems="flex-end">
             <Grid item>
               <Typography variant="h5">${props.price}</Typography>
             </Grid>
