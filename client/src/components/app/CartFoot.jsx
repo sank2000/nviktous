@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Grid, Container, Typography } from '@material-ui/core';
+import Button from "@material-ui/core/Button";
 
 function CartFoot(props) {
   const theme = useTheme();
@@ -24,11 +25,16 @@ function CartFoot(props) {
     <div className={classes.root}>
       <Container maxWidth="md">
         <Grid container>
-          <Grid item xs={8}>
+          <Grid item xs={6}>
             <Typography variant="h4">Grand Total</Typography>
           </Grid>
-          <Grid item xs={4}>
-            <Typography variant="h4">{detail.price}</Typography>
+          <Grid item xs={3}>
+            <Typography variant="h4">₹{detail.price}</Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Button variant="outlined" color="primary" size="medium">
+              Buy Now
+              </Button>
           </Grid>
         </Grid>
       </Container>

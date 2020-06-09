@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Grid, Typography, Paper, Button } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import RemoveShoppingCartTwoToneIcon from '@material-ui/icons/RemoveShoppingCartTwoTone';
+import IconButton from '@material-ui/core/IconButton';
+import Authapi from "../auth/AuthApi";
+import axios from "axios";
 
 export default function MediaCard(props) {
   const theme = useTheme();
+  const { data, setData } = useContext(Authapi);
   const useStyles = makeStyles({
     root: {
       transition: 'box-shadow .3s ease-in-out',
@@ -33,6 +37,19 @@ export default function MediaCard(props) {
     }
   });
   const classes = useStyles();
+
+  function hanldeRemove() {
+    let prms = new URLSearchParams({ id: props.id });
+    axios.post("/user/remCart", prms)
+      .then(function (response) {
+        console.log({ ...data, user: response.data });
+        setData({ ...data, user: response.data });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
 
   return (
     <Paper elevation={3} className={classes.root}>
@@ -77,14 +94,9 @@ export default function MediaCard(props) {
               <Typography variant="h5">${props.price}</Typography>
             </Grid>
             <Grid item>
-              <Button variant="outlined" color="primary" size="medium" startIcon={<RemoveShoppingCartTwoToneIcon />}>
-                Remove
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button variant="outlined" color="primary" size="medium" startIcon={<RemoveShoppingCartTwoToneIcon />}>
-                Buy Now
-              </Button>
+              <IconButton onClick={hanldeRemove}>
+                <RemoveShoppingCartTwoToneIcon style={{ color: "red" }} />
+              </IconButton>
             </Grid>
           </Grid>
         </Grid>
