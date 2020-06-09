@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import CardActionArea from '@material-ui/core/CardActionArea';
 
 import AddtoFav from "./AddtoFav";
-import AddtoCard from "../app/AddtoCard"
+import AddtoCart from "../app/AddtoCart"
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -90,7 +90,7 @@ function ItemCard(props) {
             </Grid>
             <Grid item>
               <Grid container id="quick actions">
-                <AddtoCard ico data={props.item} />
+                <AddtoCart ico data={props.item} />
                 <AddtoFav id={props.item._id} color="primary" />
               </Grid>
             </Grid>

@@ -134,75 +134,76 @@ export default function (props) {
     }
   }, [data])
 
-  return (<>
-    {props.ico ? <IconButton onClick={handleClick}>
-      <AddShoppingCartTwoToneIcon color={cart ? "primary" : "action"} />
-    </IconButton> : <Button onClick={handleClick} variant="outlined" color="primary" size="large" startIcon={<AddShoppingCartTwoToneIcon />}>
-        {cart ? "Added" : "Add to my cart"}
-      </Button>}
-    {enable && <Sign setState={setEnable} />}
-    <Dialog
-      onClose={handleClose}
-      aria-labelledby="customized-dialog-title"
-      open={show}
-    >
-      <DialogTitle
-        disableTypography
-        id="customized-dialog-title"
+  return (
+    <>
+      {props.ico ? <IconButton onClick={handleClick}>
+        <AddShoppingCartTwoToneIcon color={cart ? "primary" : "action"} />
+      </IconButton> : <Button onClick={handleClick} variant="outlined" color="primary" size="large" startIcon={<AddShoppingCartTwoToneIcon />}>
+          {cart ? "Added" : "Add to my cart"}
+        </Button>}
+      {enable && <Sign setState={setEnable} />}
+      <Dialog
         onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={show}
       >
-        <Typography component="span" variant="h5">
-          {" "}
-              Add to card{" "}
-        </Typography>
-      </DialogTitle>
-      <DialogContent>
-        <TextField
-          style={{ marginBottom: "20px" }}
-          label="Count"
-          type="number"
-          fullWidth
-          InputProps={{
-            inputProps: {
-              max: 10,
-              min: 1
-            }
-          }}
-          InputLabelProps={{
-            shrink: true
-          }}
-          variant="outlined"
-          defaultValue="1"
-          onChange={e => setCount(e.target.value)}
-        />
-        <br />
-        <FormControl component="fieldset">
-          <FormLabel component="legend">Size</FormLabel>
-          <RadioGroup name="sizes" value={value} onChange={handleChange}>
-            <Grid container spacing={1}>
-              {props.data.size.map((value, ind) => {
-                return <Grid item xs={6}>
-                  <FormControlLabel key={ind} value={value} control={<Radio />} label={value} />
-                </Grid>
-              })}
-            </Grid>
-          </RadioGroup>
-        </FormControl>
-      </DialogContent>
-      <DialogActions>
-        <Button variant="outlined" color="secondary" onClick={handleClose}>
-          Cancel
-            </Button>
-        <Button
-          disabled={value === "" || count === "" || count <= "0"}
-          variant="outlined"
-          color="primary"
-          onClick={handleDone}
+        <DialogTitle
+          disableTypography
+          id="customized-dialog-title"
+          onClose={handleClose}
         >
-          Done <BounceLoader size={15} color={"blue"} loading={load} />
-        </Button>
-      </DialogActions>
-    </Dialog>
-  </ >
+          <Typography component="span" variant="h5">
+            {" "}
+              Add to card{" "}
+          </Typography>
+        </DialogTitle>
+        <DialogContent>
+          <TextField
+            style={{ marginBottom: "20px" }}
+            label="Count"
+            type="number"
+            fullWidth
+            InputProps={{
+              inputProps: {
+                max: 10,
+                min: 1
+              }
+            }}
+            InputLabelProps={{
+              shrink: true
+            }}
+            variant="outlined"
+            defaultValue="1"
+            onChange={e => setCount(e.target.value)}
+          />
+          <br />
+          <FormControl component="fieldset">
+            <FormLabel component="legend">Size</FormLabel>
+            <RadioGroup name="sizes" value={value} onChange={handleChange}>
+              <Grid container spacing={1}>
+                {props.data.size.map((value, ind) => {
+                  return <Grid item xs={6}>
+                    <FormControlLabel key={ind} value={value} control={<Radio />} label={value} />
+                  </Grid>
+                })}
+              </Grid>
+            </RadioGroup>
+          </FormControl>
+        </DialogContent>
+        <DialogActions>
+          <Button variant="outlined" color="secondary" onClick={handleClose}>
+            Cancel
+            </Button>
+          <Button
+            disabled={value === "" || count === "" || count <= "0"}
+            variant="outlined"
+            color="primary"
+            onClick={handleDone}
+          >
+            Done <BounceLoader size={15} color={"blue"} loading={load} />
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </ >
   );
 }
