@@ -69,6 +69,12 @@ router.get("/cart", function (req, res) {
 })
 
 
+router.post("/search", function (req, res) {
+  Product.find({ name: { '$regex': req.body.search, $options: 'i' } }, (err, result) => {
+    if (err) { console.log(err); return; }
+    res.send(result);
+  })
+})
 
 
 

@@ -110,6 +110,7 @@ export default function Buy(props) {
     axios.post("/user/buy", prms)
       .then(function (response) {
         setData({ ...data, user: response.data });
+        window.open("/", "_self");
       })
       .catch(function (error) {
         console.log(error);

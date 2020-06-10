@@ -1,10 +1,19 @@
 const express = require('express');
 const router = express.Router();
+const nodemailer = require("nodemailer");
 
 
 const Product = require('../model/product');
 const User = require('../model/user');
 const Order = require('../model/order');
+
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.EMAIL_PASS
+  }
+});
 
 
 router.post("/addfav", function (req, res) {
@@ -113,7 +122,20 @@ router.post("/buy", function (req, res) {
             if (err) {
               console.log(err);
             } else {
-              console.log(result);
+              let mailOptions = {
+                from: `"NVIKTOUS"`,
+                to: addDetail.email,
+                subject: "Ordered Confrimed ",
+                // text: req.body.content,
+                html:
+                  `<h2>Your Order ID is ${data._id}</h2>
+	                 <p>you can track your order by login into your account</p> `
+              }
+              transporter.sendMail(mailOptions, function (err, dat) {
+                if (err) {
+                  console.log(err);
+                }
+              });
               res.send(result);
             }
           }

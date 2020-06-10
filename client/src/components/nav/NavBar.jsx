@@ -3,7 +3,6 @@ import React, { useContext, useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
-import InputBase from '@material-ui/core/InputBase';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,7 +12,6 @@ import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import AccountCircle from '@material-ui/icons/AccountCircleTwoTone';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import AddShoppingCartTwoToneIcon from '@material-ui/icons/AddShoppingCartTwoTone';
-import SearchIcon from '@material-ui/icons/Search';
 import axios from "axios";
 import Drawer from './Drawer';
 import Authapi from "../auth/AuthApi";
@@ -88,6 +86,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function NavBar() {
   const { data, setData } = useContext(Authapi);
   const classes = useStyles();
@@ -96,6 +95,7 @@ export default function NavBar() {
   const [enable, setEnable] = useState(false);
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -191,22 +191,9 @@ export default function NavBar() {
       <AppBar elevation={3} position="fixed">
         <Toolbar>
           <Drawer />
-          <Typography className={classes.title} variant="h6" noWrap>
-            Invictus
+          <Typography variant="h6" noWrap>
+            NVIKTOUS
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Link className="styled-link" to='/favourite'>
@@ -215,7 +202,7 @@ export default function NavBar() {
               </IconButton>
             </Link>
             <Link className="styled-link" to='/cart'>
-              <IconButton aria-label="1 item in your cart" color="inherit">
+              <IconButton color="inherit">
                 {data.auth ? <Badge badgeContent={data.user.card.length} color="secondary">
                   <AddShoppingCartTwoToneIcon />
                 </Badge> : <AddShoppingCartTwoToneIcon />}

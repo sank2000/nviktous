@@ -129,7 +129,6 @@ export default function (props) {
   useEffect(() => {
     if (data.user !== undefined) {
       var ids = data.user.card.map(function (x) { return x._id });
-      console.log(ids.includes(props.data._id));
       setCart(ids.includes(props.data._id));
     }
   }, [data, props.data._id])
@@ -182,8 +181,8 @@ export default function (props) {
             <RadioGroup name="sizes" value={value} onChange={handleChange}>
               <Grid container spacing={1}>
                 {props.data.size.map((value, ind) => {
-                  return <Grid item xs={6}>
-                    <FormControlLabel key={ind} value={value} control={<Radio />} label={value} />
+                  return <Grid item xs={6} key={ind}>
+                    <FormControlLabel value={value} control={<Radio />} label={value} />
                   </Grid>
                 })}
               </Grid>

@@ -18,6 +18,7 @@ import { hasSigned } from "./RouteAccess"
 import FlexContainer from './components/containers/FlexContainer';
 
 import SyncLoader from "react-spinners/SyncLoader";
+import Search from "./components/app/Search";
 
 function Loading() {
   const theme = useTheme();
@@ -26,7 +27,7 @@ function Loading() {
       <SyncLoader
         size={25}
         margin={10}
-        color={"#123abc"}
+        color={theme.palette.primary.main}
         loading={true}
       />
     </FlexContainer>
@@ -50,6 +51,7 @@ function AppRouter() {
               <ProtectedRoute path='/favourite' exact component={Favourite} />
               <ProtectedRoute path='/myorder' exact component={MyOrder} />
               <Route path='/product/:itemId' exact component={Product} />
+              <Route path='/search/:search' exact component={Search} />
               <Route path='/sign' exact component={Sign} />
             </Switch>
           </Router>

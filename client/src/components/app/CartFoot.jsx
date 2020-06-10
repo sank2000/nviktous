@@ -7,7 +7,7 @@ import Buy from "./Buy";
 
 function CartFoot(props) {
   const theme = useTheme();
-  const [detail, setDetail] = useState(props.detail);
+  const [detail] = useState(props.detail);
   const [buy, setBuy] = useState(false);
 
   const useStyles = makeStyles({

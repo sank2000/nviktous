@@ -17,6 +17,12 @@ import LockOpenTwoToneIcon from '@material-ui/icons/LockOpenTwoTone';
 import { Link } from 'react-router-dom';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 
+import InputBase from '@material-ui/core/InputBase';
+import InputAdornment from "@material-ui/core/InputAdornment";
+import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
+import ClearOutlinedIcon from "@material-ui/icons/ClearOutlined";
+
+
 import Sign from "../auth/SignIn";
 import Authapi from "../auth/AuthApi";
 import axios from "axios";
@@ -25,6 +31,7 @@ export default function TemporaryDrawer() {
   const theme = useTheme();
   const [enable, setEnable] = useState(false);
   const { data, setData } = useContext(Authapi);
+  const [search, setSearch] = useState("");
 
   const handleLogout = async () => {
     axios.get("/auth/logout")
@@ -58,6 +65,7 @@ export default function TemporaryDrawer() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = (open) => (event) => {
+    setSearch("");
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
@@ -65,14 +73,26 @@ export default function TemporaryDrawer() {
     setDrawerOpen(open);
   };
 
+
+  function SearchText(event) {
+    setSearch(event.target.value);
+  }
+
+  const handleSearch = () => {
+    window.open(`/search/${search}`, "_self");
+  }
+
+  function keyEntered(event) {
+    if (event.which === 13 || event.keyCode === 13) {
+      handleSearch();
+      return false;
+    }
+    return true;
+  };
+
   const list = () => (
-    <div
-      className={clsx(classes.list)}
-      role="presentation"
-      onClick={toggleDrawer(false)}
-      onKeyDown={toggleDrawer(false)}
-    >
-      <List>
+    <>
+      <List onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)} role="presentation" className={clsx(classes.list)}>
         <Link className="styled-link" to='/'>
           <ListItem button>
             <ListItemIcon><HomeWorkTwoToneIcon /></ListItemIcon>
@@ -81,7 +101,29 @@ export default function TemporaryDrawer() {
         </Link>
       </List>
       <Divider />
-      <List>
+      <InputBase
+        placeholder="search ..."
+        value={search}
+        onChange={SearchText}
+        onKeyPress={keyEntered}
+        style={{ height: "50px", width: "300px" }}
+        startAdornment={
+          <InputAdornment position="start">
+            <IconButton size="small" onClick={handleSearch}>
+              <SearchOutlinedIcon />
+            </IconButton>
+          </InputAdornment>
+        }
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton size="small" onClick={toggleDrawer(false)}>
+              <ClearOutlinedIcon />
+            </IconButton>
+          </InputAdornment>
+        }
+      />
+      <Divider />
+      <List onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)} role="presentation" className={clsx(classes.list)}>
         <Link className="styled-link" to='/favourite'>
           <ListItem button>
             <ListItemIcon><FavoriteTwoToneIcon /></ListItemIcon>
@@ -102,7 +144,7 @@ export default function TemporaryDrawer() {
         </Link>
       </List>
       <Divider />
-      <List>
+      <List onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)} role="presentation" className={clsx(classes.list)}>
         {!data.auth ? <ListItem button onClick={() => setEnable(true)}>
           <ListItemIcon><LockOpenTwoToneIcon /></ListItemIcon>
           <ListItemText primary={'Sign In / Up'} />
@@ -111,7 +153,7 @@ export default function TemporaryDrawer() {
             <ListItemText primary={'Log out'} />
           </ListItem>}
       </List>
-    </div>
+    </>
   );
 
   return (

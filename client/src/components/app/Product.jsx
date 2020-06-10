@@ -159,7 +159,7 @@ function Product({ match }) {
                     <Grid item>
                       <Typography variant="h6">Available sizes</Typography>
                       <Grid container spacing={1}>
-                        {product.size.map((value, index) => <Size size={value} index={index} />)}
+                        {product.size.map((value, index) => <Size size={value} index={index} key={index} />)}
                       </Grid>
                     </Grid>
                     <Grid item>
