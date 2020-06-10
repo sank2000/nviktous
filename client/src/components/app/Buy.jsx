@@ -66,6 +66,7 @@ const DialogActions = withStyles(theme => ({
 export default function Buy(props) {
   const { data, setData } = useContext(Authapi);
   const [show, setShow] = useState(true);
+  const [load, setLoad] = useState(false);
   const [intialValues, setIntialValues] = useState({
     address: "",
     pincode: "",
@@ -96,6 +97,7 @@ export default function Buy(props) {
   });
 
   function handleSubmit(values) {
+    setLoad(true);
     const address = JSON.stringify(values);
     const product = JSON.stringify(props.data.detail);
     const ItemD = JSON.stringify(props.data.value);
@@ -107,7 +109,6 @@ export default function Buy(props) {
       });
     axios.post("/user/buy", prms)
       .then(function (response) {
-        console.log(response.data);
         setData({ ...data, user: response.data });
       })
       .catch(function (error) {
@@ -233,7 +234,7 @@ export default function Buy(props) {
             <hr />
             <Button variant="contained" color="primary" type="submit">
               Confrim Order{" "}
-              <BounceLoader size={15} color={"black"} loading={true} />
+              <BounceLoader size={15} color={"black"} loading={load} />
             </Button>
           </DialogActions>
         </form>
