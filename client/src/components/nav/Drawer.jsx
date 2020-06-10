@@ -39,7 +39,7 @@ export default function TemporaryDrawer() {
   const useStyles = makeStyles({
     list: {
       [theme.breakpoints.up('xs')]: {
-        width: '75vw',
+        width: '60vw',
       },
       [theme.breakpoints.up('sm')]: {
         width: '35vw',
