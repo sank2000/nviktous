@@ -1,5 +1,5 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
-import { Container } from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 import CartItem from '../cards/CartItem';
@@ -22,12 +22,11 @@ function Loading() {
   );
 }
 
-
 function Empty() {
   return (
-    <FlexContainer>
-      <img src='./images/emptyCart.png' style={{ width: '10em', height: '10em', padding: '1rem' }} alt='' />
-      <h1>Your card is Empty ! </h1>
+    <FlexContainer withAppBar>
+      <img src='./assets/images/emptyCart.png' style={{ maxWidth: '80vw', maxHeight: '50vh', padding: '1rem' }} alt='' />
+      <Typography variant="h2">Your cart is Empty!</Typography>
     </FlexContainer>
   );
 }

@@ -7,7 +7,7 @@ import Container from "@material-ui/core/Container";
 
 function Loading() {
   return (
-    <FlexContainer>
+    <FlexContainer withAppBar>
       <SyncLoader
         size={25}
         margin={10}
