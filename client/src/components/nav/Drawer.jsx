@@ -15,6 +15,7 @@ import AddShoppingCartTwoToneIcon from '@material-ui/icons/AddShoppingCartTwoTon
 import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
 import LockOpenTwoToneIcon from '@material-ui/icons/LockOpenTwoTone';
 import { Link } from 'react-router-dom';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 
 import Sign from "../auth/SignIn";
 import Authapi from "../auth/AuthApi";
@@ -95,7 +96,7 @@ export default function TemporaryDrawer() {
         </Link>
         <Link className="styled-link" to='/myorder'>
           <ListItem button>
-            <ListItemIcon><FavoriteTwoToneIcon /></ListItemIcon>
+            <ListItemIcon><AssignmentIcon /></ListItemIcon>
             <ListItemText primary={'My Order'} />
           </ListItem>
         </Link>

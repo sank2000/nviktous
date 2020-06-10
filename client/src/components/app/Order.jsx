@@ -37,11 +37,17 @@ const StyledTableRow = withStyles(theme => ({
 function Ava(props) {
   return (
     <div>
-      <Avatar style={{ backgroundColor: "green", border: "4px solid white" }}>
+      <Avatar style={(props.ind <= props.len) ? { backgroundColor: "green", border: "4px solid white" } : { backgroundColor: "black", border: "4px solid white" }}>
         {props.ico}
       </Avatar>
       <br />
-      <p style={{ display: "inline" }}>{props.title}</p>
+      <p style={(props.ind <= props.len) ? {
+        color: "#fff",
+        display: "inline",
+        backgroundColor: "green",
+        padding: "3px 5px",
+        borderRadius: '150px'
+      } : { display: "inline" }}>{props.title}</p>
     </div>
   );
 }
@@ -110,19 +116,20 @@ export default (props) => {
               style={{ textAlign: "center" }}
             >
               <Grid item style={{ flexShrink: "3" }}>
-                <Ava ico={<DoneOutlineIcon />} title={"Ordered"} ind={0} />
+                <Ava ico={<DoneOutlineIcon />} title={"Ordered"} ind={1} len={props.status.length} />
               </Grid>
               <Grid item>
-                <Ava ico={<LocalMallIcon />} title={"Packed"} ind={1} />
+                <Ava ico={<LocalMallIcon />} title={"Packed"} ind={2} len={props.status.length} />
               </Grid>
               <Grid item>
-                <Ava ico={<RowingIcon />} title={"Shipped"} ind={2} />{" "}
+                <Ava ico={<RowingIcon />} title={"Shipped"} ind={3} len={props.status.length} />{" "}
               </Grid>
               <Grid item>
                 <Ava
                   ico={<LocalShippingIcon />}
                   title={"Delivery"}
-                  ind={3}
+                  ind={4}
+                  len={props.status.length}
                 />
               </Grid>
               <Grid

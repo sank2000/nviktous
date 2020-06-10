@@ -4,14 +4,16 @@ import SyncLoader from "react-spinners/SyncLoader";
 import Authapi from "../auth/AuthApi";
 import Order from "./Order";
 import Container from "@material-ui/core/Container";
+import { useTheme } from '@material-ui/core/styles';
 
 function Loading() {
+  const theme = useTheme();
   return (
     <FlexContainer withAppBar>
       <SyncLoader
         size={25}
         margin={10}
-        color={"#123abc"}
+        color={theme.palette.primary.main}
         loading={true}
       />
     </FlexContainer>

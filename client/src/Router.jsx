@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import { useTheme } from '@material-ui/core/styles';
+
 import ProtectedRoute from './routers/ProtectedRoute';
 import NavBar from './components/nav/NavBar';
 import Home from './components/app/Home';
@@ -18,6 +20,7 @@ import FlexContainer from './components/containers/FlexContainer';
 import SyncLoader from "react-spinners/SyncLoader";
 
 function Loading() {
+  const theme = useTheme();
   return (
     <FlexContainer>
       <SyncLoader
