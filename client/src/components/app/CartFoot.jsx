@@ -56,11 +56,6 @@ function CartFoot(props) {
               alignItems="center"
               spacing={3}>
               <Grid item>
-                <Button variant="outlined" color={theme.palette.error.main} size="medium">
-                  Empty Cart
-                </Button>
-              </Grid>
-              <Grid item>
                 <Button variant="outlined" color="primary" size="medium" onClick={() => setBuy(true)}>
                   Buy Now
                 </Button>

@@ -19,7 +19,7 @@ function FlexContainer(props) {
         justifyContent: "center",
         textAlign: "center",
         alignItems: "center",
-        minHeight: props.height || (props.withAppBar && 'calc(100vh - 5rem - 4px)') || '96vh',
+        minHeight: props.height || (props.withAppBar && 'calc(100vh - 5rem - 4px)') || 'calc(96vh + 5px)',
         maxHeight: props.maxHeight || '100%',
         padding: '10px',
         overflow: 'hidden',

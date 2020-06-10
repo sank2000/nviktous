@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import { Grid, Typography, Paper } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import RemoveShoppingCartTwoToneIcon from '@material-ui/icons/RemoveShoppingCartTwoTone';
 import IconButton from '@material-ui/core/IconButton';
 import Authapi from "../auth/AuthApi";
 import axios from "axios";
+
 
 export default function MediaCard(props) {
   const theme = useTheme();
@@ -12,7 +14,6 @@ export default function MediaCard(props) {
   const useStyles = makeStyles({
     root: {
       transition: 'box-shadow .3s ease-in-out',
-      padding: theme.spacing(2),
       '&:hover': {
         boxShadow: theme.shadows[8],
       }
@@ -32,11 +33,15 @@ export default function MediaCard(props) {
     },
     price: {
       textAlign: 'right',
+    },
+    inner: {
+      flexGrow: 1,
+      padding: theme.spacing(1)
     }
   });
   const classes = useStyles();
 
-  function hanldeRemove() {
+  function handleRemove() {
     let prms = new URLSearchParams({ id: props.id });
     axios.post("/user/remCart", prms)
       .then(function (response) {
@@ -48,10 +53,9 @@ export default function MediaCard(props) {
       });
   }
 
-
   return (
     <Paper elevation={3} className={classes.root}>
-      <Grid container justify="space-between" spacing={2}>
+      <Grid container justify="space-between">
         <Grid className={classes.imageWrapper} item>
           <img
             src="https://thumbor.forbes.com/thumbor/2441x2240/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1176382466%2F0x0.jpg%3FcropX1%3D2439%26cropX2%3D4880%26cropY1%3D307%26cropY2%3D2547"
@@ -59,13 +63,11 @@ export default function MediaCard(props) {
             className={classes.image}
           />
         </Grid>
-        <Grid item className={classes.grow}>
-          <Grid container>
+        <Grid item className={classes.inner}>
+          <Grid container alignItems="stretch">
             <Grid item className={classes.grow} >
               <Grid container direction="column">
-                <Grid item>
-                  <Typography variant="h4">{props.name}</Typography>
-                </Grid>
+                <Typography variant="h4">{props.name}</Typography>
                 <Grid item>
                   <Grid container direction="row">
                     <Grid item xs={4}>
@@ -86,13 +88,13 @@ export default function MediaCard(props) {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item>
-              <Grid container direction="column" justify="space-between" className={classes.grow} style={{ height: '100%' }}>
-                <Grid item>
+            <Grid item className={classes.grow}>
+              <Grid container className={classes.grow} direction={useMediaQuery(theme.breakpoints.up('sm')) ? "column" : "row"} justify="space-between" alignItems="stretch">
+                <Grid item className={classes.grow}>
                   <Typography variant="h5">₹{props.price}</Typography>
                 </Grid>
                 <Grid item>
-                  <IconButton onClick={hanldeRemove}>
+                  <IconButton onClick={handleRemove}>
                     <RemoveShoppingCartTwoToneIcon style={{ color: "red" }} />
                   </IconButton>
                 </Grid>
