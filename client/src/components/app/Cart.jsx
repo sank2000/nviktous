@@ -26,14 +26,15 @@ function Loading() {
 function Empty() {
   return (
     <FlexContainer>
-      <h1>Your card is Empty</h1>
+      <img src='./images/emptyCart.png' style={{ width: '10em', height: '10em', padding: '1rem' }} alt='' />
+      <h1>Your card is Empty ! </h1>
     </FlexContainer>
   );
 }
 
 function Cart(props) {
   const theme = useTheme();
-  const { data, setData } = useContext(Authapi);
+  const { data } = useContext(Authapi);
   const [value, setValue] = useState();
   const [load, setLoad] = useState(true);
   const [empty, setEmpty] = useState(true);
@@ -64,6 +65,7 @@ function Cart(props) {
         }
         setValue(merged);
         let total = 0;
+        // eslint-disable-next-line
         merged.map((value, ind) => {
           total = total + (value.count * value.price);
           setDetail({
@@ -80,7 +82,7 @@ function Cart(props) {
       .catch(function (error) {
         console.log(error);
       });
-  }, [])
+  }, [data.user.card])
 
   return (
     <Fragment>
@@ -90,7 +92,7 @@ function Cart(props) {
             return <CartItem key={ind} id={value._id} name={value.name} description={value.description} price={value.price} count={value.count} size={value.size} />
           })}
         </Container>
-        <CartFoot detail={detail} />
+        <CartFoot detail={detail} value={value} />
       </>
       }
     </Fragment>

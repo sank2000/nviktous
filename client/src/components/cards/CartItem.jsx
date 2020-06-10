@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Grid, Typography, Paper, Button } from "@material-ui/core";
+import { Grid, Typography, Paper } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import RemoveShoppingCartTwoToneIcon from '@material-ui/icons/RemoveShoppingCartTwoTone';
 import IconButton from '@material-ui/core/IconButton';
@@ -55,7 +55,7 @@ export default function MediaCard(props) {
         <Grid className={classes.imageWrapper} item>
           <img
             src="https://thumbor.forbes.com/thumbor/2441x2240/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1176382466%2F0x0.jpg%3FcropX1%3D2439%26cropX2%3D4880%26cropY1%3D307%26cropY2%3D2547"
-            alt="image"
+            alt="img"
             className={classes.image}
           />
         </Grid>

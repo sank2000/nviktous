@@ -132,7 +132,7 @@ export default function (props) {
       console.log(ids.includes(props.data._id));
       setCart(ids.includes(props.data._id));
     }
-  }, [data])
+  }, [data, props.data._id])
 
   return (
     <>
