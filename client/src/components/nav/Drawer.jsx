@@ -93,6 +93,12 @@ export default function TemporaryDrawer() {
             <ListItemText primary={'My Cart'} />
           </ListItem>
         </Link>
+        <Link className="styled-link" to='/myorder'>
+          <ListItem button>
+            <ListItemIcon><FavoriteTwoToneIcon /></ListItemIcon>
+            <ListItemText primary={'My Order'} />
+          </ListItem>
+        </Link>
       </List>
       <Divider />
       <List>

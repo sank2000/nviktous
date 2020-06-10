@@ -8,6 +8,7 @@ import Sign from './components/auth/SignRoute';
 import Product from './components/app/Product';
 import Cart from './components/app/Cart';
 import Favourite from "./components/app/Favorite";
+import MyOrder from "./components/app/MyOrder";
 
 import AuthApi from "./components/auth/AuthApi";
 
@@ -44,6 +45,7 @@ function AppRouter() {
               <Route path='/' exact component={Home} />
               <ProtectedRoute path='/cart' exact component={Cart} />
               <ProtectedRoute path='/favourite' exact component={Favourite} />
+              <ProtectedRoute path='/myorder' exact component={MyOrder} />
               <Route path='/product/:itemId' exact component={Product} />
               <Route path='/sign' exact component={Sign} />
             </Switch>
