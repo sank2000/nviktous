@@ -20,25 +20,54 @@ function CartFoot(props) {
       width: '100%',
       backgroundColor: theme.palette.grey[200],
       padding: theme.spacing(2),
-      textAlign: 'right'
+    },
+    footContainer: {
+      padding: theme.spacing(2)
+    },
+    grow: {
+      flexGrow: 1,
     }
   });
   const classes = useStyles();
   return (
     <div className={classes.root}>
       {buy && <Buy setState={setBuy} data={props} />}
-      <Container maxWidth="md">
-        <Grid container>
-          <Grid item xs={6}>
-            <Typography variant="h4">Grand Total</Typography>
+      <Container maxWidth="md" classes={classes.footContainer}>
+        <Grid container
+          direction="column"
+          justify="center"
+          alignItems="stretch"
+        >
+          <Grid item>
+            <Grid container
+              direction="row"
+              justify="space-evenly"
+              alignItems="baseline">
+              <Grid item className={classes.grow}>
+                <Typography variant="h5">Grand Total</Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="h5">₹{detail.price}</Typography>
+              </Grid>
+            </Grid>
           </Grid>
-          <Grid item xs={3}>
-            <Typography variant="h4">₹{detail.price}</Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Button variant="outlined" color="primary" size="medium" onClick={() => setBuy(true)}>
-              Buy Now
-              </Button>
+          <Grid item>
+            <Grid container
+              direction="row"
+              justify="center"
+              alignItems="center"
+              spacing={3}>
+              <Grid item>
+                <Button variant="outlined" color={theme.palette.error.main} size="medium">
+                  Empty Cart
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button variant="outlined" color="primary" size="medium" onClick={() => setBuy(true)}>
+                  Buy Now
+                </Button>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Container>
