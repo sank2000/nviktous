@@ -67,7 +67,7 @@ function Cart(props) {
         let total = 0;
         // eslint-disable-next-line
         merged.map((value, ind) => {
-          total = total + (value.count * value.price);
+          total = total + (value.count * (value.price - (value.price * (value.discount.per / 100))));
           setDetail({
             count: ind + 1,
             price: total
@@ -89,7 +89,7 @@ function Cart(props) {
       {load ? <Loading /> : empty ? <Empty /> : <>
         <Container className={classes.root} maxWidth="md" style={{ marginBottom: "100px" }}>
           {value.map((value, ind) => {
-            return <CartItem key={ind} id={value._id} name={value.name} description={value.description} price={value.price} count={value.count} size={value.size} />
+            return <CartItem key={ind} id={value._id} name={value.name} description={value.description} price={value.price} count={value.count} size={value.size} discount={value.discount} />
           })}
         </Container>
         <CartFoot detail={detail} value={value} />

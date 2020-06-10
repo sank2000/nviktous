@@ -34,6 +34,9 @@ export default function MediaCard(props) {
     price: {
       textAlign: 'right',
     },
+    originalPrice: {
+      textDecoration: 'line-through'
+    },
     inner: {
       flexGrow: 1,
       padding: theme.spacing(1)
@@ -91,7 +94,15 @@ export default function MediaCard(props) {
             <Grid item className={classes.grow}>
               <Grid container className={classes.grow} direction={useMediaQuery(theme.breakpoints.up('sm')) ? "column" : "row"} justify="space-between" alignItems="stretch">
                 <Grid item className={classes.grow}>
-                  <Typography variant="h5">₹{props.price}</Typography>
+                  {
+                    props.discount.per > 0 &&
+                    <Typography className={classes.originalPrice} variant="caption" component="p">
+                      ₹{props.price}
+                    </Typography>
+                  }
+                  <Typography className={classes.priceTag} variant="h6" component="h2">
+                    ₹{props.price - (props.price * (props.discount.per / 100))}
+                  </Typography>
                 </Grid>
                 <Grid item>
                   <IconButton onClick={handleRemove}>
