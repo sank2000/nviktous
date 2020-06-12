@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema(
     size: Array,
     color: Array,
     price: Number,
-    discount: { type: Object, default: { per: 0 } }
+    discount: { type: Number, default: 0 }
   }
 )
 

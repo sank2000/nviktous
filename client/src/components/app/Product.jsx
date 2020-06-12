@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '.7rem',
     textTransform: 'uppercase'
   },
+  originalPrice: {
+    textDecoration: 'line-through'
+  }
 }));
 
 const productImages = [
@@ -166,7 +169,15 @@ function Product({ match }) {
                       </Grid>
                     </Grid>
                     <Grid item>
-                      <Typography variant="h3">₹{product.price}</Typography>
+                      <Typography variant="h3" component="h2">
+                        ₹{product.price - (product.price * (product.discount / 100))}
+                      </Typography>
+                      {
+                        product.discount > 0 &&
+                        <Typography className={classes.originalPrice} variant="h6" component="p">
+                          ₹{product.price}
+                        </Typography>
+                      }
                     </Grid>
                     <Grid item xs={12}>
                       <Typography variant="body1" color="textSecondary" paragraph>

@@ -82,13 +82,13 @@ function ItemCard(props) {
           <Grid container justify="space-between">
             <Grid item>
               {
-                props.item.discount.per > 0 &&
+                props.item.discount > 0 &&
                 <Typography className={classes.originalPrice} variant="caption" component="p">
                   ₹{props.item.price}
                 </Typography>
               }
               <Typography className={classes.priceTag} variant="h6" component="h2">
-                ₹{props.item.price - (props.item.price * (props.item.discount.per / 100))}
+                ₹{props.item.price - (props.item.price * (props.item.discount / 100))}
               </Typography>
             </Grid>
             <Grid item>
