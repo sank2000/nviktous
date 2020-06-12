@@ -200,7 +200,7 @@ function Product({ match }) {
                 </Box>
               </Container>
             </div>
-            <Footer />
+            <Footer route={true} />
           </ >
       }
     </>

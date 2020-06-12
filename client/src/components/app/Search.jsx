@@ -80,7 +80,7 @@ export default function ({ match }) {
                 ))}
               </Grid>
             </Container>
-            <Footer />
+            <Footer route={true} />
           </ >
       }
     </>

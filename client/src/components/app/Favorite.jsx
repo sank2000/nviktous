@@ -79,7 +79,7 @@ export default function Home() {
             </Grid>
           </Container>
         </main>
-        <Footer />
+        <Footer route={true} />
       </>}
     </React.Fragment>
   );

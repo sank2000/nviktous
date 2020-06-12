@@ -25,13 +25,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function StickyFooter() {
+export default function StickyFooter(props) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <FooterTop />
+      <FooterTop route={props.route} />
       <footer className={classes.footer}>
         <Container maxWidth="md">
           <Typography variant="body1">My sticky footer can be found here.</Typography>

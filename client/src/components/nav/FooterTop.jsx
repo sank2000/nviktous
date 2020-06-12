@@ -45,12 +45,16 @@ const value = [
 
 
 
-export default function () {
+export default function (props) {
   return (
     <Grid container direction="row" justify="center" alignItems="center">
       {value.map((value, ind) => {
+        let src = value.img;
+        if (props.route) {
+          src = "." + src;
+        }
         return (<Grid item xs={12} sm={6} md={3}>
-          <Card key={ind} src={value.img} head={value.head} body={value.body} />
+          <Card key={ind} src={src} head={value.head} body={value.body} />
         </Grid>)
       })}
     </Grid>
