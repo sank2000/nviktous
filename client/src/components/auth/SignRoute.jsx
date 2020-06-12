@@ -340,10 +340,15 @@ export default function (props) {
                 variant="contained"
                 style={{ backgroundColor: '#cb3f22', color: "white" }}
                 fullWidth
-                endIcon={<GTranslateIcon />}
                 onClick={withGoogle}
               >
                 <BounceLoader size={15} color={"white"} loading={btnG} /> Sign in with
+                &nbsp;
+                <img
+                  src="./images/google.png"
+                  style={{ width: "18px", height: "18px" }}
+                  alt=""
+                />
               </Button>
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -474,9 +479,14 @@ export default function (props) {
                 fullWidth
                 style={{ backgroundColor: '#cb3f22', color: "white" }}
                 onClick={withGoogle}
-                endIcon={<GTranslateIcon />}
               >
                 <BounceLoader size={15} color={"white"} loading={btnG} /> Sign Up with
+                &nbsp;
+                <img
+                  src="./images/google.png"
+                  style={{ width: "18px", height: "18px" }}
+                  alt=""
+                />
               </Button>
             </Grid>
             <Grid item xs={12} sm={6}>

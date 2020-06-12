@@ -6,6 +6,8 @@ import Container from '@material-ui/core/Container';
 
 import Copyright from '../auxillary/CopyrightNote';
 
+import FooterTop from "./FooterTop";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -29,6 +31,7 @@ export default function StickyFooter() {
   return (
     <div className={classes.root}>
       <CssBaseline />
+      <FooterTop />
       <footer className={classes.footer}>
         <Container maxWidth="md">
           <Typography variant="body1">My sticky footer can be found here.</Typography>
