@@ -6,7 +6,6 @@ import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import CloseIcon from "@material-ui/icons/Close";
-import GTranslateIcon from "@material-ui/icons/GTranslate";
 import TextField from "@material-ui/core/TextField";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import Typography from "@material-ui/core/Typography";
