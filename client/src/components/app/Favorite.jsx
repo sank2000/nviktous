@@ -1,12 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from "axios";
 
 import Footer from '../nav/Footer';
 import ItemCard from '../cards/ItemCard';
+
+import FlexContainer from '../containers/FlexContainer';
+import SyncLoader from "react-spinners/SyncLoader";
+
+function Loading() {
+  const theme = useTheme();
+  return (
+    <FlexContainer withAppBar>
+      <SyncLoader
+        size={25}
+        margin={10}
+        color={theme.palette.primary.main}
+        loading={true}
+      />
+    </FlexContainer>
+  );
+}
+
+
+
+
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -28,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Home() {
   const classes = useStyles();
   const [post, setPost] = useState([]);
+  const [load, setLoad] = useState(true);
 
   useEffect(() => {
     console.log("inside useEffect");
@@ -35,6 +57,7 @@ export default function Home() {
       .then(function (response) {
         console.log(response.data);
         setPost([...response.data]);
+        setLoad(false);
       })
       .catch(function (error) {
         console.log(error);
@@ -46,16 +69,18 @@ export default function Home() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <main>
-        <Container className={classes.cardGrid} maxWidth="lg">
-          <Grid container spacing={4}>
-            {post.map((item) => (
-              <ItemCard key={item._id} item={item} />
-            ))}
-          </Grid>
-        </Container>
-      </main>
-      <Footer />
+      {load ? <Loading /> : <>
+        <main>
+          <Container className={classes.cardGrid} maxWidth="lg">
+            <Grid container spacing={4}>
+              {post.map((item) => (
+                <ItemCard key={item._id} item={item} />
+              ))}
+            </Grid>
+          </Container>
+        </main>
+        <Footer />
+      </>}
     </React.Fragment>
   );
 }

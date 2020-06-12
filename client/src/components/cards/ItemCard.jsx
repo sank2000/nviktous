@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     transition: 'box-shadow .3s ease-in-out',
     "&:hover": {
-      boxShadow: theme.shadows[5]
+      boxShadow: theme.shadows[10]
     }
   },
   cardMedia: {

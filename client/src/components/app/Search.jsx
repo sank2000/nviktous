@@ -29,8 +29,8 @@ function Loading() {
 function Empty() {
   return (
     <FlexContainer withAppBar>
-      <img src='./images/empty.png' style={{ maxWidth: '80vw', maxHeight: '50vh', padding: '1rem' }} alt='' />
-      <Typography variant="h2">No item found!</Typography>
+      <img src='../images/empty.png' style={{ maxWidth: '80vw', maxHeight: '50vh', padding: '1rem' }} alt='kfjngdf' />
+      <Typography variant="h2">Your cart is Empty!</Typography>
     </FlexContainer>
   );
 }

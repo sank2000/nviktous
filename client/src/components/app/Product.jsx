@@ -14,6 +14,9 @@ import ProductViewer from '../view/ProductViewer';
 import Footer from '../nav/Footer';
 import AddtoFav from "../cards/AddtoFav";
 import AddtoCart from "./AddtoCart";
+import { Link } from 'react-router-dom';
+import HomeWorkTwoToneIcon from '@material-ui/icons/HomeWorkTwoTone';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -163,7 +166,7 @@ function Product({ match }) {
                       </Grid>
                     </Grid>
                     <Grid item>
-                      <Typography variant="h3">?{product.price}</Typography>
+                      <Typography variant="h3">₹{product.price}</Typography>
                     </Grid>
                     <Grid item xs={12}>
                       <Typography variant="body1" color="textSecondary" paragraph>
@@ -172,7 +175,25 @@ function Product({ match }) {
                     </Grid>
                   </Grid>
                 </Grid>
-                <Box display="flex" flexDirection="row" justifyContent="center">
+                <Box display="flex" flexDirection="row" justifyContent="flex-end">
+                  <Box>
+                    <Link className="styled-link" to='/'>
+                      <Button
+                        variant="outlined"
+                        size="large"
+                        color="secondary"
+                        startIcon={<HomeWorkTwoToneIcon />}
+                        style={{
+                          marginRight: "15px", '&:hover': {
+                            color: 'red',
+                            backgroundColor: "yellow"
+                          }
+                        }}
+                      >
+                        Go to Home
+                       </Button>
+                    </Link>
+                  </Box>
                   <Box>
                     <AddtoCart data={product} />
                   </Box>
