@@ -42,7 +42,7 @@ function ProductViewer(props) {
         }
       },
       {
-        breakpoint: 680,
+        breakpoint: 820,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -50,7 +50,7 @@ function ProductViewer(props) {
         }
       },
       {
-        breakpoint: 520,
+        breakpoint: 560,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1
@@ -61,23 +61,23 @@ function ProductViewer(props) {
   return (
     <Fragment>
       <Container className={classes.root} maxWidth="lg">
-        <ReactSlick
+        <ReactSlick style={{ textAlign: 'center' }}
           {...settings}
         >
           {
             images.map((image, index) => {
               return (
-                <ReactImageMagnify isHintEnabled={true} shouldHideHintAfterFirstActivation={true} shouldUsePositiveSpaceLens={true} enlargedImagePosition={'over'} key={index} {...{
+                <ReactImageMagnify imageStyle={{ display: 'inline-block' }} shouldUsePositiveSpaceLens={true} enlargedImagePosition={'over'} key={index} {...{
                   smallImage: {
                     alt: index.toString(),
-                    width: 240,
+                    width: 360,
                     height: 360,
                     src: image.small,
                   },
                   largeImage: {
                     src: image.large,
                     width: 1200,
-                    height: 1800
+                    height: 1200
                   }
                 }} />
               );
