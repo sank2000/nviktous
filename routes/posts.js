@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require("mongoose");
 const router = express.Router();
 
 
@@ -15,8 +16,15 @@ router.get("/", function (req, res) {
 
 router.post("/findone", function (req, res) {
   Product.findById(req.body.id, (err, result) => {
-    if (err) { console.log(err); return; }
-    res.send(result);
+    if (err) {
+      if (err instanceof mongoose.CastError) {
+        res.send([]);
+      }
+      console.log(err); return;
+    }
+    else {
+      res.send(result);
+    }
   })
 })
 

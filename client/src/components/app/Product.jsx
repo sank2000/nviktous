@@ -17,12 +17,23 @@ import AddtoCart from "./AddtoCart";
 import { Link } from 'react-router-dom';
 import HomeWorkTwoToneIcon from '@material-ui/icons/HomeWorkTwoTone';
 import Button from '@material-ui/core/Button';
+import FlexContainer from '../containers/FlexContainer';
 
 
 import Popover from "@material-ui/core/Popover";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import FacebookIcon from "@material-ui/icons/Facebook";
+
+
+function Empty() {
+  return (
+    <FlexContainer withAppBar>
+      <img src='../images/404.png' style={{ maxWidth: '80vw', maxHeight: '50vh', padding: '1rem' }} alt='kfjngdf' />
+      <Typography variant="h4">Item not found !</Typography>
+    </FlexContainer>
+  );
+}
 
 
 const useStyles = makeStyles((theme) => ({
@@ -86,7 +97,7 @@ function Loading() {
           <Skeleton variant="rect" width={350} height={250} />
         </Box>
       </Box>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} style={{ marginLeft: "50px" }} >
         <Grid item xs={12} sm={12} md={9} lg={9}>
           <Typography component="h1" variant="h2" color="textPrimary">
             <Skeleton />
@@ -128,10 +139,11 @@ function Loading() {
 }
 
 function Product({ match }) {
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState([]);
   const [loading, setloading] = useState(true);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [empty, setEmpty] = useState(false);
 
   const handleClick = event => {
     if (navigator.share) {
@@ -159,7 +171,12 @@ function Product({ match }) {
     axios.post("/posts/findone", prms)
       .then(function (response) {
         console.log(response.data);
-        setProduct(response.data);
+        if (response.data.length !== 0) {
+          setProduct(response.data);
+        }
+        else {
+          setEmpty(true);
+        }
         setloading(false);
       })
       .catch(function (error) {
@@ -172,7 +189,7 @@ function Product({ match }) {
   return (
     <>
       {
-        loading ? <Loading /> :
+        loading ? <Loading /> : empty ? <Empty /> :
           <>
             <Popover
               id={id}
@@ -265,6 +282,14 @@ function Product({ match }) {
                       <Typography variant="body1" color="textSecondary" paragraph>
                         {product.description}
                       </Typography>
+                      <Grid item xs={12}>
+                        <Typography variant="h5" component="h4">
+                          Payment method
+                        </Typography>
+                        <Typography variant="h6" component="h4">
+                          <img src='../images/rupee.png' style={{ width: "35px", height: "35px" }} alt='rupee' /> cash on delivery
+                        </Typography>
+                      </Grid>
                     </Grid>
                   </Grid>
                 </Grid>

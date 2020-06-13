@@ -30,10 +30,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: '100%',
   },
   cardContent: {
-    flexGrow: 1,
-    "&:hover": {
-      transform: 'translate(0px, -10px)'
-    }
+    flexGrow: 1
   },
   priceTag: {
     paddingLeft: theme.spacing(1)
