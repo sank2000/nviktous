@@ -104,11 +104,11 @@ export default function MediaCard(props) {
       >
         {
           props.discount > 0 &&
-          <Typography className={classes.originalPrice} variant="caption" component="p">
+          <Typography className={classes.originalPrice} variant="p" component="p">
             ₹{props.price}
           </Typography>
         }
-        <Typography className={classes.priceTag} variant="h6" component="h2">
+        <Typography className={classes.priceTag} variant="h5" component="h2">
           ₹{props.price - (props.price * (props.discount / 100))}
         </Typography>
       </div>

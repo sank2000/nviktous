@@ -18,6 +18,13 @@ import { Link } from 'react-router-dom';
 import HomeWorkTwoToneIcon from '@material-ui/icons/HomeWorkTwoTone';
 import Button from '@material-ui/core/Button';
 
+
+import Popover from "@material-ui/core/Popover";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import FacebookIcon from "@material-ui/icons/Facebook";
+
+
 const useStyles = makeStyles((theme) => ({
   heroContent: {
     backgroundColor: theme.palette.grey[100],
@@ -39,6 +46,11 @@ const useStyles = makeStyles((theme) => ({
   },
   originalPrice: {
     textDecoration: 'line-through'
+  },
+  btn: {
+    "&:hover": {
+      color: theme.palette.primary.main
+    }
   }
 }));
 
@@ -119,6 +131,28 @@ function Product({ match }) {
   const [product, setProduct] = useState({});
   const [loading, setloading] = useState(true);
   const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = event => {
+    if (navigator.share) {
+      navigator.share({
+        title: 'wow !',
+        text: 'Check it out ',
+        url: window.location.href,
+      })
+        .catch((error) => setAnchorEl(event.currentTarget));
+    }
+    else {
+      setAnchorEl(event.currentTarget);
+    }
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
 
   useEffect(() => {
     let prms = new URLSearchParams({ id: match.params.itemId });
@@ -133,11 +167,59 @@ function Product({ match }) {
       });
   }, [match.params.itemId])
 
+
+
   return (
     <>
       {
         loading ? <Loading /> :
           <>
+            <Popover
+              id={id}
+              open={open}
+              anchorEl={anchorEl}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "center"
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "center"
+              }}
+            >
+              <Grid container direction="row" justify="center" alignItems="center">
+                <Grid item>
+                  <IconButton
+                    href={
+                      "http://www.facebook.com/sharer.php?u=" + window.location.href
+                    }
+                    className={classes.btn}
+                  >
+                    <FacebookIcon />
+                  </IconButton>
+                  <IconButton
+                    href={
+                      "https://twitter.com/share?url=" +
+                      window.location.href +
+                      "&amp;text=Check%20it%20out&amp;hashtags=nvikotous"
+                    }
+                    className={classes.btn}
+                  >
+                    <TwitterIcon />
+                  </IconButton>
+                  <IconButton
+                    href={
+                      "mailto:?Subject=Nvikotous&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 " +
+                      window.location.href
+                    }
+                    className={classes.btn}
+                  >
+                    <MailOutlineIcon />
+                  </IconButton>
+                </Grid>
+              </Grid>
+            </Popover>
             <Container maxWidth="lg">
               <ProductViewer images={productImages} />
             </Container>
@@ -152,7 +234,7 @@ function Product({ match }) {
                     </Grid>
                     <Grid item xs={2}>
                       <AddtoFav id={match.params.itemId} color="secondary" />
-                      <IconButton color="secondary"><ShareTwoToneIcon /></IconButton>
+                      <IconButton aria-describedby={id} color="secondary" onClick={handleClick}><ShareTwoToneIcon /></IconButton>
                     </Grid>
                   </Grid>
                   <Grid container justify="space-between" spacing={3}>
