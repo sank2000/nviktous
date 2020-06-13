@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Grid, Typography, Paper } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import RemoveShoppingCartTwoToneIcon from '@material-ui/icons/RemoveShoppingCartTwoTone';
 import IconButton from '@material-ui/core/IconButton';
 import Authapi from "../auth/AuthApi";

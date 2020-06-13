@@ -1,56 +1,38 @@
-import React from 'react';
-import Slider from 'react-animated-slider';
-import "react-animated-slider/build/horizontal.css";
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import CarouselImage from "./CarouselImage";
 
-import '../../assets/styles/Carousel.css'
-import { Typography, Button } from '@material-ui/core';
-const content = [
-  {
-    image: 'https://images.unsplash.com/photo-1546884680-a1de22e94d50?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
-    title: 'Title 1',
-    description: 'Lorem Ipsum',
-    button: 'Buy now',
-    foot: '50% OFF'
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1546872863-e85d5c3e5159?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
-    title: 'Title 2',
-    description: 'Lorem Ipsum',
-    button: 'Buy now',
-    foot: 'BUY 1 GET 1'
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1545852528-fa22f7fcd63e?ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80',
-    title: 'Title 3',
-    description: 'Lorem Ipsum',
-    button: 'Buy now',
-    foot: '25% CASHBACK!'
-  }
-]
+import "./Carousel.css";
 
-function Carousel() {
+const images = [
+  "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+  "https://images.unsplash.com/photo-1542060748-10c28b62716f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+  "https://images.unsplash.com/photo-1565084888279-aca607ecce0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+];
+
+export default () => {
+  const settings = {
+    dots: true,
+    arrows: false,
+    fade: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    autoplay: true,
+    swipeToSlide: true,
+    adaptiveHeight: true
+  };
   return (
-    <div>
-      <Slider className="slider-wrapper">
-        {content.map((item, index) => (
-          <div
-            key={index}
-            className="slider-content"
-            style={{ background: `url('${item.image}') no-repeat center center` }}
-          >
-            <div className="inner">
-              <Typography variant="h1" component="h1">{item.title}</Typography>
-              <Typography variant="h4" component="h5">{item.description}</Typography>
-              <Button>{item.button}</Button>
-            </div>
-            <section>
-              <Typography variant="h3" component="h4">{item.foot}</Typography>
-            </section>
-          </div>
+    <div style={{ marginTop: "30px" }}>
+      <Slider {...settings}>
+        {images.map((image, index) => (
+          <CarouselImage src={image} key={index} />
         ))}
       </Slider>
-    </div >
+    </div>
   );
-}
-
-export default Carousel;
+};
