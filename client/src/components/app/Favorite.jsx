@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from "axios";
+import { Typography } from '@material-ui/core';
 
 import Footer from '../nav/Footer';
 import ItemCard from '../cards/ItemCard';
@@ -25,7 +26,14 @@ function Loading() {
   );
 }
 
-
+function Empty() {
+  return (
+    <FlexContainer withAppBar>
+      <img src='../images/emptyCart.png' style={{ maxWidth: '80vw', maxHeight: '50vh', padding: '1rem' }} alt='kfjngdf' />
+      <Typography variant="h2">No Favourite !</Typography>
+    </FlexContainer>
+  );
+}
 
 
 
@@ -50,6 +58,7 @@ export default function Home() {
   const classes = useStyles();
   const [post, setPost] = useState([]);
   const [load, setLoad] = useState(true);
+  const [empty, setEmpty] = useState(true);
 
   useEffect(() => {
     console.log("inside useEffect");
@@ -57,6 +66,9 @@ export default function Home() {
       .then(function (response) {
         console.log(response.data);
         setPost([...response.data]);
+        if (response.data.length !== 0) {
+          setEmpty(false);
+        }
         setLoad(false);
       })
       .catch(function (error) {
@@ -69,7 +81,7 @@ export default function Home() {
   return (
     <React.Fragment>
       <CssBaseline />
-      {load ? <Loading /> : <>
+      {load ? <Loading /> : empty ? <Empty /> : <>
         <main>
           <Container className={classes.cardGrid} maxWidth="lg">
             <Grid container spacing={4}>
