@@ -41,20 +41,12 @@ function CartFoot(props) {
               direction="row"
               justify="space-evenly"
               alignItems="baseline">
-              <Grid item className={classes.grow}>
+              <Grid item>
                 <Typography variant="h5">Grand Total</Typography>
               </Grid>
               <Grid item>
-                <Typography variant="h5">₹{detail.price}</Typography>
+                <Typography variant="h5" style={{ marginRight: "10px" }}>₹{detail.price}</Typography>
               </Grid>
-            </Grid>
-          </Grid>
-          <Grid item>
-            <Grid container
-              direction="row"
-              justify="center"
-              alignItems="center"
-              spacing={3}>
               <Grid item>
                 <Button variant="outlined" color="primary" size="medium" onClick={() => setBuy(true)}>
                   Buy Now

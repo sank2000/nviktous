@@ -26,10 +26,46 @@ export default function MediaCard(props) {
       margin: "0px"
     },
     image: {
-      maxWidth: "100%",
-      minHeight: "20vh",
-      maxHeight: "25vh",
-      objectFit: "cover"
+      [theme.breakpoints.down("sm")]: {
+        maxWidth: "100%",
+        minHeight: "20vh",
+        maxHeight: "25vh",
+        objectFit: "cover",
+        marginTop: "10px",
+        marginLeft: "50px"
+      },
+      [theme.breakpoints.up("sm")]: {
+        maxWidth: "100%",
+        minHeight: "20vh",
+        maxHeight: "25vh",
+        objectFit: "cover",
+        marginTop: "10px",
+        marginLeft: "75px"
+      },
+      [theme.breakpoints.down("md")]: {
+        maxWidth: "100%",
+        minHeight: "20vh",
+        maxHeight: "25vh",
+        objectFit: "cover",
+        marginTop: "10px",
+        marginLeft: "70px"
+      },
+      [theme.breakpoints.up("md")]: {
+        maxWidth: "100%",
+        minHeight: "20vh",
+        maxHeight: "25vh",
+        objectFit: "cover",
+        marginTop: "10px",
+        marginLeft: "50px"
+      },
+      [theme.breakpoints.up("lg")]: {
+        maxWidth: "100%",
+        minHeight: "20vh",
+        maxHeight: "25vh",
+        objectFit: "cover",
+        marginTop: "10px",
+        marginLeft: "10px"
+      }
     },
     price: {
       textAlign: 'right',
@@ -57,7 +93,25 @@ export default function MediaCard(props) {
   }
 
   return (
-    <Paper elevation={3} className={classes.root}>
+    <Paper elevation={3} className={classes.root} style={{ position: "relative", marginBottom: "25px" }}>
+      <div
+        style={{
+          position: "absolute",
+          right: 0,
+          paddingRight: "10px",
+          paddingTop: "15px"
+        }}
+      >
+        {
+          props.discount > 0 &&
+          <Typography className={classes.originalPrice} variant="p" component="p">
+            ₹{props.price}
+          </Typography>
+        }
+        <Typography className={classes.priceTag} variant="h5" component="h2">
+          ₹{props.price - (props.price * (props.discount / 100))}
+        </Typography>
+      </div>
       <Grid container justify="space-between">
         <Grid className={classes.imageWrapper} item>
           <img
@@ -91,29 +145,22 @@ export default function MediaCard(props) {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item className={classes.grow}>
-              <Grid container className={classes.grow} direction={useMediaQuery(theme.breakpoints.up('sm')) ? "column" : "row"} justify="space-between" alignItems="stretch">
-                <Grid item className={classes.grow}>
-                  {
-                    props.discount > 0 &&
-                    <Typography className={classes.originalPrice} variant="caption" component="p">
-                      ₹{props.price}
-                    </Typography>
-                  }
-                  <Typography className={classes.priceTag} variant="h6" component="h2">
-                    ₹{props.price - (props.price * (props.discount / 100))}
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <IconButton onClick={handleRemove}>
-                    <RemoveShoppingCartTwoToneIcon style={{ color: "red" }} />
-                  </IconButton>
-                </Grid>
-              </Grid>
-            </Grid>
           </Grid>
         </Grid>
       </Grid>
+      <br />
+      <IconButton
+        onClick={handleRemove}
+        style={{
+          position: "absolute",
+          right: 0,
+          bottom: "-10px",
+          paddingRight: "10px",
+          paddingBottom: "20px"
+        }}
+      >
+        <RemoveShoppingCartTwoToneIcon style={{ color: "red" }} />
+      </IconButton>
     </Paper>
   );
 }
