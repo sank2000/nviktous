@@ -70,8 +70,8 @@ function ProductViewer(props) {
                 <ReactImageMagnify imageStyle={{ display: 'inline-block' }} shouldUsePositiveSpaceLens={true} enlargedImagePosition={'over'} key={index} {...{
                   smallImage: {
                     alt: index.toString(),
-                    width: 360,
-                    height: 360,
+                    width: 250,
+                    height: 250,
                     src: image.small,
                   },
                   largeImage: {
