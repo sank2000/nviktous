@@ -67,7 +67,7 @@ function Cart(props) {
         let total = 0;
         // eslint-disable-next-line
         merged.map((value, ind) => {
-          total = total + (value.count * (value.price - (value.price * (value.discount.per / 100))));
+          total = total + (value.count * (value.price - (value.price * (value.discount / 100))));
           setDetail({
             count: ind + 1,
             price: total
