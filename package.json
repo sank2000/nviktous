@@ -4,9 +4,13 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start-client": "npm start --prefix client",
-    "start-server": "nodemon app.js"
+    "client-install": "npm install --prefix client",
+    "start": "node app.js",
+    "serve": "nodemon app.js",
+    "server": "nodemon app.js --exec babel-node --presets babel-preset-env",
+    "client": "npm start --prefix client",
+    "dev-start": "concurrently \"nodemon app.js\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
