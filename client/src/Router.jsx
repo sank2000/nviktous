@@ -20,6 +20,8 @@ import FlexContainer from './components/containers/FlexContainer';
 import SyncLoader from "react-spinners/SyncLoader";
 import Search from "./components/app/Search";
 
+import NotFound from "./components/messages/Error404";
+
 function Loading() {
   const theme = useTheme();
   return (
@@ -53,6 +55,7 @@ function AppRouter() {
               <Route path='/product/:itemId' exact component={Product} />
               <Route path='/search/:search' exact component={Search} />
               <Route path='/sign' exact component={Sign} />
+              <Route component={NotFound} />
             </Switch>
           </Router>
         </AuthApi.Provider>
