@@ -34,7 +34,7 @@ app.use('/auth', auth);
 app.use('/posts', posts);
 app.use('/user', user);
 
-if (process.env.NODE_ENV === 'production' || true) {
+if (process.env.NODE_ENV === 'production') {
   // Set static folder
   app.use(express.static(path.join(__dirname, 'client', 'build')));
 
