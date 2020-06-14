@@ -61,7 +61,7 @@ passport.deserializeUser(function (id, done) {
   });
 });
 
-
+// http://localhost:3000
 
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,

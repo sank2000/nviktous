@@ -15,6 +15,12 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from "@material-ui/icons/Facebook";
 
+import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
+import AddShoppingCartTwoToneIcon from '@material-ui/icons/AddShoppingCartTwoTone';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+
+import { Link } from 'react-router-dom';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -32,6 +38,13 @@ const useStyles = makeStyles((theme) => ({
   },
   btn:
   {
+    fontSize: "18px",
+    "&:hover": {
+      color: theme.palette.primary.main
+    }
+  },
+  hvr:
+  {
     "&:hover": {
       color: theme.palette.primary.main
     }
@@ -47,28 +60,47 @@ export default function StickyFooter(props) {
       <FooterTop route={props.route} />
       <footer className={classes.footer}>
         <Container maxWidth="md">
-          <Grid
-            container
-            direction="row"
-            justify="center"
-            alignItems="center"
-          >
-            <Grid item>
-              <Typography variant="h6">Follow us</Typography>
+          <Grid container>
+            <Grid item xl={12} sm={4}>
+              <Typography variant="h6" style={{ marginBottom: "20px" }}>Category </Typography>
+              <Grid container direction="column" justify="flex-start" alignItems="flex-start" spacing={5}>
+                <Typography variant="p">Mens apparel </Typography>
+                <Typography variant="p">Womens apparel </Typography>
+                <Typography variant="p">Children apparel </Typography>
+                <Typography variant="p">Laptop bags </Typography>
+                <Typography variant="p">other </Typography>
+              </Grid>
             </Grid>
-            <Grid item>
-              <IconButton href="#" className={classes.btn}>
-                <InstagramIcon />
-              </IconButton>
-              <IconButton href="#" className={classes.btn}>
-                <FacebookIcon />
-              </IconButton>
-              <IconButton href="#" className={classes.btn}>
-                <TwitterIcon />
-              </IconButton>
-              <IconButton href="#" className={classes.btn}>
-                <MailOutlineIcon />
-              </IconButton>
+            <Grid item xl={12} sm={4}>
+              <Typography variant="h6">Follow us : </Typography>
+              <Grid container direction="column" justify="flex-start" alignItems="flex-start">
+                <IconButton href="#" className={classes.btn}>
+                  <InstagramIcon /> Instagram
+                </IconButton>
+                <IconButton href="#" className={classes.btn}>
+                  <FacebookIcon /> Facebook
+                </IconButton>
+                <IconButton href="#" className={classes.btn}>
+                  <TwitterIcon /> Twitter
+                </IconButton>
+                <IconButton href="#" className={classes.btn}>
+                  <MailOutlineIcon /> Mail
+                </IconButton>
+              </Grid>
+            </Grid>
+            <Grid item xl={12} sm={4}>
+              <Typography variant="h6">Follow us : </Typography>
+              <Grid container direction="column" justify="flex-start" alignItems="flex-start">
+                <IconButton href="/favourite" className={classes.btn} style={{ paddingTop: "10px" }}>
+                  <FavoriteTwoToneIcon /> My Favourite
+                </IconButton>
+                <IconButton href="/cart" className={classes.btn}>
+                  <AddShoppingCartTwoToneIcon /> My cart
+                </IconButton>
+                <IconButton href="/myorder" className={classes.btn}>
+                  <AssignmentIcon /> My order
+                </IconButton>
+              </Grid>
             </Grid>
           </Grid>
           <Copyright />
