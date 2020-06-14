@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express');
 const router = express.Router();
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const passport = require("passport");
 const { v5: uuidv5 } = require('uuid');
 
@@ -19,7 +20,8 @@ router.use(session(
   {
     secret: "nviktous secret",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: new MongoStore({ url: process.env.DB_URL, ttl: 24 * 60 * 60 })
   }
 ));
 

@@ -62,13 +62,13 @@ export default function StickyFooter(props) {
         <Container maxWidth="md">
           <Grid container>
             <Grid item xl={12} sm={4}>
-              <Typography variant="h6" style={{ marginBottom: "20px" }}>Category </Typography>
-              <Grid container direction="column" justify="flex-start" alignItems="flex-start" spacing={5}>
+              <Typography variant="h6" style={{ marginBottom: "20px", marginRight: "50px" }}>Category </Typography>
+              <Grid container direction="column" style={{ marginLeft: "20px" }} spacing={5}>
                 <Typography variant="p">Mens apparel </Typography>
                 <Typography variant="p">Womens apparel </Typography>
                 <Typography variant="p">Children apparel </Typography>
                 <Typography variant="p">Laptop bags </Typography>
-                <Typography variant="p">other </Typography>
+                <Typography variant="p" style={{ marginBottom: "20px" }}>other </Typography>
               </Grid>
             </Grid>
             <Grid item xl={12} sm={4}>
