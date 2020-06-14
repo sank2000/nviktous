@@ -4,6 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "serve": "nodemon app.js",
+    "client": "npm start --prefix client",
+    "dev-start": "concurrently \"nodemon app.js\" \"npm run client\"",
     "client-start": "npm start --prefix client",
     "server-start": "nodemon app.js",
     "client-install": "npm install --prefix client",
