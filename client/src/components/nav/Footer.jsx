@@ -54,7 +54,7 @@ export default function StickyFooter(props) {
             alignItems="center"
           >
             <Grid item>
-              <Typography variant="body1">Contact</Typography>
+              <Typography variant="h6">Follow us</Typography>
             </Grid>
             <Grid item>
               <IconButton href="#" className={classes.btn}>
