@@ -8,9 +8,6 @@ const passport = require("passport");
 const cors = require("cors");
 
 
-
-
-
 const auth = require('./routes/auth');
 const posts = require('./routes/posts');
 const user = require('./routes/user');
@@ -45,9 +42,6 @@ const dbConnection = mongoose.connect(process.env.DB_URL, {
   useFindAndModify: false,
   useCreateIndex: true
 });
-
-
-
 
 
 app.listen(process.env.PORT || 4000, () => {
