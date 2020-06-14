@@ -55,6 +55,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '.7rem',
     textTransform: 'uppercase'
   },
+  priceTag: {
+    paddingLeft: theme.spacing(1),
+    color: theme.palette.primary.main
+  },
   originalPrice: {
     textDecoration: 'line-through'
   },
@@ -268,7 +272,7 @@ function Product({ match }) {
                       </Grid>
                     </Grid>
                     <Grid item>
-                      <Typography variant="h3" component="h2">
+                      <Typography className={classes.priceTag} variant="h3" component="h2">
                         ₹{product.price - (product.price * (product.discount / 100))}
                       </Typography>
                       {
@@ -282,11 +286,11 @@ function Product({ match }) {
                       <Typography variant="body1" color="textSecondary" paragraph>
                         {product.description}
                       </Typography>
-                      <Grid item xs={12}>
+                      <Grid item xs={12} style={{ paddingBottom: "35px" }}>
                         <Typography variant="h5" component="h4">
                           Payment method
                         </Typography>
-                        <Typography variant="h6" component="h4">
+                        <Typography variant="h6" component="h4" color="textSecondary">
                           <img src='../images/rupee.png' style={{ width: "35px", height: "35px" }} alt='rupee' /> cash on delivery
                         </Typography>
                       </Grid>

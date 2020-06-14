@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1
   },
   priceTag: {
-    paddingLeft: theme.spacing(1)
+    paddingLeft: theme.spacing(1),
+    color: theme.palette.primary.main
   },
   originalPrice: {
     margin: 0,
@@ -69,7 +70,7 @@ function ItemCard(props) {
               <Typography gutterBottom variant="h5" component="h2">
                 {props.item.name}
               </Typography>
-              <Typography>
+              <Typography color="textSecondary">
                 {props.item.description}
               </Typography>
             </CardContent>
