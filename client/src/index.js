@@ -7,7 +7,6 @@ import lightBlue from '@material-ui/core/colors/lightBlue';
 import teal from '@material-ui/core/colors/teal';
 
 import Router from './Router';
-import * as serviceWorker from './serviceWorker';
 
 const theme = createMuiTheme({
   palette: {
@@ -23,4 +22,3 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-serviceWorker.unregister();
