@@ -69,6 +69,10 @@ export default function MediaCard(props) {
     price: {
       textAlign: 'right',
     },
+    priceTag: {
+      paddingLeft: theme.spacing(1),
+      color: theme.palette.primary.main
+    },
     originalPrice: {
       textDecoration: 'line-through'
     },
@@ -138,7 +142,7 @@ export default function MediaCard(props) {
                   </Grid>
                 </Grid>
                 <Grid item>
-                  <Typography variant="body1">
+                  <Typography variant="body1" color="textSecondary">
                     {props.description}
                   </Typography>
                 </Grid>
