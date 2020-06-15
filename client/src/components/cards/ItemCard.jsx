@@ -52,53 +52,51 @@ const useStyles = makeStyles((theme) => ({
 function ItemCard(props) {
   const classes = useStyles();
   return (
-    <Grid item xs={6} sm={4} md={3} lg={3}>
-      <Card elevation={2} className={classes.card}>
-        <Link className="styled-link" style={{ flexGrow: '1' }} to={`/product/${props.item._id}`}>
-          <CardActionArea>
-            <CardMedia
-              className={classes.cardMedia}
-              image="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
-              title="Image title"
-            >
-              {
-                props.item.discount.per > 0 &&
-                <Typography className={classes.offText} component="span" variant="h6">{props.item.discount.per}% OFF</Typography>
-              }
-            </CardMedia>
-            <CardContent className={classes.cardContent}>
-              <Typography gutterBottom variant="h5" component="h2">
-                {props.item.name}
+    <Card elevation={2} className={classes.card} style={props.style} >
+      <Link className="styled-link" style={{ flexGrow: '1' }} to={`/product/${props.item._id}`}>
+        <CardActionArea>
+          <CardMedia
+            className={classes.cardMedia}
+            image="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+            title="Image title"
+          >
+            {
+              props.item.discount.per > 0 &&
+              <Typography className={classes.offText} component="span" variant="h6">{props.item.discount.per}% OFF</Typography>
+            }
+          </CardMedia>
+          <CardContent className={classes.cardContent}>
+            <Typography gutterBottom variant="h5" component="h2">
+              {props.item.name.length > 10 ? props.item.name.substring(0, 10) + "..." : props.item.name}
+            </Typography>
+            <Typography color="textSecondary">
+              {props.item.description.length > 25 ? props.item.description.substring(0, 25) + "..." : props.item.description}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Link>
+      <CardActions >
+        <Grid container justify="space-between">
+          <Grid item>
+            {
+              props.item.discount > 0 &&
+              <Typography className={classes.originalPrice} variant="caption" component="p">
+                ₹{props.item.price}
               </Typography>
-              <Typography color="textSecondary">
-                {props.item.description}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Link>
-        <CardActions >
-          <Grid container justify="space-between">
-            <Grid item>
-              {
-                props.item.discount > 0 &&
-                <Typography className={classes.originalPrice} variant="caption" component="p">
-                  ₹{props.item.price}
-                </Typography>
-              }
-              <Typography className={classes.priceTag} variant="h6" component="h2">
-                ₹{props.item.price - (props.item.price * (props.item.discount / 100))}
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Grid container id="quick actions">
-                <AddtoCart ico data={props.item} />
-                <AddtoFav id={props.item._id} color="primary" />
-              </Grid>
+            }
+            <Typography className={classes.priceTag} variant="h6" component="h2">
+              ₹{props.item.price - (props.item.price * (props.item.discount / 100))}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Grid container id="quick actions">
+              <AddtoCart ico data={props.item} />
+              <AddtoFav id={props.item._id} color="primary" />
             </Grid>
           </Grid>
-        </CardActions>
-      </Card>
-    </Grid>
+        </Grid>
+      </CardActions>
+    </ Card>
   );
 }
 
