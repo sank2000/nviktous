@@ -19,8 +19,6 @@ import FavoriteTwoToneIcon from '@material-ui/icons/FavoriteTwoTone';
 import AddShoppingCartTwoToneIcon from '@material-ui/icons/AddShoppingCartTwoTone';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 
-import { Link } from 'react-router-dom';
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -64,11 +62,11 @@ export default function StickyFooter(props) {
             <Grid item xl={12} sm={4}>
               <Typography variant="h6" style={{ marginBottom: "20px", marginRight: "50px" }}>Category </Typography>
               <Grid container direction="column" style={{ marginLeft: "20px" }} spacing={5}>
-                <Typography variant="p">Mens apparel </Typography>
-                <Typography variant="p">Womens apparel </Typography>
-                <Typography variant="p">Children apparel </Typography>
-                <Typography variant="p">Laptop bags </Typography>
-                <Typography variant="p" style={{ marginBottom: "20px" }}>other </Typography>
+                <Typography variant="subtitle1">Mens apparel </Typography>
+                <Typography variant="subtitle1">Womens apparel </Typography>
+                <Typography variant="subtitle1">Children apparel </Typography>
+                <Typography variant="subtitle1">Laptop bags </Typography>
+                <Typography variant="subtitle1" style={{ marginBottom: "20px" }}>other </Typography>
               </Grid>
             </Grid>
             <Grid item xl={12} sm={4}>

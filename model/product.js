@@ -8,7 +8,6 @@ const productSchema = new mongoose.Schema(
     category: String,
     img: Array,
     size: Array,
-    color: Array,
     price: Number,
     discount: { type: Number, default: 0 }
   }

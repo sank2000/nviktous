@@ -8,6 +8,7 @@ import NavBar from './components/nav/NavBar';
 import Home from './components/app/Home';
 import Sign from './components/auth/SignRoute';
 import Product from './components/app/Product';
+import Category from './components/app/Category';
 import Cart from './components/app/Cart';
 import Favourite from "./components/app/Favorite";
 import MyOrder from "./components/app/MyOrder";
@@ -54,6 +55,7 @@ function AppRouter() {
               <ProtectedRoute path='/myorder' exact component={MyOrder} />
               <Route path='/product/:itemId' exact component={Product} />
               <Route path='/search/:search' exact component={Search} />
+              <Route path='/category/:product' exact component={Category} />
               <Route path='/sign' exact component={Sign} />
               <Route component={NotFound} />
             </Switch>

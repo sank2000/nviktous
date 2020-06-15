@@ -22,6 +22,11 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import ClearOutlinedIcon from "@material-ui/icons/ClearOutlined";
 
+import TreeView from '@material-ui/lab/TreeView';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import TreeItem from '@material-ui/lab/TreeItem';
+
 
 import Sign from "../auth/SignIn";
 import Authapi from "../auth/AuthApi";
@@ -122,6 +127,28 @@ export default function TemporaryDrawer() {
           </InputAdornment>
         }
       />
+      <Divider />
+      <List>
+        <ListItem>
+          <TreeView
+            className={classes.root}
+            defaultCollapseIcon={<ExpandMoreIcon />}
+            defaultExpandIcon={<ChevronRightIcon />}
+          >
+            <TreeItem nodeId="1" label="Category">
+              <Link className="styled-link" to='/category/mens apparel' onClick={toggleDrawer(false)}>
+                <TreeItem nodeId="2" label="Mens apparel" />
+              </Link>
+              <Link className="styled-link" to='/category/womens apparel' onClick={toggleDrawer(false)}>
+                <TreeItem nodeId="3" label="Womens apparel" />
+              </Link>
+              <Link className="styled-link" to='/category/kids apparel' onClick={toggleDrawer(false)}>
+                <TreeItem nodeId="4" label="Kids apparel" />
+              </Link>
+            </TreeItem>
+          </TreeView>
+        </ListItem>
+      </List>
       <Divider />
       <List onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)} role="presentation" className={clsx(classes.list)}>
         <Link className="styled-link" to='/favourite'>

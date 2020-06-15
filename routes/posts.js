@@ -14,6 +14,41 @@ router.get("/", function (req, res) {
 })
 
 
+router.post("/main", function (req, res) {
+  var query = Product.find({ category: req.body.category }).limit(6);
+  query.exec(function (err, result) {
+    if (err) { console.log(err); return }
+    res.send(result);
+  });
+})
+
+
+router.post("/full", function (req, res) {
+  Product.find({ category: req.body.category }, (err, result) => {
+    if (err) { console.log(err); return; }
+    res.send(result);
+  })
+})
+
+
+
+router.post("/filter1", function (req, res) {
+  var query = Product.find({ category: req.body.category }).sort({ 'price': req.body.order });
+  query.exec(function (err, result) {
+    if (err) { console.log(err); return }
+    res.send(result);
+  });
+});
+
+router.post("/filter2", function (req, res) {
+  var query = Product.find({ $and: [{ category: req.body.category }, { 'price': { $gte: req.body.start, $lte: req.body.end } }] }).sort({ 'price': 'asc' });
+  query.exec(function (err, result) {
+    if (err) { console.log(err); return }
+    res.send(result);
+  });
+});
+
+
 router.post("/findone", function (req, res) {
   Product.findById(req.body.id, (err, result) => {
     if (err) {
