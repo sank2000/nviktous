@@ -18,6 +18,7 @@ import { Link } from 'react-router-dom';
 import HomeWorkTwoToneIcon from '@material-ui/icons/HomeWorkTwoTone';
 import Button from '@material-ui/core/Button';
 import FlexContainer from '../containers/FlexContainer';
+import ShowCase2 from '../view/ProductCarousel';
 
 
 import Popover from "@material-ui/core/Popover";
@@ -322,6 +323,7 @@ function Product({ match }) {
                 </Box>
               </Container>
             </div>
+            <ShowCase2 title="Related Products" product={product.category} link="/category/kids apparel" />
             <Footer route={true} />
           </ >
       }
