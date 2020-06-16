@@ -118,7 +118,8 @@ export default function TemporaryDrawer() {
         value={search}
         onChange={SearchText}
         onKeyPress={keyEntered}
-        style={{ height: "50px", width: "300px", color: "white" }}
+        className={clsx(classes.list)}
+        style={{ height: "50px", color: "white" }}
         startAdornment={
           <InputAdornment position="start">
             <IconButton size="small" onClick={handleSearch}>
@@ -138,7 +139,7 @@ export default function TemporaryDrawer() {
       <List>
         <ListItem>
           <TreeView
-            className={classes.root}
+            className={clsx(classes.list)}
             defaultCollapseIcon={<ExpandMoreIcon className={classes.ico} />}
             defaultExpandIcon={<ChevronRightIcon className={classes.ico} />}
           >

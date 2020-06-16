@@ -250,7 +250,7 @@ function Product({ match }) {
                 <Grid container>
                   <Grid container>
                     <Grid item xs={10}>
-                      <Typography component="h1" variant="h2" color="textPrimary" gutterBottom>
+                      <Typography component="h1" variant="h2" color="primary" gutterBottom>
                         {product.name}
                       </Typography>
                     </Grid>
@@ -261,10 +261,10 @@ function Product({ match }) {
                   </Grid>
                   <Grid container justify="space-between" spacing={3}>
                     <Grid item>
-                      <Typography variant="h6">Material</Typography>
+                      <Typography variant="h6">{product.category}</Typography>
                     </Grid>
                     <Grid item>
-                      <Typography variant="h6">In stock</Typography>
+                      <Typography variant="h6" color="secondary">In stock</Typography>
                     </Grid>
                     <Grid item>
                       <Typography variant="h6">Available sizes</Typography>

@@ -47,7 +47,7 @@ export default function MediaCard(props) {
         maxHeight: "25vh",
         objectFit: "cover",
         marginTop: "10px",
-        marginLeft: "70px"
+        marginLeft: "55px"
       },
       [theme.breakpoints.up("md")]: {
         maxWidth: "100%",
@@ -131,13 +131,13 @@ export default function MediaCard(props) {
                 <Grid item>
                   <Grid container direction="row">
                     <Grid item xs={4}>
-                      <Typography variant="h6">Variant</Typography>
+                      <Typography variant="h6">{props.category}</Typography>
                     </Grid>
                     <Grid item xs={4}>
                       <Typography variant="h6">Size : {props.size}</Typography>
                     </Grid>
                     <Grid item xs={4}>
-                      <Typography variant="h6">Count : {props.count}</Typography>
+                      <Typography variant="h6" color="secondary">Count : {props.count}</Typography>
                     </Grid>
                   </Grid>
                 </Grid>

@@ -83,6 +83,7 @@ export default function Home() {
       <CssBaseline />
       {load ? <Loading /> : empty ? <Empty /> : <>
         <main>
+          <Typography variant="h4" style={{ color: "#FF7315", display: "inline-block", marginTop: "30px", marginLeft: "20px" }} >Favourite</Typography>
           <Container className={classes.cardGrid} maxWidth="lg">
             <Grid container spacing={4}>
               {post.map((item) => (

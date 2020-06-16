@@ -67,7 +67,7 @@ export default (props) => {
 
   };
   return (
-    <div style={{ marginTop: "5px" }}>
+    <div style={{ marginTop: "25px" }}>
       {load &&
         <>
           <Box display="flex" p={1}>
@@ -84,8 +84,7 @@ export default (props) => {
             {post.map((item) => {
               return <div key={item._id} >
                 <ItemCard key={item._id} item={item} style={{
-                  marginRight: "10px",
-                  marginLeft: "10px"
+                  margin: "10px"
                 }} />
               </div>
             })}

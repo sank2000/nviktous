@@ -229,6 +229,7 @@ export default ({ match }) => {
     <React.Fragment>
       {loading ? <Loading /> : empty ? <Empty /> :
         <>
+          <Typography variant="h5" style={{ color: "#FF7315", display: "inline-block", marginTop: "30px", marginLeft: "20px" }} >{match.params.product.toUpperCase()}</Typography>
           <Fab color="primary" onClick={handleClick} style={{ position: "fixed", right: 0, marginTop: "10px", marginRight: "10px", zIndex: "20000" }}>
             <FilterListIcon />
           </Fab>

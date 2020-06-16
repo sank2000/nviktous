@@ -47,7 +47,7 @@ const value = [
 
 export default function (props) {
   return (
-    <Grid container direction="row" justify="center" alignItems="center">
+    <Grid container direction="row" justify="center" alignItems="stretch" style={{ backgroundColor: "#dcdcdc", marginTop: "35px" }}>
       {value.map((value, ind) => {
         let src = value.img;
         if (props.route) {
