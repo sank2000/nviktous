@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
-import lightBlue from '@material-ui/core/colors/lightBlue';
-import teal from '@material-ui/core/colors/teal';
 
 import Router from './Router';
 

@@ -57,7 +57,7 @@ function ItemCard(props) {
         <CardActionArea>
           <CardMedia
             className={classes.cardMedia}
-            image="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+            image={props.item.img[0]}
             title="Image title"
           >
             {

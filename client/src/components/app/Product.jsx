@@ -72,16 +72,16 @@ const useStyles = makeStyles((theme) => ({
 
 const productImages = [
   {
-    small: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-    large: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80'
+    small: 'https://firebasestorage.googleapis.com/v0/b/nviktous.appspot.com/o/cart1.jpg?alt=media&token=9a106293-eafd-40a5-935e-768a491b2c88',
+    large: 'https://firebasestorage.googleapis.com/v0/b/nviktous.appspot.com/o/cart1.jpg?alt=media&token=9a106293-eafd-40a5-935e-768a491b2c88'
   },
   {
-    small: 'https://images.unsplash.com/photo-1523199455310-87b16c0eed11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-    large: 'https://images.unsplash.com/photo-1523199455310-87b16c0eed11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80'
+    small: 'https://firebasestorage.googleapis.com/v0/b/nviktous.appspot.com/o/shop-8.jpg?alt=media&token=0af0cd2b-3a2b-4bde-9dad-1f765d8eceb6',
+    large: 'https://firebasestorage.googleapis.com/v0/b/nviktous.appspot.com/o/shop-8.jpg?alt=media&token=0af0cd2b-3a2b-4bde-9dad-1f765d8eceb6'
   },
   {
-    small: 'https://images.unsplash.com/photo-1555445091-5a8b655e8a4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-    large: 'https://images.unsplash.com/photo-1555445091-5a8b655e8a4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1575&q=80'
+    small: 'https://firebasestorage.googleapis.com/v0/b/nviktous.appspot.com/o/shop-7.jpg?alt=media&token=69d262eb-ea78-4450-b72a-2d19d3f004bb',
+    large: 'https://firebasestorage.googleapis.com/v0/b/nviktous.appspot.com/o/shop-7.jpg?alt=media&token=69d262eb-ea78-4450-b72a-2d19d3f004bb'
   }
 ]
 
