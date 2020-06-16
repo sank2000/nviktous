@@ -75,7 +75,7 @@ export default (props) => {
               <Typography variant="h5">{props.title}</Typography>
             </Box>
             <Box p={1}>
-              <Button href={props.link} variant="contained" color="primary">
+              <Button href={props.link} size="small" variant="contained" color="primary">
                 Show more..
               </Button>
             </Box>

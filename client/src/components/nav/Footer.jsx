@@ -31,12 +31,13 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     padding: theme.spacing(3, 2),
     marginTop: 'auto',
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
+    backgroundColor: "#212529",
+    color: "white"
   },
   btn:
   {
     fontSize: "18px",
+    color: "grey",
     "&:hover": {
       color: theme.palette.primary.main
     }
@@ -61,16 +62,14 @@ export default function StickyFooter(props) {
           <Grid container>
             <Grid item xl={12} sm={4}>
               <Typography variant="h6" style={{ marginBottom: "20px", marginRight: "50px" }}>Category </Typography>
-              <Grid container direction="column" style={{ marginLeft: "20px" }} spacing={5}>
-                <Typography variant="subtitle1">Mens apparel </Typography>
-                <Typography variant="subtitle1">Womens apparel </Typography>
-                <Typography variant="subtitle1">Children apparel </Typography>
-                <Typography variant="subtitle1">Laptop bags </Typography>
-                <Typography variant="subtitle1" style={{ marginBottom: "20px" }}>other </Typography>
-              </Grid>
+              <Typography variant="subtitle1" style={{ color: "grey" }}>Mens apparel </Typography>
+              <Typography variant="subtitle1" style={{ color: "grey" }}>Womens apparel </Typography>
+              <Typography variant="subtitle1" style={{ color: "grey" }}>Children apparel </Typography>
+              <Typography variant="subtitle1" style={{ color: "grey" }}>Laptop bags </Typography>
+              <Typography variant="subtitle1" style={{ color: "grey", marginBottom: "20px" }}>other </Typography>
             </Grid>
             <Grid item xl={12} sm={4}>
-              <Typography variant="h6">Follow us : </Typography>
+              <Typography variant="h6">Follow us  </Typography>
               <Grid container direction="column" justify="flex-start" alignItems="flex-start">
                 <IconButton href="#" className={classes.btn}>
                   <InstagramIcon /> Instagram
@@ -87,7 +86,7 @@ export default function StickyFooter(props) {
               </Grid>
             </Grid>
             <Grid item xl={12} sm={4}>
-              <Typography variant="h6">Follow us : </Typography>
+              <Typography variant="h6">My account </Typography>
               <Grid container direction="column" justify="flex-start" alignItems="flex-start">
                 <IconButton href="/favourite" className={classes.btn} style={{ paddingTop: "10px" }}>
                   <FavoriteTwoToneIcon /> My Favourite

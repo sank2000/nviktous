@@ -86,7 +86,9 @@ export default function Home() {
           <Container className={classes.cardGrid} maxWidth="lg">
             <Grid container spacing={4}>
               {post.map((item) => (
-                <ItemCard key={item._id} item={item} />
+                <Grid item key={item._id} xs={6} sm={4} md={3} lg={3}>
+                  <ItemCard key={item._id} item={item} />
+                </Grid>
               ))}
             </Grid>
           </Container>

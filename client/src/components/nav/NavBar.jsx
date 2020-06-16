@@ -188,11 +188,11 @@ export default function NavBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar elevation={3} position="fixed">
+      <AppBar elevation={3} position="fixed" style={{ backgroundColor: "#212529", color: "white" }}>
         <Toolbar>
           <Drawer />
           <Typography variant="h6" noWrap>
-            NVIKTOUS
+            <span style={{ color: "#FF7315" }}>NVIK</span>TOUS
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>

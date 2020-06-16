@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, Fragment } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -65,6 +65,13 @@ export default function TemporaryDrawer() {
     fullList: {
       width: 'auto',
     },
+    paper: {
+      background: "#212529",
+      color: 'white'
+    },
+    ico: {
+      color: "white"
+    }
   });
   const classes = useStyles();
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -96,11 +103,11 @@ export default function TemporaryDrawer() {
   };
 
   const list = () => (
-    <>
+    <Fragment>
       <List onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)} role="presentation" className={clsx(classes.list)}>
         <Link className="styled-link" to='/'>
           <ListItem button>
-            <ListItemIcon><HomeWorkTwoToneIcon /></ListItemIcon>
+            <ListItemIcon className={classes.ico}><HomeWorkTwoToneIcon /></ListItemIcon>
             <ListItemText primary={'Home'} />
           </ListItem>
         </Link>
@@ -111,18 +118,18 @@ export default function TemporaryDrawer() {
         value={search}
         onChange={SearchText}
         onKeyPress={keyEntered}
-        style={{ height: "50px", width: "300px" }}
+        style={{ height: "50px", width: "300px", color: "white" }}
         startAdornment={
           <InputAdornment position="start">
             <IconButton size="small" onClick={handleSearch}>
-              <SearchOutlinedIcon />
+              <SearchOutlinedIcon className={classes.ico} />
             </IconButton>
           </InputAdornment>
         }
         endAdornment={
           <InputAdornment position="end">
             <IconButton size="small" onClick={toggleDrawer(false)}>
-              <ClearOutlinedIcon />
+              <ClearOutlinedIcon className={classes.ico} />
             </IconButton>
           </InputAdornment>
         }
@@ -132,8 +139,8 @@ export default function TemporaryDrawer() {
         <ListItem>
           <TreeView
             className={classes.root}
-            defaultCollapseIcon={<ExpandMoreIcon />}
-            defaultExpandIcon={<ChevronRightIcon />}
+            defaultCollapseIcon={<ExpandMoreIcon className={classes.ico} />}
+            defaultExpandIcon={<ChevronRightIcon className={classes.ico} />}
           >
             <TreeItem nodeId="1" label="Category">
               <Link className="styled-link" to='/category/mens apparel' onClick={toggleDrawer(false)}>
@@ -153,19 +160,19 @@ export default function TemporaryDrawer() {
       <List onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)} role="presentation" className={clsx(classes.list)}>
         <Link className="styled-link" to='/favourite'>
           <ListItem button>
-            <ListItemIcon><FavoriteTwoToneIcon /></ListItemIcon>
+            <ListItemIcon><FavoriteTwoToneIcon className={classes.ico} /></ListItemIcon>
             <ListItemText primary={'My Favourite'} />
           </ListItem>
         </Link>
         <Link className="styled-link" to='/cart'>
           <ListItem button>
-            <ListItemIcon><AddShoppingCartTwoToneIcon /></ListItemIcon>
+            <ListItemIcon><AddShoppingCartTwoToneIcon className={classes.ico} /></ListItemIcon>
             <ListItemText primary={'My Cart'} />
           </ListItem>
         </Link>
         <Link className="styled-link" to='/myorder'>
           <ListItem button>
-            <ListItemIcon><AssignmentIcon /></ListItemIcon>
+            <ListItemIcon><AssignmentIcon className={classes.ico} /></ListItemIcon>
             <ListItemText primary={'My Order'} />
           </ListItem>
         </Link>
@@ -173,14 +180,14 @@ export default function TemporaryDrawer() {
       <Divider />
       <List onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)} role="presentation" className={clsx(classes.list)}>
         {!data.auth ? <ListItem button onClick={() => setEnable(true)}>
-          <ListItemIcon><LockOpenTwoToneIcon /></ListItemIcon>
+          <ListItemIcon><LockOpenTwoToneIcon className={classes.ico} /></ListItemIcon>
           <ListItemText primary={'Sign In / Up'} />
         </ListItem> : <ListItem button onClick={handleLogout}>
-            <ListItemIcon><ExitToAppTwoToneIcon /></ListItemIcon>
+            <ListItemIcon><ExitToAppTwoToneIcon className={classes.ico} /></ListItemIcon>
             <ListItemText primary={'Log out'} />
           </ListItem>}
       </List>
-    </>
+    </Fragment>
   );
 
   return (
@@ -196,7 +203,7 @@ export default function TemporaryDrawer() {
         >
           <MenuIcon />
         </IconButton>
-        <Drawer anchor={'left'} open={drawerOpen} onClose={toggleDrawer(false)}>
+        <Drawer anchor={'left'} open={drawerOpen} onClose={toggleDrawer(false)} classes={{ paper: classes.paper }}>
           {list()}
         </Drawer>
       </React.Fragment>

@@ -10,8 +10,8 @@ import Router from './Router';
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: lightBlue[800], },
-    secondary: { main: teal.A700 },
+    primary: { main: "#FF7315" },
+    secondary: { main: "#C73E1D" },
   }
 });
 
