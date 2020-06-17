@@ -3,7 +3,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Grid, Container, Typography } from '@material-ui/core';
 import Button from "@material-ui/core/Button";
 
-import Buy from "./Buy";
+import Buy from "../Buy/main";
 
 function CartFoot(props) {
   const theme = useTheme();

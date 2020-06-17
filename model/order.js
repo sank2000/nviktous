@@ -7,7 +7,8 @@ const orderSchema = new mongoose.Schema(
     amount: Number,
     count: Number,
     item: { type: Array },
-    status: { type: Array }
+    status: { type: Array },
+    payment: Object
   }
 )
 
