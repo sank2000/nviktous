@@ -191,8 +191,13 @@ export default function NavBar() {
       <AppBar elevation={3} position="fixed" style={{ backgroundColor: "#212529", color: "white" }}>
         <Toolbar>
           <Drawer />
+          <img
+            src="./images/logo.png"
+            style={{ width: "25px", height: "25px", marginRight: "10px" }}
+            alt=""
+          />
           <Typography variant="h6" noWrap>
-            <span style={{ color: "#FF7315" }}>NVIK</span>TOUS
+            NVI<span style={{ color: "#FF7315" }}>KT</span>OUS
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
