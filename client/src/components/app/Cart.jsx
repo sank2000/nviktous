@@ -89,7 +89,7 @@ function Cart(props) {
       {load ? <Loading /> : empty ? <Empty /> : <>
         <Container className={classes.root} maxWidth="md" style={{ marginBottom: "100px" }}>
           {value.map((value, ind) => {
-            return <CartItem key={ind} id={value._id} category={value.category} name={value.name} description={value.description} price={value.price} count={value.count} size={value.size} discount={value.discount} />
+            return <CartItem key={ind} id={value._id} category={value.category} name={value.name} description={value.description} price={value.price} img={value.img} count={value.count} size={value.size} discount={value.discount} />
           })}
         </Container>
         <CartFoot detail={detail} value={value} />

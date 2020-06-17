@@ -145,13 +145,13 @@ export default function TemporaryDrawer() {
           >
             <TreeItem nodeId="1" label="Category">
               <Link className="styled-link" to='/category/mens apparel' onClick={toggleDrawer(false)}>
-                <TreeItem nodeId="2" label="Mens apparel" />
+                <TreeItem nodeId="2" label="Mens apparel" style={{ padding: '10px 0' }} />
               </Link>
               <Link className="styled-link" to='/category/womens apparel' onClick={toggleDrawer(false)}>
-                <TreeItem nodeId="3" label="Womens apparel" />
+                <TreeItem nodeId="3" label="Womens apparel" style={{ padding: '10px 0' }} />
               </Link>
               <Link className="styled-link" to='/category/kids apparel' onClick={toggleDrawer(false)}>
-                <TreeItem nodeId="4" label="Kids apparel" />
+                <TreeItem nodeId="4" label="Kids apparel" style={{ padding: '10px 0' }} />
               </Link>
             </TreeItem>
           </TreeView>

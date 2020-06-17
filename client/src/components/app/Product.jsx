@@ -250,7 +250,7 @@ function Product({ match }) {
                 <Grid container>
                   <Grid container>
                     <Grid item xs={10}>
-                      <Typography component="h1" variant="h2" color="primary" gutterBottom>
+                      <Typography component="h3" variant="h3" color="primary" gutterBottom>
                         {product.name}
                       </Typography>
                     </Grid>

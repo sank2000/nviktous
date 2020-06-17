@@ -31,31 +31,23 @@ export default function MediaCard(props) {
         maxHeight: "25vh",
         objectFit: "cover",
         marginTop: "10px",
-        marginLeft: "50px"
+        marginLeft: "0px"
       },
-      [theme.breakpoints.up("sm")]: {
-        maxWidth: "100%",
-        minHeight: "20vh",
-        maxHeight: "25vh",
-        objectFit: "cover",
-        marginTop: "10px",
-        marginLeft: "75px"
-      },
-      [theme.breakpoints.down("md")]: {
-        maxWidth: "100%",
-        minHeight: "20vh",
-        maxHeight: "25vh",
-        objectFit: "cover",
-        marginTop: "10px",
-        marginLeft: "55px"
-      },
-      [theme.breakpoints.up("md")]: {
+      [theme.breakpoints.between('sm', 'md')]: {
         maxWidth: "100%",
         minHeight: "20vh",
         maxHeight: "25vh",
         objectFit: "cover",
         marginTop: "10px",
         marginLeft: "50px"
+      },
+      [theme.breakpoints.between('md', 'lg')]: {
+        maxWidth: "100%",
+        minHeight: "20vh",
+        maxHeight: "25vh",
+        objectFit: "cover",
+        marginTop: "10px",
+        marginLeft: "20px"
       },
       [theme.breakpoints.up("lg")]: {
         maxWidth: "100%",
@@ -118,7 +110,7 @@ export default function MediaCard(props) {
       <Grid container justify="space-between">
         <Grid className={classes.imageWrapper} item>
           <img
-            src="https://thumbor.forbes.com/thumbor/2441x2240/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1176382466%2F0x0.jpg%3FcropX1%3D2439%26cropX2%3D4880%26cropY1%3D307%26cropY2%3D2547"
+            src={props.img[0]}
             alt="img"
             className={classes.image}
           />
@@ -130,13 +122,13 @@ export default function MediaCard(props) {
                 <Typography variant="h4">{props.name}</Typography>
                 <Grid item>
                   <Grid container direction="row">
-                    <Grid item xs={4}>
-                      <Typography variant="h6">{props.category}</Typography>
+                    <Grid item xs={12}>
+                      <Typography variant="h6" color="textSecondary">{props.category}</Typography>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={6}>
                       <Typography variant="h6">Size : {props.size}</Typography>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={6}>
                       <Typography variant="h6" color="secondary">Count : {props.count}</Typography>
                     </Grid>
                   </Grid>

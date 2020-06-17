@@ -27,7 +27,7 @@ export default () => {
     adaptiveHeight: true
   };
   return (
-    <div style={{ marginTop: "5px" }}>
+    <div style={{ marginTop: "3px" }}>
       <Slider {...settings}>
         {images.map((image, index) => (
           <CarouselImage src={image} key={index} />

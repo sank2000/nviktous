@@ -31,13 +31,13 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     padding: theme.spacing(3, 2),
     marginTop: 'auto',
-    backgroundColor: "#212529",
+    backgroundColor: "#3f3f44",
     color: "white"
   },
   btn:
   {
     fontSize: "18px",
-    color: "grey",
+    color: "#e5e5e5",
     "&:hover": {
       color: theme.palette.primary.main
     }
@@ -60,15 +60,15 @@ export default function StickyFooter(props) {
       <footer className={classes.footer}>
         <Container maxWidth="md">
           <Grid container>
-            <Grid item xl={12} sm={4}>
+            <Grid item xs={12} sm={4}>
               <Typography variant="h6" style={{ marginBottom: "20px", marginRight: "50px" }}>Category </Typography>
-              <Typography variant="subtitle1" style={{ color: "grey" }}>Mens apparel </Typography>
-              <Typography variant="subtitle1" style={{ color: "grey" }}>Womens apparel </Typography>
-              <Typography variant="subtitle1" style={{ color: "grey" }}>Children apparel </Typography>
-              <Typography variant="subtitle1" style={{ color: "grey" }}>Laptop bags </Typography>
-              <Typography variant="subtitle1" style={{ color: "grey", marginBottom: "20px" }}>other </Typography>
+              <Typography variant="subtitle1" style={{ color: "#e5e5e5" }}>Mens apparel </Typography>
+              <Typography variant="subtitle1" style={{ color: "#e5e5e5" }}>Womens apparel </Typography>
+              <Typography variant="subtitle1" style={{ color: "#e5e5e5" }}>Children apparel </Typography>
+              <Typography variant="subtitle1" style={{ color: "#e5e5e5" }}>Laptop bags </Typography>
+              <Typography variant="subtitle1" style={{ color: "#e5e5e5", marginBottom: "20px" }}>other </Typography>
             </Grid>
-            <Grid item xl={12} sm={4}>
+            <Grid item xs={12} sm={4}>
               <Typography variant="h6">Follow us  </Typography>
               <Grid container direction="column" justify="flex-start" alignItems="flex-start">
                 <IconButton href="#" className={classes.btn}>
@@ -85,7 +85,7 @@ export default function StickyFooter(props) {
                 </IconButton>
               </Grid>
             </Grid>
-            <Grid item xl={12} sm={4}>
+            <Grid item xs={12} sm={4}>
               <Typography variant="h6">My account </Typography>
               <Grid container direction="column" justify="flex-start" alignItems="flex-start">
                 <IconButton href="/favourite" className={classes.btn} style={{ paddingTop: "10px" }}>
@@ -100,9 +100,9 @@ export default function StickyFooter(props) {
               </Grid>
             </Grid>
           </Grid>
-          <Copyright />
         </Container>
       </footer>
+      <Copyright />
     </div>
   );
 }

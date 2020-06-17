@@ -48,7 +48,7 @@ function CartFoot(props) {
                 <Typography variant="h5" style={{ marginRight: "10px" }}>₹{detail.price}</Typography>
               </Grid>
               <Grid item>
-                <Button variant="outlined" color="primary" size="medium" onClick={() => setBuy(true)}>
+                <Button variant="contained" color="primary" size="medium" onClick={() => setBuy(true)}>
                   Buy Now
                 </Button>
               </Grid>

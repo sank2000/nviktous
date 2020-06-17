@@ -199,7 +199,7 @@ export default function (props) {
             color="primary"
             onClick={handleDone}
           >
-            Done <BounceLoader size={15} color={"blue"} loading={load} />
+            Done <BounceLoader size={15} color={"#FF7315"} loading={load} />
           </Button>
         </DialogActions>
       </Dialog>
