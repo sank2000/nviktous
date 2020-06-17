@@ -70,20 +70,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const productImages = [
-  {
-    small: 'https://firebasestorage.googleapis.com/v0/b/nviktous.appspot.com/o/cart1.jpg?alt=media&token=9a106293-eafd-40a5-935e-768a491b2c88',
-    large: 'https://firebasestorage.googleapis.com/v0/b/nviktous.appspot.com/o/cart1.jpg?alt=media&token=9a106293-eafd-40a5-935e-768a491b2c88'
-  },
-  {
-    small: 'https://firebasestorage.googleapis.com/v0/b/nviktous.appspot.com/o/shop-8.jpg?alt=media&token=0af0cd2b-3a2b-4bde-9dad-1f765d8eceb6',
-    large: 'https://firebasestorage.googleapis.com/v0/b/nviktous.appspot.com/o/shop-8.jpg?alt=media&token=0af0cd2b-3a2b-4bde-9dad-1f765d8eceb6'
-  },
-  {
-    small: 'https://firebasestorage.googleapis.com/v0/b/nviktous.appspot.com/o/shop-7.jpg?alt=media&token=69d262eb-ea78-4450-b72a-2d19d3f004bb',
-    large: 'https://firebasestorage.googleapis.com/v0/b/nviktous.appspot.com/o/shop-7.jpg?alt=media&token=69d262eb-ea78-4450-b72a-2d19d3f004bb'
-  }
-]
 
 function Size(props) {
   const classes = useStyles();
@@ -149,6 +135,7 @@ function Product({ match }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [empty, setEmpty] = useState(false);
+  const [images, setImages] = useState([]);
 
   const handleClick = event => {
     if (navigator.share) {
@@ -178,6 +165,12 @@ function Product({ match }) {
         console.log(response.data);
         if (response.data.length !== 0) {
           setProduct(response.data);
+          setImages(response.data.img.map((img) => {
+            return {
+              small: img,
+              large: img
+            }
+          }));
         }
         else {
           setEmpty(true);
@@ -243,7 +236,7 @@ function Product({ match }) {
               </Grid>
             </Popover>
             <Container maxWidth="lg">
-              <ProductViewer images={productImages} />
+              <ProductViewer images={images} />
             </Container>
             <div className={classes.heroContent}>
               <Container maxWidth="lg">
