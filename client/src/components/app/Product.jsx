@@ -257,7 +257,7 @@ function Product({ match }) {
                       <Typography variant="h6">{product.category}</Typography>
                     </Grid>
                     <Grid item>
-                      <Typography variant="h6" color="secondary">In stock</Typography>
+                      <Typography variant="h6" color="secondary">{product.available ? "In Stock" : "No Stock"}</Typography>
                     </Grid>
                     <Grid item>
                       <Typography variant="h6">Available sizes</Typography>
@@ -310,9 +310,9 @@ function Product({ match }) {
                        </Button>
                     </Link>
                   </Box>
-                  <Box>
+                  {product.available && <Box>
                     <AddtoCart data={product} />
-                  </Box>
+                  </Box>}
                 </Box>
               </Container>
             </div>

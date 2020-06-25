@@ -90,7 +90,7 @@ function ItemCard(props) {
           </Grid>
           <Grid item>
             <Grid container id="quick actions">
-              <AddtoCart ico data={props.item} />
+              {props.item.available && <AddtoCart ico data={props.item} />}
               <AddtoFav id={props.item._id} color="primary" />
             </Grid>
           </Grid>
