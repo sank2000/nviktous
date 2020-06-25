@@ -28,6 +28,7 @@
     "mongoose": "^5.9.16",
     "mongoose-encryption": "^2.0.2",
     "mongoose-findorcreate": "^3.0.0",
+    "mongoose-simple-random": "^0.4.1",
     "nodemailer": "^6.4.8",
     "passport": "^0.4.1",
     "passport-facebook": "^3.0.0",

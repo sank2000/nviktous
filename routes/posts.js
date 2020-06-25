@@ -15,8 +15,7 @@ router.get("/", function (req, res) {
 
 
 router.post("/main", function (req, res) {
-  var query = Product.find({ category: req.body.category }).limit(6);
-  query.exec(function (err, result) {
+  Product.findRandom({ category: req.body.category }, {}, { limit: 6 }, function (err, result) {
     if (err) { console.log(err); return }
     res.send(result);
   });
