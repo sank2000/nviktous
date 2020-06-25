@@ -53,7 +53,7 @@ export default () => {
     {load ? <Loading /> : empty ? <Empty /> : <>
       <Container maxWidth="sm">
         {card.map((value, ind) => {
-          return <Order key={ind} items={value.item} price={value.amount} id={value._id} status={value.status} />
+          return <Order key={ind} items={value.item} payment={value.payment} price={value.amount} id={value._id} status={value.status} />
         })}
       </Container>
     </>

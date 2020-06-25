@@ -99,6 +99,9 @@ export default (props) => {
         <Grid item style={{ marginLeft: "10px" }}>
           <h3>Order no : <span style={{ color: "grey" }}>{props.id} </span> </h3>
         </Grid>
+        <Grid item xs={12} style={{ marginLeft: "10px" }}>
+          <h3>Payment : <span style={{ color: "grey" }}>{props.payment.method} </span> </h3>
+        </Grid>
         <Grid item xs={12} style={{ marginLeft: "20px" }}>
           <Typography variant="h6">Status</Typography>
         </Grid>
