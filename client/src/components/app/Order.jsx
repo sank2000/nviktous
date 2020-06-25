@@ -17,6 +17,9 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { withStyles } from "@material-ui/core/styles";
 
+import Tooltip from '@material-ui/core/Tooltip';
+import DateFormat from 'dateformat';
+
 const StyledTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -41,13 +44,14 @@ function Ava(props) {
         {props.ico}
       </Avatar>
       <br />
-      <p style={(props.ind <= props.len) ? {
-        color: "#fff",
-        display: "inline",
-        backgroundColor: "green",
-        padding: "3px 5px",
-        borderRadius: '150px'
-      } : { display: "inline" }}>{props.title}</p>
+      {props.ind <= props.len ? <Tooltip placement="bottom" title={DateFormat((new Date(props.status[props.ind - 1].date)), "d-mmm-yyyy")}>
+        <p style={{
+          color: "#fff", display: "inline",
+          backgroundColor: "green",
+          padding: "3px 5px",
+          borderRadius: '150px'
+        }}>{props.title}</p>
+      </Tooltip> : <p style={{ display: "inline" }}>{props.title}</p>}
     </div>
   );
 }
@@ -116,13 +120,13 @@ export default (props) => {
               style={{ textAlign: "center" }}
             >
               <Grid item style={{ flexShrink: "3" }}>
-                <Ava ico={<DoneOutlineIcon />} title={"Ordered"} ind={1} len={props.status.length} />
+                <Ava ico={<DoneOutlineIcon />} title={"Ordered"} ind={1} len={props.status.length} status={props.status} />
               </Grid>
               <Grid item>
-                <Ava ico={<LocalMallIcon />} title={"Packed"} ind={2} len={props.status.length} />
+                <Ava ico={<LocalMallIcon />} title={"Packed"} ind={2} len={props.status.length} status={props.status} />
               </Grid>
               <Grid item>
-                <Ava ico={<RowingIcon />} title={"Shipped"} ind={3} len={props.status.length} />{" "}
+                <Ava ico={<RowingIcon />} title={"Shipped"} ind={3} len={props.status.length} status={props.status} />{" "}
               </Grid>
               <Grid item>
                 <Ava
@@ -130,6 +134,7 @@ export default (props) => {
                   title={"Delivery"}
                   ind={4}
                   len={props.status.length}
+                  status={props.status}
                 />
               </Grid>
               <Grid
