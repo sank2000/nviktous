@@ -32,7 +32,7 @@ router.post("/full", function (req, res) {
 
 
 router.post("/filter1", function (req, res) {
-  var query = Product.find({ category: req.body.category }).sort({ 'price': req.body.order });
+  var query = Product.find({ category: req.body.category }).sort({ 'actPrice': req.body.order });
   query.exec(function (err, result) {
     if (err) { console.log(err); return }
     res.send(result);
@@ -40,7 +40,7 @@ router.post("/filter1", function (req, res) {
 });
 
 router.post("/filter2", function (req, res) {
-  var query = Product.find({ $and: [{ category: req.body.category }, { 'price': { $gte: req.body.start, $lte: req.body.end } }] }).sort({ 'price': 'asc' });
+  var query = Product.find({ $and: [{ category: req.body.category }, { 'actPrice': { $gte: req.body.start, $lte: req.body.end } }] }).sort({ 'price': 'asc' });
   query.exec(function (err, result) {
     if (err) { console.log(err); return }
     res.send(result);

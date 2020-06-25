@@ -10,7 +10,8 @@ const productSchema = new mongoose.Schema(
     img: Array,
     size: Array,
     price: Number,
-    discount: { type: Number, default: 0 }
+    discount: { type: Number, default: 0 },
+    actPrice: { type: Number, default: 0 }
   }, {
   timestamps: true
 }
