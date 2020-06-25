@@ -22,6 +22,8 @@ import LockOpenTwoToneIcon from '@material-ui/icons/LockOpenTwoTone';
 import LocalMallTwoToneIcon from '@material-ui/icons/LocalMallTwoTone';
 import { Link } from 'react-router-dom';
 
+import img from "./logo.png";
+
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -192,7 +194,7 @@ export default function NavBar() {
         <Toolbar>
           <Drawer />
           <img
-            src="./images/logo.png"
+            src={img}
             style={{ width: "25px", height: "25px", marginRight: "10px" }}
             alt=""
           />

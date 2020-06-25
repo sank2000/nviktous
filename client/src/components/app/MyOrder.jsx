@@ -27,7 +27,7 @@ function Empty() {
   return (
     <FlexContainer withAppBar>
       <img src='../images/empty.png' style={{ maxWidth: '80vw', maxHeight: '50vh', padding: '1rem' }} alt='kfjngdf' />
-      <Typography variant="h2">No Orders!</Typography>
+      <Typography variant="h4">No Orders!</Typography>
     </FlexContainer>
   );
 }

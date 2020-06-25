@@ -9,7 +9,9 @@ const orderSchema = new mongoose.Schema(
     item: { type: Array },
     status: { type: Array },
     payment: Object
-  }
+  }, {
+  timestamps: true
+}
 )
 
 

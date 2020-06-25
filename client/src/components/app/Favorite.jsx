@@ -30,7 +30,7 @@ function Empty() {
   return (
     <FlexContainer withAppBar>
       <img src='../images/emptyCart.png' style={{ maxWidth: '80vw', maxHeight: '50vh', padding: '1rem' }} alt='kfjngdf' />
-      <Typography variant="h2">No Favourite !</Typography>
+      <Typography variant="h4">No Favourite !</Typography>
     </FlexContainer>
   );
 }
