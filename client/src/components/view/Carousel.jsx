@@ -7,9 +7,9 @@ import CarouselImage from "./CarouselImage";
 import "./Carousel.css";
 
 const images = [
-  "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
-  "https://images.unsplash.com/photo-1542060748-10c28b62716f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
-  "https://images.unsplash.com/photo-1565084888279-aca607ecce0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+  "https://firebasestorage.googleapis.com/v0/b/nviktous.appspot.com/o/images%2Fimg1.jpg?alt=media&token=ec7d0071-a35d-4989-8a24-c1dee13dc8570",
+  "https://firebasestorage.googleapis.com/v0/b/nviktous.appspot.com/o/images%2Fimg2.jpg?alt=media&token=58bbc449-3cf1-443b-b77f-87f40533ace9",
+  "https://firebasestorage.googleapis.com/v0/b/nviktous.appspot.com/o/images%2Fimg%203.jpg?alt=media&token=c0f5a978-b4e1-4aa8-9d2d-6094e7f813c8"
 ];
 
 export default () => {

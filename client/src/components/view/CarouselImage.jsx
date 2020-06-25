@@ -8,8 +8,7 @@ export default function CarouselImage(props) {
         alt={props.alt || "image"}
         style={{
           width: "100%",
-          height: "20rem",
-          objectFit: "cover",
+          height: "300px",
           display: "inline-block"
         }}
       />
